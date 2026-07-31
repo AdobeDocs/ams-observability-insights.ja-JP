@@ -1,23 +1,23 @@
 ---
-title: Synoptryxを使用したアプリケーションパフォーマンス監視（APM）
-description: Synoptryx APM プラグインを使用して、AEM トランザクションをトレースし、JVMをモニターし、トランザクションを分析し、AEM Managed Services上のトランザクショントレースと外部サービスを調べます。
+title: ' [!DNL Synoptryx]を使用したアプリケーションパフォーマンス監視（APM）'
+description: ' [!DNL Synoptryx] APM プラグインを使用して、AEM トランザクションのトレース、JVMのモニター、トランザクションの分析、AEM Managed Services上のトランザクショントレースと外部サービスの検査を行います。'
 feature: Operations
 role: Admin
-source-git-commit: 883b68e3bc57ba6b55559560a967a6dbc553262a
+source-git-commit: 12876ba185fd6d155f02639fba9601a3616c7e90
 workflow-type: tm+mt
-source-wordcount: '1089'
+source-wordcount: '1078'
 ht-degree: 5%
 
 ---
 
 
-# Synoptryxを使用したアプリケーションパフォーマンス監視（APM） {#application-performance-monitoring}
+# [!DNL Synoptryx]を使用したアプリケーションパフォーマンス監視（APM） {#application-performance-monitoring}
 
-Synoptryx Application Performance Monitoring （APM）は、Adobe Experience Manager（AEM）のパフォーマンスとエンドユーザーエクスペリエンスにリアルタイムおよび過去のinsightを提供します。 エンドツーエンドのトランザクショントレーシング、チャート、レポートにより、Java コードレベルに至るまでアプリケーションの動作を可視化できます。
+[!DNL Synoptryx] Application Performance Monitoring （APM）は、Adobe [!DNL Experience Manager] （AEM）のパフォーマンスとエンドユーザーのエクスペリエンスに、リアルタイムおよび過去のinsightを提供します。 エンドツーエンドのトランザクショントレーシング、チャート、レポートにより、Java コードレベルに至るまでアプリケーションの動作を可視化できます。
 
-## Managed Services Synoptryx APM プラグイン {#apm-plugin}
+## Managed Services [!DNL Synoptryx] APM プラグイン {#apm-plugin}
 
-AEMは、Apache SlingとJackrabbit Oak上に構築されたApache Felix OSGi モジュールを使用して、Jetty上でJava アプリケーションとして実行されます。 Adobe Managed Services、AEM エンジニアリング、Synoptryx Engineeringは、Managed Services環境用のカスタム計装を共同開発しました。
+AEMは、Apache SlingとJackrabbit Oak上に構築されたApache Felix OSGi モジュールを使用して、Jetty上でJava アプリケーションとして実行されます。 Adobe Managed Services、AEM エンジニアリング、および[!DNL Synoptryx] エンジニアリングは、Managed Services環境用のカスタム計装を共同で開発しました。
 
 そのインストルメンテーションは次を収集します。
 
@@ -29,7 +29,7 @@ AEMは、Apache SlingとJackrabbit Oak上に構築されたApache Felix OSGi モ
 
 ![&#x200B; ページリクエストのネストされたAEM コンポーネントのスパンと実行タイムラインを示すSynoptryx APM トレースビュー](assets/image19.png)
 
-## Synoptryx APMの使用 {#using-apm}
+## [!DNL Synoptryx] APMを使用しています {#using-apm}
 
 APMを使用して、エンドユーザーに影響を与える前にアプリケーションの問題を見つけます。 オーサーとパブリッシュはコードベースを共有しますが、**個別のAPM アプリケーション**&#x200B;として監視されるので、各階層を個別に分析できます。
 
@@ -38,7 +38,7 @@ Managed Servicesには、次のような機能があります。
 - オーサー用の1つのAPM アプリケーション
 - パブリッシュ用の1つのAPM アプリケーション
 
-Synoptryx APMでアプリケーション名を選択して、その概要および監視ダッシュボードを開きます。
+[!DNL Synoptryx] APMでアプリケーション名を選択して、その概要および監視ダッシュボードを開きます。
 
 作成者と公開アプリケーションを表示する![Synoptryx APM アプリケーションリスト &#x200B;](assets/image1a.png)
 
@@ -70,7 +70,7 @@ Application Performance Management ダッシュボードには、次のセクシ
 
 ### 説明
 
-**概要** セクションには、監視対象アプリケーションの現在の状態を要約した高レベルの主要業績評価指標（KPI）が表示されます。
+**[!UICONTROL 概要]** セクションには、監視対象アプリケーションの現在の状態を要約した高レベルの主要業績評価指標（KPI）が表示されます。
 
 これらのKPIは、アプリケーションのアクティビティ、スループット、リクエストの成功、全体的なユーザーエクスペリエンスの概要を一目で把握するのに役立ちます。
 
