@@ -14,5 +14,5 @@ ht-degree: 4%
 # Adobe Managed Servicesの概要 {#content}
 
 + {hide-from-toc}[概要](/help/overview.md)
-+ {hide-from-toc}[ アプリケーションパフォーマンスの監視](/help/application-performance-monitoring.md)
-+ {hide-from-toc}[ インフラストラクチャの監視](/help/infrastructure-monitoring.md)
++ {hide-from-toc}[&#x200B; アプリケーションパフォーマンスの監視](/help/application-performance-monitoring.md)
++ {hide-from-toc}[&#x200B; インフラストラクチャの監視](/help/infrastructure-monitoring.md)
