@@ -39,7 +39,7 @@ AEM Managed Servicesの一部として、以下を受け取ります。
 
 Adobeは、[!DNL Synoptryx]APM Java プラグインを使用して、AEM **Author**&#x200B;および&#x200B;**Publish**&#x200B;層を監視します。 トポロジ内のすべてのホスト サーバーは、[!DNL Synoptryx] Infrastructure エージェントで監視されます。 カスタム APMおよびインフラストラクチャのモニタリングは、実稼動以外の環境と実稼動環境の両方で有効になります。
 
-![Synoptryx APMとインフラストラクチャのモニタリングを示す図（AEM オーサーサーバー、パブリッシュサーバー、およびホストされているサーバー） ](assets/image6.png)
+![Synoptryx APMとインフラストラクチャのモニタリングを示す図（AEM オーサーサーバー、パブリッシュサーバー、およびホストされているサーバー） &#x200B;](assets/image6.png)
 
 ### アカウント内のアプリケーション {#applications-in-your-account}
 
@@ -64,5 +64,5 @@ CSEがアカウントをプロビジョニングしたら、[synoptryx.adobecqms
 
 チームが日常的に使用するモニタリングダッシュボードで作業を続けます。
 
-- [Application performance monitoring （APM） ](application-performance-monitoring.md) — AEM トランザクションをトレースし、JVMの動作を分析し、外部サービスを調べます。
-- [ インフラストラクチャの監視](infrastructure-monitoring.md) — ホストレベルのシステム、ネットワーク、プロセス、およびストレージの指標を確認します。
+- [Application performance monitoring （APM） &#x200B;](application-performance-monitoring.md) — AEM トランザクションをトレースし、JVMの動作を分析し、外部サービスを調べます。
+- [&#x200B; インフラストラクチャの監視](infrastructure-monitoring.md) — ホストレベルのシステム、ネットワーク、プロセス、およびストレージの指標を確認します。
