@@ -14,4 +14,4 @@ ht-degree: 0%
 
 # 指標、カバレッジ、リテンション
 
-このコンテンツは[ カバレッジ、環境、データ保持](../get-started/coverage-and-data.md)に移動しました。
+このコンテンツは[&#x200B; カバレッジ、環境、データ保持](../get-started/coverage-and-data.md)に移動しました。
