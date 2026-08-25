@@ -1,76 +1,33 @@
 ---
-title: ' [!DNL Synoptryx]を使用したアプリケーションパフォーマンス監視（APM）'
-description: ' [!DNL Synoptryx] APM プラグインを使用して、AEM トランザクションのトレース、JVMのモニター、トランザクションの分析、AEM Managed Services上のトランザクショントレースと外部サービスの検査を行います。'
+title: APM ダッシュボードのリファレンス
+description: スクリーンショット、指標、ユニットなど、Observability Insights APM ダッシュボードのパネルごとのリファレンス。
 feature: Operations
 role: Admin
-source-git-commit: 12876ba185fd6d155f02639fba9601a3616c7e90
+source-git-commit: 1d54a6a398360b040221db5b2780d301722894bf
 workflow-type: tm+mt
-source-wordcount: '1078'
-ht-degree: 5%
+source-wordcount: '806'
+ht-degree: 7%
 
 ---
 
 
-# [!DNL Synoptryx]を使用したアプリケーションパフォーマンス監視（APM） {#application-performance-monitoring}
+# APM ダッシュボードのリファレンス {#apm-dashboard-reference}
 
-[!DNL Synoptryx] Application Performance Monitoring （APM）は、Adobe [!DNL Experience Manager] （AEM）のパフォーマンスとエンドユーザーのエクスペリエンスに、リアルタイムおよび過去のinsightを提供します。 エンドツーエンドのトランザクショントレーシング、チャート、レポートにより、Java コードレベルに至るまでアプリケーションの動作を可視化できます。
+このリファレンスでは、AEM Managed Servicesで使用される主なObservability Insights APM パネルについて説明します。
 
-## Managed Services [!DNL Synoptryx] APM プラグイン {#apm-plugin}
+## ダッシュボードのナビゲーション
 
-AEMは、Apache SlingとJackrabbit Oak上に構築されたApache Felix OSGi モジュールを使用して、Jetty上でJava アプリケーションとして実行されます。 Adobe Managed Services、AEM エンジニアリング、および[!DNL Synoptryx] エンジニアリングは、Managed Services環境用のカスタム計装を共同で開発しました。
-
-そのインストルメンテーションは次を収集します。
-
-- **意味のあるトランザクションの命名** — Sling拡張機能は、トランザクション名をページ構造に合わせて調整し、インサイトイベントに`requestURL`属性を追加して、ダッシュボード間でSling URLを関連付けることができます。
-
-![Sling ヘルスチェックルートとスパンタイムラインを含む記述的なAEM トランザクション名を示すAPM トレースビュー](assets/image19a.png)
-
-- **JCR instrumentation** — リポジトリーレベルの操作（XPathおよびJCR-SQL2を含む）が分類され、APMのデータベースセクションのトランザクショントレースに添付されます。
-
-![&#x200B; ページリクエストのネストされたAEM コンポーネントのスパンと実行タイムラインを示すSynoptryx APM トレースビュー](assets/image19.png)
-
-## [!DNL Synoptryx] APMを使用しています {#using-apm}
-
-APMを使用して、エンドユーザーに影響を与える前にアプリケーションの問題を見つけます。 オーサーとパブリッシュはコードベースを共有しますが、**個別のAPM アプリケーション**&#x200B;として監視されるので、各階層を個別に分析できます。
-
-Managed Servicesには、次のような機能があります。
-
-- オーサー用の1つのAPM アプリケーション
-- パブリッシュ用の1つのAPM アプリケーション
-
-[!DNL Synoptryx] APMでアプリケーション名を選択して、その概要および監視ダッシュボードを開きます。
-
-作成者と公開アプリケーションを表示する![Synoptryx APM アプリケーションリスト &#x200B;](assets/image1a.png)
-
-## ダッシュボードのセクション
-
-Application Performance Management ダッシュボードには、次のセクションがあります。
-
-- 概要
-- RED指標（レート・エラー・期間）
-- トラフィック
-- レイテンシとパフォーマンス
-- エラーの詳細
-- 上位のトランザクション
-- JVM Health
-- JVM メモリ
-- ガベージコレクション
-
-このガイドでは、以下に示すセクションのみを説明します。
-
-## ダッシュボードナビゲーション
-
-![&#x200B; ダッシュボードナビゲーション &#x200B;](assets/apm/1_opening_screen.png)
+![&#x200B; ダッシュボードナビゲーション &#x200B;](../assets/apm/1_opening_screen.png)
 
 ダッシュボードは、関連するアプリケーションパフォーマンス指標をグループ化する拡張可能なセクションに整理されています。 セクションを展開すると、そのカテゴリに関連する1つ以上のグラフが表示されます。
 
 ## 概要
 
-![概要](assets/apm/1.1_apm_overview.png)
+![概要](../assets/apm/1.1_apm_overview.png)
 
 ### 説明
 
-**[!UICONTROL 概要]** セクションには、監視対象アプリケーションの現在の状態を要約した高レベルの主要業績評価指標（KPI）が表示されます。
+**概要** セクションには、監視対象アプリケーションの現在の状態を要約した高レベルの主要業績評価指標（KPI）が表示されます。
 
 これらのKPIは、アプリケーションのアクティビティ、スループット、リクエストの成功、全体的なユーザーエクスペリエンスの概要を一目で把握するのに役立ちます。
 
@@ -144,7 +101,7 @@ RED手法は、アプリケーションの3つの主な特徴を測定します�
 
 ### リクエスト率
 
-![&#x200B; リクエスト率](assets/apm/2_red_metrics_request_rate.png)
+![&#x200B; リクエスト率](../assets/apm/2_red_metrics_request_rate.png)
 
 #### 説明
 
@@ -171,7 +128,7 @@ req_min
 
 ### エラー率
 
-![&#x200B; エラー率](assets/apm/3_error_rate.png)
+![&#x200B; エラー率](../assets/apm/3_error_rate.png)
 
 #### 説明
 
@@ -199,7 +156,7 @@ error_pct (1h ago)
 
 ### リクエスト期間
 
-![&#x200B; リクエスト期間](assets/apm/4_request_duration_p50_p95.png)
+![&#x200B; リクエスト期間](../assets/apm/4_request_duration_p50_p95.png)
 
 #### 説明
 
@@ -242,7 +199,7 @@ P90
 
 ### HTTP ステータスコード別リクエスト
 
-![&#x200B; ステータスコード別リクエスト &#x200B;](assets/apm/5_requests_by_status_code.png)
+![&#x200B; ステータスコード別リクエスト &#x200B;](../assets/apm/5_requests_by_status_code.png)
 
 #### 説明
 
@@ -277,7 +234,7 @@ req_s 500
 
 ### エンドポイント別リクエストレート
 
-![&#x200B; エンドポイント別リクエスト率](assets/apm/6_request_rate_by_end_point.png)
+![&#x200B; エンドポイント別リクエスト率](../assets/apm/6_request_rate_by_end_point.png)
 
 #### 説明
 
@@ -302,11 +259,11 @@ endpoint_request_rate
 - ランクエンドポイントリスト
 - 相対的なリクエスト量
 
-## レイテンシとパフォーマンス
+## 待ち時間とパフォーマンス
 
 ### 応答時間 – P95対1時間
 
-![応答時間P95](assets/apm/7_response_time_p95_1h.png)
+![応答時間P95](../assets/apm/7_response_time_p95_1h.png)
 
 #### 説明
 
@@ -334,7 +291,7 @@ P95 (1 Hour Ago)
 
 ### APDEX スコアの推移
 
-![APDEX](assets/apm/8_apdex_score_overtime.png)
+![APDEX](../assets/apm/8_apdex_score_overtime.png)
 
 #### 説明
 
@@ -360,7 +317,7 @@ APDEX Score
 
 ### スループットとP95待ち時間の比較
 
-![&#x200B; スループット vs レイテンシ &#x200B;](assets/apm/9_throughput_vs_p95latency.png)
+![&#x200B; スループット vs レイテンシ &#x200B;](../assets/apm/9_throughput_vs_p95latency.png)
 
 #### 説明
 
@@ -392,7 +349,7 @@ P95 Latency
 
 ### ステータスグループ別のエラー率%
 
-![&#x200B; ステータスグループ別エラー率](assets/apm/10_error_rate_pct_by_status_group.png)
+![&#x200B; ステータスグループ別エラー率](../assets/apm/10_error_rate_pct_by_status_group.png)
 
 #### 説明
 
@@ -424,10 +381,9 @@ Combined Error Trend
 - 平均失敗率
 - 時系列傾向
 
-
 ### エラー率の傾向：1時間前と現在の比較
 
-![&#x200B; エラー率1時間](assets/apm/11_error_ratio_trend_1h.png)
+![&#x200B; エラー率1時間](../assets/apm/11_error_ratio_trend_1h.png)
 
 #### 説明
 
@@ -452,7 +408,7 @@ Current Error Ratio
 
 ### エラー率のトレンド：現在と6時間前の比較
 
-![&#x200B; エラー率6時間](assets/apm/12_error_ratio_trend_6h.png)
+![&#x200B; エラー率6時間](../assets/apm/12_error_ratio_trend_6h.png)
 
 #### 説明
 

@@ -1,21 +1,21 @@
 ---
-title: ' [!DNL Synoptryx]によるインフラストラクチャの監視'
-description: ' [!DNL Synoptryx]  インフラストラクチャの監視を使用して、AEM Managed Servicesのフットプリント全体のホストレベルのシステム、ネットワーク、プロセス、およびストレージの指標を確認します。'
+title: インフラストラクチャ ダッシュボード リファレンス
+description: スクリーンショット、指標、ユニットなど、Observability Insights インフラストラクチャダッシュボードのパネルごとのリファレンス。
 feature: Operations
 role: Admin
-source-git-commit: 12876ba185fd6d155f02639fba9601a3616c7e90
+source-git-commit: 1d54a6a398360b040221db5b2780d301722894bf
 workflow-type: tm+mt
-source-wordcount: '1107'
+source-wordcount: '1091'
 ht-degree: 7%
 
 ---
 
 
-# ホストインフラストラクチャ監視ダッシュボード
+# インフラストラクチャ ダッシュボード リファレンス {#infrastructure-dashboard-reference}
 
-このセクションでは、インフラストラクチャ監視ダッシュボードに表示される各ホストレベルのインフラストラクチャ監視グラフについて説明します。 各セクションでは、指標の目的、収集されるデータ、測定単位、ビジュアライゼーションに表示される情報について説明します。
+このリファレンスでは、AEM Managed ServicesのObservability Insightsで使用されるホストレベルのインフラストラクチャ パネルについて説明します。
 
-## ダッシュボードの概要
+## Dashboard overview
 
 ホストインフラストラクチャ監視ダッシュボードは、基盤となるホストの稼働率とパフォーマンスをリアルタイムで可視化します。 これらの指標は、オペレーターがコンピューティング、メモリ、ストレージ、ネットワークリソースを監視し、潜在的なリソースのボトルネックを特定するのに役立ちます。
 
@@ -32,11 +32,11 @@ ht-degree: 7%
 
 ## &#x200B;1. ホスト CPU稼働率
 
-![&#x200B; ホスト CPU利用状況](assets/host-monitoring/host_cpu_utilization.png)
+![&#x200B; ホスト CPU利用状況](../assets/host-monitoring/host_cpu_utilization.png)
 
 ### 説明
 
-**[!UICONTROL ホスト CPU利用状況]** パネルには、現在オペレーティングシステムおよび実行中のすべてのプロセスが時間の経過に伴って使用しているCPU リソースの割合が表示されます。
+**ホスト CPU利用状況** パネルには、現在オペレーティングシステムおよび実行中のすべてのプロセスが時間の経過に伴って使用しているCPU リソースの割合が表示されます。
 
 この指標は、ホスト全体でのCPUの使用状況を表し、プロセッサのアクティビティを時系列で視覚化します。
 
@@ -71,11 +71,11 @@ ht-degree: 7%
 
 ## &#x200B;2. ホストディスク I/O
 
-![&#x200B; ホスト ディスク I/O](assets/host-monitoring/host_disk_io.png)
+![&#x200B; ホスト ディスク I/O](../assets/host-monitoring/host_disk_io.png)
 
 ### 説明
 
-**[!UICONTROL Host Disk I/O]** パネルには、ホストが実行したディスク読み取りおよびディスク書き込み操作のストレージ スループットが表示されます。
+**Host Disk I/O** パネルには、ホストが実行したディスク読み取りおよびディスク書き込み操作のストレージ スループットが表示されます。
 
 グラフには、オペレーティングシステムとストレージデバイス間で転送されるデータを表す2つの独立した時系列が表示されます。
 
@@ -109,11 +109,11 @@ ht-degree: 7%
 
 ## &#x200B;3. ホストネットワーク I/O
 
-![&#x200B; ホスト ネットワーク I/O](assets/host-monitoring/host_network_io.png)
+![&#x200B; ホスト ネットワーク I/O](../assets/host-monitoring/host_network_io.png)
 
 ### 説明
 
-**[!UICONTROL Host Network I/O]** パネルには、ホストが時間をかけて送信および受信したネットワーク トラフィックの量が表示されます。
+**Host Network I/O** パネルには、ホストが時間をかけて送信および受信したネットワーク トラフィックの量が表示されます。
 
 このグラフは、ネットワークインターフェイスを流れるデータの速度を測定し、ネットワーク帯域幅の消費量を可視化します。
 この指標は、ネットワークのスループットを表します。
@@ -152,11 +152,11 @@ ht-degree: 7%
 
 ## 4. CPU I/O Wait
 
-![CPU I/O Wait](assets/host-monitoring/cpu_io_wait.png)
+![CPU I/O Wait](../assets/host-monitoring/cpu_io_wait.png)
 
 ### 説明
 
-**[!UICONTROL CPU I/O Wait]** パネルには、入出力操作の完了を待つためにCPUが費やした時間の割合が表示されます。
+**CPU I/O Wait** パネルには、入出力操作の完了を待つためにCPUが費やした時間の割合が表示されます。
 
 このメトリックは、アクティブなプロセスがストレージ・デバイスまたはその他のI/O操作を待機中にブロックされることで発生するプロセッサのアイドル時間を表します。
 
@@ -189,11 +189,11 @@ ht-degree: 7%
 
 ## &#x200B;5. ストレージ使用状況
 
-![&#x200B; ストレージ使用状況](assets/host-monitoring/storage_disk_usage.png)
+![&#x200B; ストレージ使用状況](../assets/host-monitoring/storage_disk_usage.png)
 
 ### 説明
 
-**[!UICONTROL ストレージ使用率]** パネルには、監視対象ホストで現在使用されているストレージ容量の全体的な割合が表示されます。
+**ストレージ使用率** パネルには、監視対象ホストで現在使用されているストレージ容量の全体的な割合が表示されます。
 
 このグラフは、選択した時間間隔におけるファイルシステムの容量使用率の履歴ビューを提供します。
 
@@ -215,11 +215,11 @@ ht-degree: 7%
 
 ## &#x200B;6. ディスク使用量
 
-![&#x200B; ディスク使用量](assets/host-monitoring/storage_disk_usage.png)
+![&#x200B; ディスク使用量](../assets/host-monitoring/storage_disk_usage.png)
 
 ### 説明
 
-「**[!UICONTROL ディスク使用状況]**」パネルには、マウントされた各ファイルシステムまたはストレージデバイスのストレージ使用率が表示されます。
+「**ディスク使用状況**」パネルには、マウントされた各ファイルシステムまたはストレージデバイスのストレージ使用率が表示されます。
 
 各行は、特定のブロックデバイスまたはマウントされたパーティションに対応し、現在使用されているスペースの割合をレポートします。
 
@@ -248,11 +248,11 @@ ht-degree: 7%
 
 ## &#x200B;7. ホストCPUの読み込み平均
 
-![&#x200B; ホスト CPUの読み込み平均](assets/host-monitoring/host_cpu_load_average.png)
+![&#x200B; ホスト CPUの読み込み平均](../assets/host-monitoring/host_cpu_load_average.png)
 
 ### 説明
 
-**[!UICONTROL Host CPU Load Average]** パネルには、3つのローリング時間ウィンドウにわたるLinux システムのロード平均が表示されます。
+**Host CPU Load Average** パネルには、3つのローリング時間ウィンドウにわたるLinux システムのロード平均が表示されます。
 
 CPUの使用率とは異なり、負荷平均は、アクティブに実行されているか、CPUのスケジュールまたはI/Oの完了を待っているプロセスの平均数を表します。
 
@@ -289,11 +289,11 @@ CPUの使用率とは異なり、負荷平均は、アクティブに実行さ�
 
 ## &#x200B;8. ホストメモリ使用率
 
-![&#x200B; ホスト メモリ使用率](assets/host-monitoring/host_memory_usage.png)
+![&#x200B; ホスト メモリ使用率](../assets/host-monitoring/host_memory_usage.png)
 
 ### 説明
 
-「**[!UICONTROL ホストメモリ使用率]**」パネルには、オペレーティングシステムによって現在割り当てられている物理システムメモリの割合が表示されます。
+「**ホストメモリ使用率**」パネルには、オペレーティングシステムによって現在割り当てられている物理システムメモリの割合が表示されます。
 
 この指標は、実行中のすべてのプロセス、カーネルメモリ、バッファ、およびキャッシュにおける全体的なRAM使用率を表します。
 

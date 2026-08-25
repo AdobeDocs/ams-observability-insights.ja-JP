@@ -1,18 +1,23 @@
 ---
 cloud: Experience Cloud
-user-guide-title: Adobe Managed Servicesの概要
-breadcrumb-title: AMS Synoptry
-user-guide-description: Adobe Managed Services Synoptryxのドキュメント
-source-git-commit: 3a01c8bdbdca76891091a963c85c8b04bd8439db
+user-guide-title: Adobe Managed Servicesのオブザーバビリティのインサイト
+breadcrumb-title: 可観測性インサイト
+user-guide-description: Adobe Managed Services Observability Insightsのドキュメント
+source-git-commit: 269d0b7e9895077b0ae7a573bdad5408ca15e612
 workflow-type: tm+mt
-source-wordcount: '21'
-ht-degree: 4%
+source-wordcount: '41'
+ht-degree: 9%
 
 ---
 
 
-# Adobe Managed Servicesの概要 {#content}
+# Adobe Managed Servicesのオブザーバビリティのインサイト {#content}
 
-+ {hide-from-toc}[概要](/help/overview.md)
-+ {hide-from-toc}[&#x200B; アプリケーションパフォーマンスの監視](/help/application-performance-monitoring.md)
-+ {hide-from-toc}[&#x200B; インフラストラクチャの監視](/help/infrastructure-monitoring.md)
+- [概要](/help/overview.md)
+- [オブザーバビリティインサイトの基本を学ぶ](/help/get-started/onboarding.md)
+- [アクセスとアカウント管理](/help/get-started/access-and-accounts.md)
+- [カバレッジ、環境、データ保持](/help/get-started/coverage-and-data.md)
+- [可観測性インサイトの活用](/help/use-observability-insights.md)
+- [Applications](/help/applications.md)
+- [ホスト](/help/hosts.md)
+- [よくある質問](/help/troubleshooting/common-questions.md)
