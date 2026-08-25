@@ -1,68 +1,91 @@
 ---
-title: AEM Managed Services環境を [!DNL Synoptryx]でモニタリングします
-description: Adobeでの [!DNL Synoptryx] 監視 [!DNL Experience Manager] Managed Servicesの概要：Adobeの監視内容、アカウントの設定方法、およびチームのアクセス方法。
+title: Observability InsightsによるAEM Managed Services環境のモニタリング
+description: AEM Managed ServicesのObservability Insightsの内容、対象、このガイドの残りの部分を操作する方法を理解するには、ここから始めてください。
 feature: Operations
 role: Admin
-source-git-commit: c79ae46b8ab4f6aab02821bc4446e04a94670aef
+source-git-commit: 94ba857f5b6a5c33483e4d49f5a1daa9583b6347
 workflow-type: tm+mt
-source-wordcount: '618'
+source-wordcount: '737'
 ht-degree: 0%
 
 ---
 
 
-# [!DNL Synoptryx]を使用してAEM Managed Services環境をモニタリングする {#synoptryx-monitoring}
+# Observability InsightsによるAEM Managed Services環境のモニタリング {#observability-insights-monitoring}
 
-[!DNL Synoptryx]は、別の監視プラットフォームを設定することなく、アプリケーションのパフォーマンス、インフラストラクチャの健全性、エンドユーザーのエクスペリエンスを可視化します。
+Observability Insightsは、Adobe Experience Manager Managed Servicesにおけるアプリケーションのパフォーマンス、インフラストラクチャの健全性、サービス動作を、個別のモニタリングプラットフォームを必要とせずに可視化します。
 
->[!NOTE]
->
-> [!DNL Synoptryx]製品概要ホワイトペーパーは、AEM Managed Servicesの観測可能性とモニタリングの全体像に使用できます。関係者との共有やオフラインでのレビューに最適です。
+サービスの信頼性、インシデント対応、パフォーマンス分析などを担当している場合、Observability Insightsは、症状から証拠にすばやく移行するのに役立ちます。 アプリケーションのテレメトリとホストレベルのヘルスシグナルを組み合わせることで、カスタマーチームとAdobe Managed Servicesは、共通の運用上の視点から問題を調査することができます。
 
-## 概要 {#overview}
+## チームがObservability Insightsを利用する理由？ {#why-teams-use-observability-insights}
 
-[!DNL Synoptryx]は、アプリケーションのパフォーマンス、インフラストラクチャの健全性、合成モニタリング全体にわたって統一された可視性を提供するように設計された、Adobeの次世代オブザーバビリティ プラットフォームです。 統合された単一のエクスペリエンスを通じて、重要なビジネスサービスを先見的に監視できます。 [!DNL Synoptryx]は、Application Performance Monitoring （APM）、Infrastructure Monitoring、合成ユーザージャーニーモニタリングを組み合わせて、問題がエンドユーザーに影響を与える前に特定し、解決するのに役立ちます。 このプラットフォームは、詳細なトランザクショントレース、JVM インサイト、インフラストラクチャのテレメトリ、高度な診断を提供し、根本原因の分析を迅速化します。 最新のオブザーバビリティ技術を基盤とし、複雑なエンタープライズ環境をまたいで、拡張性と安全性に優れた監視を実現します。 [!DNL Synoptryx]では、優れた運用をサポートするために、拡張データ保持、豊富なダッシュボード、インテリジェント分析を提供しています。 [!DNL Adobe IMS]とのシームレスなログイン エクスペリエンスにより、安全なアクセスとガバナンスが保証されます。 このプラットフォームは、サービスの信頼性を向上し、トラブルシューティングを加速し、顧客体験を向上させるように設計されています。 Adobeの戦略的オブザーバビリティ ソリューションである[!DNL Synoptryx]は、マネージド サービス環境全体のモニタリング、オートメーション、運用インサイトの将来を見据えた基盤を提供します。
+オブザーバビリティのインサイトを活用して、次のような運用上の質問に回答します。
 
-[!DNL Synoptryx]はAdobe [!DNL Experience Manager] Managed Servicesに含まれています。個別のモニタリングプラットフォームやライセンスは必要ありません。 Adobeは、標準の機能の一部として環境の可用性とパフォーマンスを監視します。また、[!DNL Synoptryx]は、Adobe [!DNL Experience Manager] （AEM）アプリケーションとサポートインフラストラクチャのパフォーマンスを把握するためにチームが使用できる専用プラットフォームです。
+- 問題は作成者、公開、またはその両方に影響を与えますか？
+- 問題は、アプリケーションの動作、ホストリソースのプレッシャー、またはその両方の組み合わせによって引き起こされますか？
+- どのトランザクション、エンドポイント、またはステータスグループがエラーまたは遅延の急増を説明しますか？
+- 問題は1つの環境に分離されるか、より広範なトポロジ全体で表示されるか。
 
-このガイドでは、監視される内容、[!DNL Synoptryx] アカウントの設定方法、日々の分析やトラブルシューティングに使用するダッシュボードの操作方法について説明します。
+Observability Insightsは、最近の行動の運用分析のために設計されています。 変更された内容、変更された箇所、エスカレーションや是正措置の前に最も関連性の高いシグナルを特定するのに役立ちます。
+
+## どのようなオブザーバビリティのインサイトが役立ちますか？ {#what-observability-insights-helps-you-do}
+
+オブザーバビリティのインサイトを使用して、次のことを行います。
+
+- オーサー層とパブリッシュ層が実際のトラフィックでどのように動作するかを理解します。
+- アプリケーションの遅延、エラー率、JVMの正常性をホストレベルのシグナルに関連付けます。
+- 問題が1つの環境、1つの階層、または1つのホストに分離されているかどうかを確認します。
+- Adobe Managed Servicesを利用すれば、社内の各部門の状況を調査中に把握できます。
+
+Observability Insightsは、AEM Managed Servicesに含まれています。 Adobeは、アカウントをプロビジョニングおよび管理し、サポートされている環境を測定し、結果のダッシュボードを読み取り専用の運用ツールとしてチームに公開します。
+
+Adobeでプラットフォームの設定と実装を管理することで、エージェントのデプロイメント、アカウント管理、ダッシュボードの組み立てではなく、調査と解釈に集中できます。
 
 ## 一目で {#at-a-glance}
 
 AEM Managed Servicesの一部として、以下を受け取ります。
 
-- **専用[!DNL Synoptryx] アカウント** — Adobe Managed Servicesによってプロビジョニングおよび管理され、チームには読み取り専用のアクセス権が付与されます。
-- **Deep AEM transaction monitoring** — [!DNL Synoptryx] APM エージェントは、メソッド呼び出し（行番号を含む）、外部依存関係、リポジトリ操作まで、意味のあるトランザクションを追跡します。
-- **統合アプリケーションとインフラストラクチャ ビュー** — APMとホストレベルの指標を組み合わせて、パフォーマンスを包括的に最適化します。
+- **専用のObservability Insights アカウント** — Adobe Managed Servicesによってプロビジョニングおよび管理され、チームには読み取り専用のアクセス権が付与されます。
+- **Deep AEM transaction monitoring** — Observability Insights APM エージェントは、メソッド呼び出し（行番号を含む）、外部依存関係、リポジトリ操作まで、有意義なトランザクションを追跡します。
+- **統合アプリケーションとホスト ビュー** — アプリケーションとホストレベルの指標を組み合わせて、パフォーマンスを包括的に最適化します。
 
-## Adobeが[!DNL Synoptryx]で監視するもの {#what-we-monitor}
+## このドキュメントの対象 {#who-this-documentation-is-for}
 
-Adobeは、[!DNL Synoptryx]APM Java プラグインを使用して、AEM **Author**&#x200B;および&#x200B;**Publish**&#x200B;層を監視します。 トポロジ内のすべてのホスト サーバーは、[!DNL Synoptryx] Infrastructure エージェントで監視されます。 カスタム APMおよびインフラストラクチャのモニタリングは、実稼動以外の環境と実稼動環境の両方で有効になります。
+このドキュメントは、主に次の目的で作成されています。
 
-![Synoptryx APMとインフラストラクチャのモニタリングを示す図（AEM オーサーサーバー、パブリッシュサーバー、およびホストされているサーバー） &#x200B;](assets/image6.png)
+- 監視対象環境の可視化が必要なAEM Managed Services管理者
+- インシデント、傾向分析、サービスレビューを処理するオペレーションおよびサポートチーム
+- 調査中にAdobe Managed Servicesと提携したカスタマーエンジニアリングチーム
+- モニタリングの範囲と業務上の責任を理解する必要がある関係者
+
+## AdobeのObservability Insightsによるモニタリング {#what-we-monitor}
+
+Adobeは、Observability Insights APM Java プラグインを使用して、AEM **Author**&#x200B;および&#x200B;**Publish**&#x200B;層を監視します。 トポロジ内のすべてのホストされているサーバーは、Observability Insights Infrastructure エージェントで監視されます。 カスタム APMおよびインフラストラクチャのモニタリングは、実稼動以外の環境と実稼動環境の両方で有効になります。
+
+![AEM オーサーサーバー、パブリッシュサーバー、およびホストされたサーバーをまたいだObservability Insights APMとインフラストラクチャのモニタリングを示す図](v2-assets/login-screen.png)
 
 ### アカウント内のアプリケーション {#applications-in-your-account}
 
-お客様の[!DNL Synoptryx] アカウントは、1つのAdobe マスターアカウントにリンクされており、以下を含む複数のアプリケーションからデータを受け取ることができます。
+Observability Insights アカウントは、1つのAdobe マスターアカウントにリンクされ、以下を含む複数のアプリケーションからデータを受け取ることができます。
 
 - AEM Managed Services環境ごとに&#x200B;**Author**&#x200B;層の1つのAPM アプリケーション
 - AEM Managed Services環境ごとに&#x200B;**パブリッシュ**&#x200B;層のAPM アプリケーションを1つ作成する
 
-各アプリケーションには独自のライセンスキーがあります。 Managed Services コントラクト レポートのすべてのトポロジを1つの[!DNL Synoptryx] アカウントに統合します。 APMおよびインフラストラクチャの指標とイベントは、最大&#x200B;**30日間**&#x200B;保持されます。
+各アプリケーションには独自のライセンスキーがあります。 Managed Services コントラクトレポートのすべてのトポロジを1つのObservability Insights アカウントに保存します。 APMおよびインフラストラクチャの指標とイベントは、最大&#x200B;**30日間**&#x200B;保持されます。
 
-## アクセスとアカウント {#access}
+## アカウントにアクセス {#access}
 
-監視データは、Adobeがプロビジョニングおよび管理する[!DNL Synoptryx] アカウントに統合されます。 エージェントが収集したすべてのAPMおよびインフラストラクチャ指標に対する&#x200B;**完全な読み取り専用アクセス**&#x200B;をチームが受け取ります。 Adobe Managed Servicesでは、アカウントの所有権と管理権限が保持されます。
+モニタリングデータは、Adobeがプロビジョニングおよび管理するObservability Insights アカウントに統合されます。 お客様のユーザーは、エージェントによって収集されたAPMおよびインフラストラクチャ データに対する&#x200B;**読み取り専用アクセス**&#x200B;を受け取ります。 Adobe Managed Servicesでは、アカウントの所有権と管理者権限が保持されます。
+
+### 前提条件 {#access-prerequisites}
+
+ログインする前に、次の点を確認してください。
+
+- お客様の組織は、アクティブな&#x200B;**AEM Managed Services** サブスクリプションを持っています。 Observability Insightsは追加費用なしで含まれています。
+- カスタマーサクセスエンジニア（CSE）がAdobe IMSアカウントをプロビジョニングし、お客様の組織のObservability Insights アカウントへのアクセス権を付与しました。
 
 >[!NOTE]
 >
-> **アクセス権：** [!DNL Synoptryx]へのアクセスには[!DNL Adobe IMS]のプロビジョニングが必要です。 カスタマーサクセスエンジニア（CSE）は、組織のユーザーアクセスをプロビジョニングおよび管理できます。
+> **Observability Insightsへのアクセス：** アクセスを取得するには、Adobe IMSプロビジョニングが必要です。 組織のユーザーアクセスをプロビジョニングおよび管理するには、カスタマーサクセスエンジニア（CSE）にお問い合わせください。
 
-CSEがアカウントをプロビジョニングしたら、[synoptryx.adobecqms.net](https://synoptryx.adobecqms.net)でログインできます。
-
-## 次の手順 {#whats-next}
-
-チームが日常的に使用するモニタリングダッシュボードで作業を続けます。
-
-- [Application performance monitoring （APM） &#x200B;](application-performance-monitoring.md) — AEM トランザクションをトレースし、JVMの動作を分析し、外部サービスを調べます。
-- [&#x200B; インフラストラクチャの監視](infrastructure-monitoring.md) — ホストレベルのシステム、ネットワーク、プロセス、およびストレージの指標を確認します。
+CSEがアカウントをプロビジョニングしたら、[insights.adobecqms.net](https://insights.adobecqms.net)でログインします。 このURLは、すべてのAEM Managed Servicesのお客様に対して同じです。組織の環境とダッシュボードは、プロビジョニングされたアカウントに対してスコープされます。
