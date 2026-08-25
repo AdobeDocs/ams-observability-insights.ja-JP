@@ -17,7 +17,7 @@ ht-degree: 1%
 
 ## Contributor Guide Documentation
 
-[ コントリビューターガイド ](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html)を参照してください。
+[&#x200B; コントリビューターガイド &#x200B;](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html)を参照してください。
 
 ## 貢献の方法
 
@@ -42,7 +42,7 @@ ht-degree: 1%
 
 問題が発生し、その解決方法を正確に把握している場合は、プルリクエストの作成を検討してください。 プルリクエストを使用すると、ドキュメントを独自に編集できます。このドキュメントは、AEM Docs チームメンバーがレビューして追加することができます。 任意のページの右側のナビゲーションパネルの上部にある「**[!UICONTROL このページを編集]**」リンクをクリックして、提案された変更を加え、プルリクエストを作成します。
 
-すべてのプルリクエストには、署名済みの[ コントリビューター使用許諾契約書またはCLA](https://opensource.adobe.com/cla.html)を添付する必要があります。 これにより、プロジェクトの一部としてコントリビューションを再配布する権限がAdobeに付与されます。 Adobe CLAは1回のみ送信する必要があるので、以前に送信したことがある場合は送信してください。
+すべてのプルリクエストには、署名済みの[&#x200B; コントリビューター使用許諾契約書またはCLA](https://opensource.adobe.com/cla.html)を添付する必要があります。 これにより、プロジェクトの一部としてコントリビューションを再配布する権限がAdobeに付与されます。 Adobe CLAは1回のみ送信する必要があるので、以前に送信したことがある場合は送信してください。
 
 ### クイックビデオの概要
 
