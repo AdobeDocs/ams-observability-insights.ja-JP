@@ -3,9 +3,9 @@ title: Observability InsightsによるAEM Managed Services環境のモニタリ�
 description: AEM Managed ServicesのObservability Insightsの内容、対象、このガイドの残りの部分を操作する方法を理解するには、ここから始めてください。
 feature: Operations
 role: Admin
-source-git-commit: 440f182902d797a91b584fe1bac7f2b417f30ebe
+source-git-commit: fc38d43e53a366fb16151f3bd105b561f55fcbfa
 workflow-type: tm+mt
-source-wordcount: '733'
+source-wordcount: '741'
 ht-degree: 0%
 
 ---
@@ -16,6 +16,10 @@ ht-degree: 0%
 **オブザーバビリティのインサイト**&#x200B;は、個別のモニタリングプラットフォームを必要とせずに、AEM Managed Servicesのアプリケーションのパフォーマンス、インフラストラクチャの健全性、サービス動作を可視化します。
 
 サービスの信頼性、インシデント対応、パフォーマンス分析を担当している場合は、**Observability Insights**&#x200B;を使用すると、症状から証拠にすばやく移行できます。 アプリケーションのテレメトリとホストレベルのヘルスシグナルを組み合わせることで、カスタマーチームとAdobeは、共通の運用上の視点から問題を調査することができます。
+
+## ホワイトペーパーのObservability Insights
+
+[ホワイトペーパーをダウンロード](v2-assets/Observability_Insights_Overview.pdf)
 
 ## チームがObservability Insightsを利用する理由？ {#why-teams-use-observability-insights}
 
