@@ -1,10 +1,12 @@
 ---
-source-git-commit: e5523081fcd68500602e5d1bf853694d1f6c3980
+title: Observability Insights パブリック API
+description: Observability Insights Public APIを使用すると、リクエストの概要、サービスカタログ、トレース、指標などの独自のオブザーバビリティデータを、独自のツール、スクリプト、ダッシュボードに直接取り込むことができます。
+source-git-commit: f9361af48539ab50bcde6265963247714621c0ce
 workflow-type: tm+mt
-source-wordcount: '1104'
+source-wordcount: '1135'
 ht-degree: 7%
-
 ---
+
 # Observability Insights パブリック API
 
 Observability Insights Public APIを使用すると、リクエストの概要、サービスカタログ、トレース、指標などの独自のオブザーバビリティデータを、独自のツール、スクリプト、ダッシュボードに直接取り込むことができます。
@@ -14,8 +16,6 @@ Observability Insights Public APIを使用すると、リクエストの概要�
 - **認証：** API キー（ベアラートークン）
 
 > このドキュメント全体の`{{API_BASE_URL}}`を、Observability Insights インスタンスのAPI ホスト （例：`https://insights.adobecqms.net/`）に置き換えます。
-
-&#x200B;---
 
 ## &#x200B;1. API キーの取得
 
@@ -48,7 +48,6 @@ API キーは、アカウントに関連付けられ、単一の組織にスコ�
 - キーを定期的に回転させ、使用されなくなったキーを取り消します。
 - キーが漏洩した場合は、**組織の設定→ API キー**&#x200B;から直ちに取り消して、代わりのキーを生成します。
 
-&#x200B;---
 
 ## &#x200B;2. リクエストの認証
 
@@ -59,8 +58,6 @@ Authorization: Bearer synx_9pQ2v6f1WYbLZk3n0aRtEo4jXcHsVmDgUiPq7B8l1yc
 ```
 
 有効なキーを持たないリクエスト、または期限切れ/失効したキーを持つリクエストは、`401 Unauthorized`を受け取ります。 セッションのログイン（ブラウザーのCookie/トークン）は、このAPIで&#x200B;**not**&#x200B;受け入れられます。
-
-&#x200B;---
 
 ## &#x200B;3. 基本コンセプト
 
@@ -110,8 +107,6 @@ Retry-After: 60
 | `429 Too Many Requests` | レート制限を超えました – `Retry-After`を参照してください |
 | `502 Bad Gateway` | アップストリームクエリが失敗しました – 再試行しても安全です |
 | `503 Service Unavailable` | データバックエンドは一時的に利用できません |
-
-&#x200B;---
 
 ## &#x200B;4. エンドポイント
 
@@ -347,15 +342,11 @@ curl -s "{{API_BASE_URL}}/public/v1/pages?tenant_id=<tenant_id>&limit=50" \
 }
 ```
 
-&#x200B;---
-
 ## &#x200B;5. このAPIが行わないこと
 
 - **生のSQL アクセスはありません。** あらゆるエンドポイントは、収集された目的に合わせて構築されたデータシェイプを返します。基盤となるデータストアを直接クエリすることはできません。
 - **クロステナントクエリはありません。** すべてのリクエストは、正確に1つの`tenant_id`にスコープが設定されています。
 - **書き込みアクセス権がありません。** パブリック APIは読み取り専用です。
-
-&#x200B;---
 
 ## &#x200B;6. サポート
 
