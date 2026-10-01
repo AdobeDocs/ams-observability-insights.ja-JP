@@ -23,7 +23,7 @@ API キーは、アカウントに関連付けられ、単一の組織にスコ�
 
 ### キーを生成
 
-1. [Observability Insights ダッシュボード ](https://insights.adobecqms.net/)にログインします。
+1. [Observability Insights ダッシュボード &#x200B;](https://insights.adobecqms.net/)にログインします。
 2. **API キー**→プロファイルメニュー（右上）を開きます。
    ![API キーメニュー](v2-assets/api-key.png)
 3. 「**API キー**」タブで、「**キーを生成**」をクリックします。
