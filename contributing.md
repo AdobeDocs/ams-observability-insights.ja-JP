@@ -17,7 +17,7 @@ ht-degree: 1%
 
 ## Contributor Guide Documentation
 
-[&#x200B; コントリビューターガイド &#x200B;](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html)を参照してください。
+[&#x200B; コントリビューターガイド &#x200B;](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html?lang=ja)を参照してください。
 
 ## 貢献の方法
 
@@ -58,4 +58,4 @@ Adobeの社員でコントリビューションがある場合は、企業Gitで
 
 ## その他の情報
 
-GitHub オーサリングプラットフォームの使用方法について詳しくは、[Adobe Docs Contributor Guide](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html)を参照してください。
+GitHub オーサリングプラットフォームの使用方法について詳しくは、[Adobe Docs Contributor Guide](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html?lang=ja)を参照してください。
