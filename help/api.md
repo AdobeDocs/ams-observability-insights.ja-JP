@@ -1,7 +1,10 @@
 ---
 title: Observability Insights パブリック API
 description: Observability Insights Public APIを使用すると、リクエストの概要、サービスカタログ、トレース、指標などの独自のオブザーバビリティデータを、独自のツール、スクリプト、ダッシュボードに直接取り込むことができます。
-source-git-commit: f9361af48539ab50bcde6265963247714621c0ce
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
 workflow-type: tm+mt
 source-wordcount: '1135'
 ht-degree: 7%
@@ -23,7 +26,7 @@ API キーは、アカウントに関連付けられ、単一の組織にスコ�
 
 ### キーを生成
 
-1. [Observability Insights ダッシュボード &#x200B;](https://insights.adobecqms.net/)にログインします。
+1. [Observability Insights ダッシュボード ](https://insights.adobecqms.net/)にログインします。
 2. **API キー**→プロファイルメニュー（右上）を開きます。
    ![API キーメニュー](v2-assets/api-key.png)
 3. 「**API キー**」タブで、「**キーを生成**」をクリックします。

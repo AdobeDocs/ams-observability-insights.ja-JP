@@ -3,13 +3,20 @@ title: FAQ
 description: AEM Managed ServicesのObservability Insightsに関する一般的な質問と調査の出発点。
 feature: Operations
 role: Admin
-source-git-commit: 68b80f99e8be9deed37ea857d1dc7cb0ba3ec94d
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+feature_v2:
+  - id: 8a70d214-ab7b-58c1-b001-2ed2e5d6303d
+    internal-label: Operations
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
 workflow-type: tm+mt
 source-wordcount: '186'
 ht-degree: 0%
-
 ---
-
 
 # FAQ {#faq}
 
@@ -17,7 +24,7 @@ ht-degree: 0%
 
 ## Observability Insightsにアクセスできないのはなぜですか？ {#cannot-access-observability-insights}
 
-[&#x200B; アクセスとアカウント管理](../get-started/access-and-accounts.md)から開始します。 プロビジョニングが不完全または古い場合は、カスタマーサクセスエンジニア（CSE）に連絡して、アクセスまたは更新をリクエストしてください。
+[ アクセスとアカウント管理](../get-started/access-and-accounts.md)から開始します。 プロビジョニングが不完全または古い場合は、カスタマーサクセスエンジニア（CSE）に連絡して、アクセスまたは更新をリクエストしてください。
 
 ## ログインしようとすると、「読み込み権限」が表示されるのはなぜですか？ {#loading-permissions-error}
 
@@ -25,8 +32,8 @@ ht-degree: 0%
 
 ## 問題がアプリケーションまたはインフラストラクチャに関連しているかどうかを判断するにはどうすればよいですか？ {#application-or-infrastructure}
 
-作成者または公開時のリクエスト率、エラー率、待ち時間を確認するには、[&#x200B; アプリケーションパフォーマンス監視](/help/applications.md)から開始します。 アプリケーションのシグナルが高い場合は、[Hosts](/help/hosts.md)を使用して、ホストレベルのリソースのプレッシャー（CPU、メモリ、ディスク、またはネットワーク）が、表示される内容を説明または複合しているかどうかを確認します。
+作成者または公開時のリクエスト率、エラー率、待ち時間を確認するには、[ アプリケーションパフォーマンス監視](/help/applications.md)から開始します。 アプリケーションのシグナルが高い場合は、[Hosts](/help/hosts.md)を使用して、ホストレベルのリソースのプレッシャー（CPU、メモリ、ディスク、またはネットワーク）が、表示される内容を説明または複合しているかどうかを確認します。
 
 ## Observability Insightsは実際にどのようなデータを収集しますか？ {#what-data-is-collected}
 
-範囲、アプリケーション表現、保持期間、および運用上の影響の監視については、[&#x200B; カバレッジ、環境、およびデータ保持](../get-started/coverage-and-data.md)を参照してください。
+範囲、アプリケーション表現、保持期間、および運用上の影響の監視については、[ カバレッジ、環境、およびデータ保持](../get-started/coverage-and-data.md)を参照してください。

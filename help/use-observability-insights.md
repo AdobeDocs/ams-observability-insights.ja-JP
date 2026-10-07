@@ -3,13 +3,20 @@ title: 可観測性インサイトの活用
 description: Observability Insightsの4つのコア監視および調査エクスペリエンスと、それぞれのエクスペリエンスを使用するタイミングについて説明します。
 feature: Operations
 role: Admin
-source-git-commit: 6bbc906fa1c5570bc7ee2a6f536dd806c0c0db41
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+feature_v2:
+  - id: 8a70d214-ab7b-58c1-b001-2ed2e5d6303d
+    internal-label: Operations
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
 workflow-type: tm+mt
 source-wordcount: '426'
 ht-degree: 0%
-
 ---
-
 
 # 可観測性インサイトの活用 {#use-observability-insights}
 
@@ -19,7 +26,7 @@ ht-degree: 0%
 
 「Observability Insights」左側のナビゲーションパネルでは、AEM Managed Services環境のすべての監視領域にアクセスできます。
 
-![APMおよびインフラストラクチャ オプションを含む左側のナビゲーションと、ホスト指標および環境フィルターを含むインフラストラクチャ監視ダッシュボードを表示するObservability Insights インターフェイス &#x200B;](v2-assets/navigation-panel-desc.png)
+![APMおよびインフラストラクチャ オプションを含む左側のナビゲーションと、ホスト指標および環境フィルターを含むインフラストラクチャ監視ダッシュボードを表示するObservability Insights インターフェイス ](v2-assets/navigation-panel-desc.png)
 
 ナビゲーションには次のものが含まれます。
 
@@ -35,7 +42,7 @@ ht-degree: 0%
 
 ## Applications{#applications}
 
-問題がアプリケーションに接している場合は、[&#x200B; アプリケーション &#x200B;](applications.md)を使用します。ページの遅れ、エラー率の上昇、不安定なトランザクション、オーサーまたはパブリッシュでの予期しない遅延などが発生します。
+問題がアプリケーションに接している場合は、[ アプリケーション ](applications.md)を使用します。ページの遅れ、エラー率の上昇、不安定なトランザクション、オーサーまたはパブリッシュでの予期しない遅延などが発生します。
 
 アプリケーションは、次のような質問に答えるのに役立ちます。
 
@@ -48,7 +55,7 @@ ht-degree: 0%
 
 ## ホスト {#hosts}
 
-アプリケーションの動作がホスト リソースの条件（CPUの飽和状態、メモリの負荷、ディスク I/O、ネットワーク スループット、またはストレージ容量）によって引き起こされるか複合されるかを判断する必要がある場合は、[&#x200B; ホスト &#x200B;](hosts.md)を使用します。
+アプリケーションの動作がホスト リソースの条件（CPUの飽和状態、メモリの負荷、ディスク I/O、ネットワーク スループット、またはストレージ容量）によって引き起こされるか複合されるかを判断する必要がある場合は、[ ホスト ](hosts.md)を使用します。
 
 ホストモニタリングは、次のような質問に回答します。
 

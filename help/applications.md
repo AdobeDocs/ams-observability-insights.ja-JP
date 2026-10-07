@@ -3,13 +3,20 @@ title: Applications
 description: アプリケーションは、アプリケーションパフォーマンス監視（APM）機能を提供し、各サービスをサポートするアプリケーションの健全性、パフォーマンス、トランザクション、および基盤となるインフラストラクチャの統一されたビューを提供します。
 feature: Operations
 role: Admin
-source-git-commit: efddec659ebb1cdd22537d60ccca175680dfdab4
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+feature_v2:
+  - id: 8a70d214-ab7b-58c1-b001-2ed2e5d6303d
+    internal-label: Operations
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
 workflow-type: tm+mt
 source-wordcount: '546'
 ht-degree: 0%
-
 ---
-
 
 # Applications
 
@@ -21,7 +28,7 @@ ht-degree: 0%
 
 トランザクションタイプ、ホスト、解像度のフィルターを使用すると、特定の調査のためにビューを絞り込むことができます。 レスポンスタイムとスループットの傾向によって新たなコンテキストが得られ、独立したスパイクと持続的なパフォーマンス変化を区別するのに役立ちます。
 
-![&#x200B; アプリケーションの概要](v2-assets/1_apm-services-landing-page.png)
+![ アプリケーションの概要](v2-assets/1_apm-services-landing-page.png)
 
 ## レスポンスタイム、スループット、Apdex
 
@@ -37,7 +44,7 @@ Apdexは、応答時間のパフォーマンスをわかりやすい満足度ス
 
 **最も遅いトランザクション**&#x200B;のビューでは、平均期間が最も長いトランザクションがハイライト表示され、呼び出し量が含まれているため、頻繁に実行されるワークロードを個別の低速リクエストと区別しやすくなります。
 
-![&#x200B; エラー率、Apdex、最も遅いトランザクション &#x200B;](v2-assets/3_error-rate-transactions.png)
+![ エラー率、Apdex、最も遅いトランザクション ](v2-assets/3_error-rate-transactions.png)
 
 ## トランザクションとインフラの相関関係
 
@@ -45,7 +52,7 @@ Apdexは、応答時間のパフォーマンスをわかりやすい満足度ス
 
 アプリケーションデータは基盤となるホストと関連付けられているため、トランザクションパフォーマンスは、応答時間、スループット、CPU使用率、メモリ使用率などのインフラストラクチャ指標と並行して評価できます。 この相関関係は、パフォーマンスの問題がアプリケーション処理に起因するか、サポートするインフラストラクチャに関連付けられているかどうかを判断するのに役立ちます。
 
-![&#x200B; トランザクションとインフラストラクチャの相関関係](v2-assets/4_transaction-listing.png)
+![ トランザクションとインフラストラクチャの相関関係](v2-assets/4_transaction-listing.png)
 
 ## トランザクションパフォーマンス分析
 
@@ -53,7 +60,7 @@ Apdexは、応答時間のパフォーマンスをわかりやすい満足度ス
 
 時系列のビジュアライゼーションは、最も重要なトランザクションが全体的な処理時間にどのように貢献しているか、および選択した期間におけるリクエストスループットの変化を示します。 これにより、効果の高いエンドポイントを特定し、トランザクション行動を比較し、最初に調査するリクエストを決定することが容易になります。
 
-![&#x200B; トランザクションパフォーマンス分析](v2-assets/5_transaction-graphs.png)
+![ トランザクションパフォーマンス分析](v2-assets/5_transaction-graphs.png)
 
 ## パフォーマンスの問題の調査
 

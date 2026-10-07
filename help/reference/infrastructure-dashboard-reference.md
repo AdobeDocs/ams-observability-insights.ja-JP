@@ -3,13 +3,20 @@ title: インフラストラクチャ ダッシュボード リファレンス
 description: スクリーンショット、指標、ユニットなど、Observability Insights インフラストラクチャダッシュボードのパネルごとのリファレンス。
 feature: Operations
 role: Admin
-source-git-commit: 1d54a6a398360b040221db5b2780d301722894bf
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+feature_v2:
+  - id: 8a70d214-ab7b-58c1-b001-2ed2e5d6303d
+    internal-label: Operations
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
 workflow-type: tm+mt
 source-wordcount: '1091'
 ht-degree: 7%
-
 ---
-
 
 # インフラストラクチャ ダッシュボード リファレンス {#infrastructure-dashboard-reference}
 
@@ -32,7 +39,7 @@ ht-degree: 7%
 
 ## &#x200B;1. ホスト CPU稼働率
 
-![&#x200B; ホスト CPU利用状況](../assets/host-monitoring/host_cpu_utilization.png)
+![ ホスト CPU利用状況](../assets/host-monitoring/host_cpu_utilization.png)
 
 ### 説明
 
@@ -71,7 +78,7 @@ ht-degree: 7%
 
 ## &#x200B;2. ホストディスク I/O
 
-![&#x200B; ホスト ディスク I/O](../assets/host-monitoring/host_disk_io.png)
+![ ホスト ディスク I/O](../assets/host-monitoring/host_disk_io.png)
 
 ### 説明
 
@@ -109,7 +116,7 @@ ht-degree: 7%
 
 ## &#x200B;3. ホストネットワーク I/O
 
-![&#x200B; ホスト ネットワーク I/O](../assets/host-monitoring/host_network_io.png)
+![ ホスト ネットワーク I/O](../assets/host-monitoring/host_network_io.png)
 
 ### 説明
 
@@ -189,7 +196,7 @@ ht-degree: 7%
 
 ## &#x200B;5. ストレージ使用状況
 
-![&#x200B; ストレージ使用状況](../assets/host-monitoring/storage_disk_usage.png)
+![ ストレージ使用状況](../assets/host-monitoring/storage_disk_usage.png)
 
 ### 説明
 
@@ -215,7 +222,7 @@ ht-degree: 7%
 
 ## &#x200B;6. ディスク使用量
 
-![&#x200B; ディスク使用量](../assets/host-monitoring/storage_disk_usage.png)
+![ ディスク使用量](../assets/host-monitoring/storage_disk_usage.png)
 
 ### 説明
 
@@ -248,7 +255,7 @@ ht-degree: 7%
 
 ## &#x200B;7. ホストCPUの読み込み平均
 
-![&#x200B; ホスト CPUの読み込み平均](../assets/host-monitoring/host_cpu_load_average.png)
+![ ホスト CPUの読み込み平均](../assets/host-monitoring/host_cpu_load_average.png)
 
 ### 説明
 
@@ -289,7 +296,7 @@ CPUの使用率とは異なり、負荷平均は、アクティブに実行さ�
 
 ## &#x200B;8. ホストメモリ使用率
 
-![&#x200B; ホスト メモリ使用率](../assets/host-monitoring/host_memory_usage.png)
+![ ホスト メモリ使用率](../assets/host-monitoring/host_memory_usage.png)
 
 ### 説明
 

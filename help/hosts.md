@@ -3,13 +3,20 @@ title: Observability Insightsによるインフラストラクチャの監視
 description: インフラストラクチャダッシュボードを使用するタイミング、最初に確認するシグナル、および完全なホスト指標リファレンスを検索する場所について説明します。
 feature: Operations
 role: Admin
-source-git-commit: 825334e003ae814af1b0845c6de1a533b4b5f47b
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+feature_v2:
+  - id: 8a70d214-ab7b-58c1-b001-2ed2e5d6303d
+    internal-label: Operations
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
 workflow-type: tm+mt
 source-wordcount: '580'
 ht-degree: 0%
-
 ---
-
 
 # ホスト {#hosts}
 
@@ -32,7 +39,7 @@ Observability Insightsでホストを使用すると、アプリケーション�
 
 **カタログ**&#x200B;から、「**ホスト**」タブを選択して、選択したアカウントに関連付けられているインフラストラクチャを表示します。
 
-![&#x200B; インフラストラクチャ ホスト &#x200B;](v2-assets/1_host.png)
+![ インフラストラクチャ ホスト ](v2-assets/1_host.png)
 
 **インフラストラクチャ ホスト** ビューには、監視対象ホストのインベントリが表示され、次のものが含まれます。
 

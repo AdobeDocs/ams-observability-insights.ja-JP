@@ -3,13 +3,20 @@ title: APM ダッシュボードのリファレンス
 description: スクリーンショット、指標、ユニットなど、Observability Insights APM ダッシュボードのパネルごとのリファレンス。
 feature: Operations
 role: Admin
-source-git-commit: 1d54a6a398360b040221db5b2780d301722894bf
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+feature_v2:
+  - id: 8a70d214-ab7b-58c1-b001-2ed2e5d6303d
+    internal-label: Operations
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
 workflow-type: tm+mt
 source-wordcount: '806'
 ht-degree: 7%
-
 ---
-
 
 # APM ダッシュボードのリファレンス {#apm-dashboard-reference}
 
@@ -17,7 +24,7 @@ ht-degree: 7%
 
 ## ダッシュボードのナビゲーション
 
-![&#x200B; ダッシュボードナビゲーション &#x200B;](../assets/apm/1_opening_screen.png)
+![ ダッシュボードナビゲーション ](../assets/apm/1_opening_screen.png)
 
 ダッシュボードは、関連するアプリケーションパフォーマンス指標をグループ化する拡張可能なセクションに整理されています。 セクションを展開すると、そのカテゴリに関連する1つ以上のグラフが表示されます。
 
@@ -101,7 +108,7 @@ RED手法は、アプリケーションの3つの主な特徴を測定します�
 
 ### リクエスト率
 
-![&#x200B; リクエスト率](../assets/apm/2_red_metrics_request_rate.png)
+![ リクエスト率](../assets/apm/2_red_metrics_request_rate.png)
 
 #### 説明
 
@@ -128,7 +135,7 @@ req_min
 
 ### エラー率
 
-![&#x200B; エラー率](../assets/apm/3_error_rate.png)
+![ エラー率](../assets/apm/3_error_rate.png)
 
 #### 説明
 
@@ -156,7 +163,7 @@ error_pct (1h ago)
 
 ### リクエスト期間
 
-![&#x200B; リクエスト期間](../assets/apm/4_request_duration_p50_p95.png)
+![ リクエスト期間](../assets/apm/4_request_duration_p50_p95.png)
 
 #### 説明
 
@@ -199,7 +206,7 @@ P90
 
 ### HTTP ステータスコード別リクエスト
 
-![&#x200B; ステータスコード別リクエスト &#x200B;](../assets/apm/5_requests_by_status_code.png)
+![ ステータスコード別リクエスト ](../assets/apm/5_requests_by_status_code.png)
 
 #### 説明
 
@@ -234,7 +241,7 @@ req_s 500
 
 ### エンドポイント別リクエストレート
 
-![&#x200B; エンドポイント別リクエスト率](../assets/apm/6_request_rate_by_end_point.png)
+![ エンドポイント別リクエスト率](../assets/apm/6_request_rate_by_end_point.png)
 
 #### 説明
 
@@ -317,7 +324,7 @@ APDEX Score
 
 ### スループットとP95待ち時間の比較
 
-![&#x200B; スループット vs レイテンシ &#x200B;](../assets/apm/9_throughput_vs_p95latency.png)
+![ スループット vs レイテンシ ](../assets/apm/9_throughput_vs_p95latency.png)
 
 #### 説明
 
@@ -349,7 +356,7 @@ P95 Latency
 
 ### ステータスグループ別のエラー率%
 
-![&#x200B; ステータスグループ別エラー率](../assets/apm/10_error_rate_pct_by_status_group.png)
+![ ステータスグループ別エラー率](../assets/apm/10_error_rate_pct_by_status_group.png)
 
 #### 説明
 
@@ -383,7 +390,7 @@ Combined Error Trend
 
 ### エラー率の傾向：1時間前と現在の比較
 
-![&#x200B; エラー率1時間](../assets/apm/11_error_ratio_trend_1h.png)
+![ エラー率1時間](../assets/apm/11_error_ratio_trend_1h.png)
 
 #### 説明
 
@@ -408,7 +415,7 @@ Current Error Ratio
 
 ### エラー率のトレンド：現在と6時間前の比較
 
-![&#x200B; エラー率6時間](../assets/apm/12_error_ratio_trend_6h.png)
+![ エラー率6時間](../assets/apm/12_error_ratio_trend_6h.png)
 
 #### 説明
 
