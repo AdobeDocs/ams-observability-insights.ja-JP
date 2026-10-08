@@ -3,13 +3,20 @@ title: Observability Insightsによるインフラストラクチャの監視
 description: インフラストラクチャダッシュボードを使用するタイミング、最初に確認するシグナル、および完全なホスト指標リファレンスを検索する場所について説明します。
 feature: Operations
 role: Admin
-source-git-commit: 825334e003ae814af1b0845c6de1a533b4b5f47b
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+feature_v2:
+  - id: 8a70d214-ab7b-58c1-b001-2ed2e5d6303d
+    internal-label: Operations
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
 workflow-type: tm+mt
 source-wordcount: '580'
 ht-degree: 0%
-
 ---
-
 
 # ホスト {#hosts}
 
