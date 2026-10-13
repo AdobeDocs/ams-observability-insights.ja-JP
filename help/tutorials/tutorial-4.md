@@ -126,7 +126,7 @@ NRQLでは、「ホストごとの最大数の平均」などのサブクエリ�
 | 目標 | SQL アプローチ |
 | --------------------------------------- | ---------------------------------------------------------- |
 | グループごとの値を入力し、グループをランク付けします | `FACET group` + `ORDER BY alias` + `LIMIT` |
-| 2つの集計の比率 | [数式ウィジェット ](#86-combine-queries-with-formula-widgets) |
+| 2つの集計の比率 | [数式ウィジェット &#x200B;](#86-combine-queries-with-formula-widgets) |
 | ホストごとの値、次に「最悪のホスト」 | `FACET host ORDER BY alias DESC LIMIT 1` |
 | ホストあたりの平均時間 | `FACET host TIMESERIES AUTO`、シリーズを読む |
 

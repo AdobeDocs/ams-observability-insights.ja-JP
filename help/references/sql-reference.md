@@ -11,7 +11,7 @@ ht-degree: 9%
 
 このリファレンスでは、SQLの構文、句、関数および演算子について説明します。 各エントリを展開して、詳細と例を確認します。
 
-**このドキュメントでは、** [ クエリコンポーネント ](#41-query-components) ・ [必要な句](#42-required-clauses) ・ [ オプション句](#43-optional-clauses) ・ [ アグリゲータ関数](#44-aggregator-functions) ・ [演算子と条件](#45-operators-and-conditions) ・ [ タイプ処理](#46-type-handling-blank-vs-null) ・ [SQLからSQL](#47-translate-sql-to-sql) ・ [既存のダッシュボードの読み込み](#48-importing-existing-dashboards-to-insights)
+**このドキュメントでは、** [&#x200B; クエリコンポーネント &#x200B;](#41-query-components) ・ [必要な句](#42-required-clauses) ・ [&#x200B; オプション句](#43-optional-clauses) ・ [&#x200B; アグリゲータ関数](#44-aggregator-functions) ・ [演算子と条件](#45-operators-and-conditions) ・ [&#x200B; タイプ処理](#46-type-handling-blank-vs-null) ・ [SQLからSQL](#47-translate-sql-to-sql) ・ [既存のダッシュボードの読み込み](#48-importing-existing-dashboards-to-insights)
 
 ### クエリコンポーネント
 
@@ -64,7 +64,7 @@ SELECT count(*) AS requests, average(duration) AS avgMs, max(duration) AS maxMs 
 ルール：
 
 - `SELECT *`はサポートされていません。 必要な属性をリストアップします。
-- 属性または集計（`sum(a) / count(*)`）間の計算はサポートされていません。 [数式ウィジェット ](#86-combine-queries-with-formula-widgets)を使用します。
+- 属性または集計（`sum(a) / count(*)`）間の計算はサポートされていません。 [数式ウィジェット &#x200B;](#86-combine-queries-with-formula-widgets)を使用します。
 - 属性と集計の混在が&#x200B;_Raw属性と集計を混在させることはできません。結果をグループ化するにはFACETを使用してください_。
 
 </details>
@@ -72,7 +72,7 @@ SELECT count(*) AS requests, average(duration) AS avgMs, max(duration) AS maxMs 
 <details>
 <summary><code>FROM</code> — クエリするエンティティ</summary>
 
-`FROM`さんが、[ データディクショナリ ](#data-dictionary)から&#x200B;**one** エンティティを正確に名前を付けます。 エンティティ名では大文字と小文字が区別されません。
+`FROM`さんが、[&#x200B; データディクショナリ &#x200B;](#data-dictionary)から&#x200B;**one** エンティティを正確に名前を付けます。 エンティティ名では大文字と小文字が区別されません。
 
 ```sql
 SELECT count(*) FROM Transaction
@@ -82,7 +82,7 @@ SELECT count(*) FROM Transaction
 FROM Span SELECT count(*) FACET kind
 ```
 
-各エンティティは、固定された範囲を持ちます。 例えば、`Transaction`は常にサーバーのスパンであり、`CpuUtilization`は常に`value`がパーセントに変換されたCPU ビジー指標です。 1つのクエリで複数のエンティティをクエリすることはできません。 エンティティを結合するには、[数式ウィジェット ](#86-combine-queries-with-formula-widgets)を使用します。
+各エンティティは、固定された範囲を持ちます。 例えば、`Transaction`は常にサーバーのスパンであり、`CpuUtilization`は常に`value`がパーセントに変換されたCPU ビジー指標です。 1つのクエリで複数のエンティティをクエリすることはできません。 エンティティを結合するには、[数式ウィジェット &#x200B;](#86-combine-queries-with-formula-widgets)を使用します。
 
 </details>
 
@@ -438,7 +438,7 @@ SELECT sum(duration) AS totalMs, percentOfTotal(duration) AS shareOfTime FROM Tr
 SELECT rate(value) AS bytesPerSec FROM NetworkReceiveRate FACET host TIMESERIES AUTO
 ```
 
-- カウンターのエンティティ（[ データディクショナリ ](#53-curated-metric-entities)の✔とマークされている）でのみ機能します。
+- カウンターのエンティティ（[&#x200B; データディクショナリ &#x200B;](#53-curated-metric-entities)の✔とマークされている）でのみ機能します。
 - `TIMESERIES`が必要です。**のみ**&#x200B;集計である必要があります。 `FILTER`は許可されていません。
 
 >[!WARNING]
@@ -568,9 +568,9 @@ SELECT count(*) AS jcrCalls FROM Span WHERE jcr.operation != '' FACET jcr.operat
 | `rate(count(*), 1 minute)` | `count(*)` with `TIMESERIES 1 minute` | SQL `rate()`はカウンター専用です |
 | `derivative(x, 1 minute)` | `derivative(x)` + `TIMESERIES` | 毎秒 |
 | `uniques(x)` | `count(*) … FACET x LIMIT n` |                                                              |
-| `keyset()` / `SHOW EVENT TYPES` | [検出クエリ ](#101-data-discovery)、またはクエリガイドパネル |                                                              |
-| `histogram(duration, …)` | `FILTER` バケット | [ チュートリアル 3](#84-build-a-latency-histogram)を参照 |
-| `FACET CASES (…)` | `FILTER`列 | [ チュートリアル 3](#83-group-values-into-cases-with-filter)を参照 |
+| `keyset()` / `SHOW EVENT TYPES` | [検出クエリ &#x200B;](#101-data-discovery)、またはクエリガイドパネル |                                                              |
+| `histogram(duration, …)` | `FILTER` バケット | [&#x200B; チュートリアル 3](#84-build-a-latency-histogram)を参照 |
+| `FACET CASES (…)` | `FILTER`列 | [&#x200B; チュートリアル 3](#83-group-values-into-cases-with-filter)を参照 |
 | `COMPARE WITH 1 week ago` | サポート対象外 | 時間ピッカーを変更するか、API経由で`SINCE … UNTIL …`を使用します |
 | `RLIKE` | `LIKE` / `IN` |                                                              |
 | `SELECT`の数式/ネストされた集計 | **式** ウィジェット |                                                              |

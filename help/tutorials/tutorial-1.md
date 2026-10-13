@@ -11,7 +11,7 @@ ht-degree: 0%
 
 SQLへようこそ。 このチュートリアルでは、最初のクエリの作成、時間ウィンドウの制御、トレンドのプロット、フィルターとグループ化の結果、最初のグラフをダッシュボードに配置します。 各ステップは前のステップの上に構築されます。
 
-**このチュートリアルでは、** [開始する前](#before-you-begin) ・ [6.1 クエリイベント ](#61-query-events-with-select-from-and-limit) ・ [6.2 Aggregate](#62-aggregate-your-data) ・ [6.3いくつかの集計](#63-return-several-aggregates-at-once) ・ [6.4時間ウィンドウ ](#64-set-the-time-window) ・ [6.5時間](#65-plot-trends-with-timeseries) ・ [6.6 WHERE](#66-filter-with-where) ・ [6.7 FACET](#67-group-with-facet) ・ [6.8 ダッシュボードに保存](#68-save-your-query-to-a-dashboard)
+**このチュートリアルでは、** [開始する前](#before-you-begin) ・ [6.1 クエリイベント &#x200B;](#61-query-events-with-select-from-and-limit) ・ [6.2 Aggregate](#62-aggregate-your-data) ・ [6.3いくつかの集計](#63-return-several-aggregates-at-once) ・ [6.4時間ウィンドウ &#x200B;](#64-set-the-time-window) ・ [6.5時間](#65-plot-trends-with-timeseries) ・ [6.6 WHERE](#66-filter-with-where) ・ [6.7 FACET](#67-group-with-facet) ・ [6.8 ダッシュボードに保存](#68-save-your-query-to-a-dashboard)
 
 ### 始める前に
 
@@ -37,7 +37,7 @@ SELECT timestamp, service, name, duration FROM Transaction LIMIT 10
 
 >[!NOTE]
 >
-> SQLに`SELECT *`がありません。 属性のリストは、結果を小さく読みやすいものにします。 [ データディクショナリ ](#data-dictionary)とエディターのオートコンプリートに、使用可能な内容が表示されます。
+> SQLに`SELECT *`がありません。 属性のリストは、結果を小さく読みやすいものにします。 [&#x200B; データディクショナリ &#x200B;](#data-dictionary)とエディターのオートコンプリートに、使用可能な内容が表示されます。
 
 ### データの集約
 

@@ -11,7 +11,7 @@ ht-degree: 3%
 
 このチュートリアルでは、ユーザーエクスペリエンススコア、カウンター率、ケースグループ化、ヒストグラム、しきい値、セクション、数式ウィジェット、変数を含むKPI タイルなど、実稼動用グレードのダッシュボードのコンポーネントを構築します。
 
-**このチュートリアルでは、** [8.1 apdex](#81-score-user-experience-with-apdex) ・ [8.2 rate](#82-turn-counters-into-rates-with-rate) ・ [8.3 Cases](#83-group-values-into-cases-with-filter) ・ [8.4 ヒストグラム ](#84-build-a-latency-histogram) ・ [8.5 KPI タイルとセクション ](#85-build-kpi-tiles-and-sections) ・ [8.6 フォーミュラ ](#86-combine-queries-with-formula-widgets) ・ [8.7変数](#87-make-dashboards-reusable-with-variables) ・ [8.8をまとめる](#88-put-it-together)
+**このチュートリアルでは、** [8.1 apdex](#81-score-user-experience-with-apdex) ・ [8.2 rate](#82-turn-counters-into-rates-with-rate) ・ [8.3 Cases](#83-group-values-into-cases-with-filter) ・ [8.4 ヒストグラム &#x200B;](#84-build-a-latency-histogram) ・ [8.5 KPI タイルとセクション &#x200B;](#85-build-kpi-tiles-and-sections) ・ [8.6 フォーミュラ &#x200B;](#86-combine-queries-with-formula-widgets) ・ [8.7変数](#87-make-dashboards-reusable-with-variables) ・ [8.8をまとめる](#88-put-it-together)
 
 ### `apdex`でユーザーエクスペリエンスをスコア化
 
@@ -31,7 +31,7 @@ SELECT apdex(duration, 500) AS apdex FROM Transaction FACET service TIMESERIES A
 
 ### 8.2 `rate`でカウンターをレートに変換
 
-[ データディクショナリ ](#53-curated-metric-entities)）ストアのカウンターエンティティ（✔）の合計は増加し続けています。 `rate(value)`は、1秒あたりの値に変換します。 `TIMESERIES`が必要です。集計は次のみである必要があります：
+[&#x200B; データディクショナリ &#x200B;](#53-curated-metric-entities)）ストアのカウンターエンティティ（✔）の合計は増加し続けています。 `rate(value)`は、1秒あたりの値に変換します。 `TIMESERIES`が必要です。集計は次のみである必要があります：
 
 ```sql
 SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIES AUTO
@@ -203,4 +203,4 @@ SELECT count(*) FROM Transaction FACET service LIMIT 200
 
 ### まとめる
 
-[ ダッシュボードのブループリント ](#dashboard-blueprints)で使用されているすべての構築ブロックが見つかります。しきい値、セクション、パーセンタイル、Apdex、レート、ケース列、ヒストグラム、数式、変数を含むKPI タイルです。 ブループリントでは、それらを組み合わせて、包括的なゴールデンシグナル、エラートリアージ、AEM、インフラストラクチャ、JVM ダッシュボードを作成する方法を示しています。
+[&#x200B; ダッシュボードのブループリント &#x200B;](#dashboard-blueprints)で使用されているすべての構築ブロックが見つかります。しきい値、セクション、パーセンタイル、Apdex、レート、ケース列、ヒストグラム、数式、変数を含むKPI タイルです。 ブループリントでは、それらを組み合わせて、包括的なゴールデンシグナル、エラートリアージ、AEM、インフラストラクチャ、JVM ダッシュボードを作成する方法を示しています。
