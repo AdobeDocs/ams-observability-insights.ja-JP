@@ -1,9 +1,12 @@
 ---
-source-git-commit: 4949fcad799260aa73354a8c0b9d79e6394cb257
+title: データディクショナリ
+description: Observability Insights SQL クエリで使用できるエンティティと属性を参照します。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '585'
+source-wordcount: '598'
 ht-degree: 21%
 ---
+
 ## データディクショナリ {#data-dictionary}
 
 クエリできるあらゆるエンティティと属性です。 ライブカタログには、説明が含まれています。また、エクスプローラーの&#x200B;**クエリガイド** パネルとウィジェットの追加ダイアログにも表示されます。
@@ -12,7 +15,7 @@ ht-degree: 21%
 
 | エンティティ | 次を含む | 固定範囲 | ロールアップ |
 | ------------- | --------------------------------------------------------- | ---------------------------- | ------------------------------------------ |
-| `Transaction` | インバウンドサーバーリクエスト | `kind = Server` | 1m / 5m / 1h （[&#x200B; パフォーマンス &#x200B;](#performance)） |
+| `Transaction` | インバウンドサーバーリクエスト | `kind = Server` | 1m / 5m / 1h （[ パフォーマンス ](#performance)） |
 | `AppRequest` | インバウンドサーバー&#x200B;**および**&#x200B;件のメッセージコンシューマー要求 | `kind IN (Server, Consumer)` | — |
 | `Span` | あらゆるスパン（サーバー、クライアント、プロデューサー、消費者、社内） | — | — |
 
@@ -109,7 +112,8 @@ ht-degree: 21%
 | `JvmCpuRecentUtilization` | JVM プロセス CPU | % |         | 1分ロールアップ |
 | `DispatcherRequestRate` | AEM Dispatcher HTTP リクエスト | req/s | ✔ |                                              |
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > JVM メモリ指標はメモリプールごとに&#x200B;**報告されるので、`JvmHeapUsed` / `JvmHeapLimit`の`average(value)`はプール間の平均を示します。**&#x200B;プールごとの正確なビューには`FACET host, pool`を使用します。
 
 ### `SpanBreakdown`：事前集計されたトランザクション構成

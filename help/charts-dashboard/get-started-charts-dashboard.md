@@ -1,9 +1,12 @@
 ---
-source-git-commit: 05ed98c07602488843c52cd262af2d8cc204fef1
+title: グラフとダッシュボードの基本を学ぶ
+description: グラフやダッシュボードを使用して、Observability Insights データを可視化する方法について説明します。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '292'
+source-wordcount: '309'
 ht-degree: 3%
 ---
+
 ## チャートとダッシュボード：データの可視化 {#charts-and-dashboards-visualizing-your-data}
 
 必要な情報が見つかります。 チャートとダッシュボードは、その情報を組織にとって有益なものにします。 このドキュメントでは、SQLの結果がどのようにグラフになるか、ダッシュボードの構築、整理、共有の方法について説明します。

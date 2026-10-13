@@ -1,10 +1,13 @@
 ---
-source-git-commit: d3cd77e213674587152d6d33efa65328f420a547
+title: SQL クエリの例
+description: Observability Insights テレメトリのSQL クエリの例を確認します。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '295'
+source-wordcount: '306'
 ht-degree: 10%
 ---
-### SQL クエリの例
+
+## SQL クエリの例
 
 例をいくつか挙げてみましょう。 このクエリの場合：
 
@@ -89,7 +92,7 @@ SELECT latest(value) AS bytesUsed FROM MetricSum WHERE metric = 'jvm.memory.used
 
 <a id="what-sql-doesnt-do"></a>
 
-### SQLで不可能なこと
+## SQLで不可能なこと
 
 SQLは意図的に小さい。 これにより、クエリを安全に、迅速に、テナント分離できます。 これらの機能のいずれかが必要な場合は、代替を使用します。
 
@@ -101,8 +104,8 @@ SQLは意図的に小さい。 これにより、クエリを安全に、迅速�
 | 結合とサブクエリ | サポート対象外 | **式** ウィジェット、または2つのウィジェットを並べて表示します。 |
 | `HAVING` | サポート対象外 | `ORDER BY alias` + `LIMIT`. |
 | `COMPARE WITH` | サポート対象外 | 時間ピッカーを変更するか、2つのウィジェットを別のタブに配置します。 |
-| `FACET CASES` | サポート対象外 | 1つのケースにつき1つの`count(*) FILTER (WHERE …)`列（チュートリアル 3[&#128279;](#83-group-values-into-cases-with-filter)を参照）。 |
-| `histogram()` | サポート対象外 | バケット化された`FILTER`列（[&#x200B; チュートリアル 3](#84-build-a-latency-histogram)を参照）。 |
+| `FACET CASES` | サポート対象外 | 1つのケースにつき1つの`count(*) FILTER (WHERE …)`列（チュートリアル 3](#83-group-values-into-cases-with-filter)を参照）。[ |
+| `histogram()` | サポート対象外 | バケット化された`FILTER`列（[ チュートリアル 3](#84-build-a-latency-histogram)を参照）。 |
 | `uniques()` / `keyset()` | サポート対象外 | `FACET attr LIMIT n`には個別の値が一覧表示されます。 検出クエリには、指標と入力された属性が一覧表示されます。 |
 | `RLIKE` （正規表現） | サポート対象外 | `LIKE` / `NOT LIKE` （ワイルドカード `%`および`_`）、または`IN (…)`。 |
 | コメント （`--`、`//`、`/* */`） | サポート対象外 | ウィジェットのタイトルまたは&#x200B;**テキスト** ウィジェットにメモを配置します。 |

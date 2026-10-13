@@ -1,9 +1,12 @@
 ---
-source-git-commit: ec98f6bd132cadaba1da7c4fb727d7e031790645
+title: パフォーマンス
+description: Observability Insightsでクエリ、チャート、ダッシュボードのパフォーマンスを向上させます。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '217'
+source-wordcount: '227'
 ht-degree: 3%
 ---
+
 ## パフォーマンス {#performance}
 
 各クエリは、15秒のタイムアウトとバイト読み取り予算で実行されます。 このドキュメントでは、Observability Insightsが自動的にクエリを高速化する方法と、任意の時間範囲で高速に動作するダッシュボードを設計する方法について説明します。

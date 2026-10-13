@@ -1,9 +1,12 @@
 ---
-source-git-commit: 263ba9e9b3eb1c6e4dd253ca03bd0ce8954c588b
+title: チュートリアル 2：データの制御
+description: Observability Insightsでクエリ結果をフィルタリング、グループ化、制御する方法について説明します。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '344'
+source-wordcount: '361'
 ht-degree: 0%
 ---
+
 ## チュートリアル 2：データの制御 {#tutorial-2-control-your-data}
 
 このチュートリアルでは、未加工カウントを答えに変換する関数と句について説明します。具体的なカウント、最新の値、パーセンタイル、ワイルドカード、並べ替え、多次元グループ化です。
@@ -66,7 +69,8 @@ SELECT percentage(*, WHERE duration > 2000) AS slowPct FROM Transaction FACET se
 SELECT percentile(duration, 50) AS p50, percentile(duration, 95) AS p95, percentile(duration, 99) AS p99 FROM Transaction TIMESERIES AUTO
 ```
 
-&#x200B;> [!TIP]
+>[!TIP]
+>
 > `Transaction.duration`のp50、p95、およびp99は、長いウィンドウにわたってロールアップから提供されるので、毎週の表示のために高速に保たれます。
 
 ### ラベルを使って結果を読みやすくする
@@ -77,7 +81,8 @@ SELECT percentile(duration, 50) AS p50, percentile(duration, 95) AS p95, percent
 SELECT count(*) AS 'Requests', percentile(duration, 95) AS 'p95 (ms)' FROM Transaction FACET service
 ```
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > エイリアスは`SELECT`個の項目にのみ適用されます。 ファセット列には、常に属性名のラベルが付けられます。
 
 ### パターンとリストの一致
@@ -100,7 +105,8 @@ SELECT count(*) AS requests FROM Transaction WHERE urlPath NOT LIKE '%.js' AND u
 SELECT count(*) AS requests FROM Transaction WHERE http.method IN ('POST', 'PUT', 'DELETE') FACET service
 ```
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > SQLに正規表現（`RLIKE`）がありません。 `LIKE`個のパターンを`OR`と組み合わせるか、`IN`を使用してください。
 
 ### `ORDER BY`で並べ替えおよびランク付け
@@ -117,7 +123,8 @@ SELECT count(*) AS requests, percentile(duration, 95) AS p95 FROM Transaction FA
 SELECT count(*) AS requests FROM Transaction FACET service ORDER BY requests ASC LIMIT 10
 ```
 
-&#x200B;> [!TIP]
+>[!TIP]
+>
 > `HAVING`はありません。 「ビジー」操作のみを検索するには、`requests`でランク付けして上位Nを維持するか、ノイズを除去する`WHERE`を追加します（例：`WHERE http.method != 'OPTIONS'`）。
 
 ### 複数の属性でグループ化

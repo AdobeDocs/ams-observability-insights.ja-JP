@@ -1,14 +1,17 @@
 ---
-source-git-commit: 4949fcad799260aa73354a8c0b9d79e6394cb257
+title: SQL参照
+description: Observability InsightsでサポートされているSQLの構文、句および関数を参照します。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '1479'
-ht-degree: 10%
+source-wordcount: '1492'
+ht-degree: 9%
 ---
+
 ## SQL参照 {#sql-reference}
 
 このリファレンスでは、SQLの構文、句、関数および演算子について説明します。 各エントリを展開して、詳細と例を確認します。
 
-**このドキュメントでは、** [&#x200B; クエリコンポーネント &#x200B;](#41-query-components) ・ [必要な句](#42-required-clauses) ・ [&#x200B; オプション句](#43-optional-clauses) ・ [&#x200B; アグリゲータ関数](#44-aggregator-functions) ・ [演算子と条件](#45-operators-and-conditions) ・ [&#x200B; タイプ処理](#46-type-handling-blank-vs-null) ・ [SQLからSQL](#47-translate-sql-to-sql) ・ [既存のダッシュボードの読み込み](#48-importing-existing-dashboards-to-insights)
+**このドキュメントでは、** [ クエリコンポーネント ](#41-query-components) ・ [必要な句](#42-required-clauses) ・ [ オプション句](#43-optional-clauses) ・ [ アグリゲータ関数](#44-aggregator-functions) ・ [演算子と条件](#45-operators-and-conditions) ・ [ タイプ処理](#46-type-handling-blank-vs-null) ・ [SQLからSQL](#47-translate-sql-to-sql) ・ [既存のダッシュボードの読み込み](#48-importing-existing-dashboards-to-insights)
 
 ### クエリコンポーネント
 
@@ -28,7 +31,8 @@ FROM   <Entity>
 <unit>        := second | seconds | minute | minutes | hour | hours | day | days | week | weeks
 ```
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > 上記の`--`注釈はドキュメントのみです。 SQL自体はコメントを受け付けません。
 
 ### 必要な句
@@ -60,7 +64,7 @@ SELECT count(*) AS requests, average(duration) AS avgMs, max(duration) AS maxMs 
 ルール：
 
 - `SELECT *`はサポートされていません。 必要な属性をリストアップします。
-- 属性または集計（`sum(a) / count(*)`）間の計算はサポートされていません。 [数式ウィジェット &#x200B;](#86-combine-queries-with-formula-widgets)を使用します。
+- 属性または集計（`sum(a) / count(*)`）間の計算はサポートされていません。 [数式ウィジェット ](#86-combine-queries-with-formula-widgets)を使用します。
 - 属性と集計の混在が&#x200B;_Raw属性と集計を混在させることはできません。結果をグループ化するにはFACETを使用してください_。
 
 </details>
@@ -68,7 +72,7 @@ SELECT count(*) AS requests, average(duration) AS avgMs, max(duration) AS maxMs 
 <details>
 <summary><code>FROM</code> — クエリするエンティティ</summary>
 
-`FROM`さんが、[&#x200B; データディクショナリ &#x200B;](#data-dictionary)から&#x200B;**one** エンティティを正確に名前を付けます。 エンティティ名では大文字と小文字が区別されません。
+`FROM`さんが、[ データディクショナリ ](#data-dictionary)から&#x200B;**one** エンティティを正確に名前を付けます。 エンティティ名では大文字と小文字が区別されません。
 
 ```sql
 SELECT count(*) FROM Transaction
@@ -78,7 +82,7 @@ SELECT count(*) FROM Transaction
 FROM Span SELECT count(*) FACET kind
 ```
 
-各エンティティは、固定された範囲を持ちます。 例えば、`Transaction`は常にサーバーのスパンであり、`CpuUtilization`は常に`value`がパーセントに変換されたCPU ビジー指標です。 1つのクエリで複数のエンティティをクエリすることはできません。 エンティティを結合するには、[数式ウィジェット &#x200B;](#86-combine-queries-with-formula-widgets)を使用します。
+各エンティティは、固定された範囲を持ちます。 例えば、`Transaction`は常にサーバーのスパンであり、`CpuUtilization`は常に`value`がパーセントに変換されたCPU ビジー指標です。 1つのクエリで複数のエンティティをクエリすることはできません。 エンティティを結合するには、[数式ウィジェット ](#86-combine-queries-with-formula-widgets)を使用します。
 
 </details>
 
@@ -154,7 +158,8 @@ SELECT count(*) AS total, count(*) FILTER (WHERE status = 'Error') AS errors, pe
 SELECT count(*) FROM Transaction FACET urlPath LIMIT 50
 ```
 
-&#x200B;> [!TIP]
+>[!TIP]
+>
 > クエリ駆動変数と高基数ファセット （`urlPath`、`traceId`、`jcr.path`、`url`）には常に`LIMIT`を設定します。
 
 </details>
@@ -194,7 +199,8 @@ SELECT count(*) FROM Transaction SINCE 6 hours ago
 - ウィンドウは&#x200B;**31日**&#x200B;を超えることはできません（_時間範囲は31日_）を超えることはできません。
 - 絶対日付（`SINCE '2026-01-01'`）と`TODAY` / `YESTERDAY`はサポートされていません。
 
-&#x200B;> [!IMPORTANT]
+>[!IMPORTANT]
+>
 > ダッシュボードとエクスプローラーで、**時間ピッカーが** `SINCE`と`UNTIL`を上書きします。 [時間ウィンドウの優先順位](#time-window-precedence)を参照してください。
 
 </details>
@@ -224,7 +230,8 @@ SELECT percentile(duration, 95) AS p95 FROM Transaction TIMESERIES AUTO
 SELECT count(*) FROM Transaction TIMESERIES 1 hour SINCE 1 day ago
 ```
 
-&#x200B;> [!TIP]
+>[!TIP]
+>
 > ダッシュボードでは`AUTO`を優先します。 タイムピッカーが何と言っても約120 ポイントを保持します。 また、ホスト指標は約90秒ごとにスクレイピングされるので、ホストごとに「粉々になる」ことも回避できます。
 
 </details>
@@ -431,10 +438,11 @@ SELECT sum(duration) AS totalMs, percentOfTotal(duration) AS shareOfTime FROM Tr
 SELECT rate(value) AS bytesPerSec FROM NetworkReceiveRate FACET host TIMESERIES AUTO
 ```
 
-- カウンターのエンティティ（[&#x200B; データディクショナリ &#x200B;](#53-curated-metric-entities)の✔とマークされている）でのみ機能します。
+- カウンターのエンティティ（[ データディクショナリ ](#53-curated-metric-entities)の✔とマークされている）でのみ機能します。
 - `TIMESERIES`が必要です。**のみ**&#x200B;集計である必要があります。 `FILTER`は許可されていません。
 
-&#x200B;> [!WARNING]
+>[!WARNING]
+>
 > 常に`FACET host`、または単一のホストにフィルターを適用します。 多くのホストでファセットされていない`rate()`は、異なるホストのカウンターを比較し、意味のない数値を生成します。 ディスク カウンターはデバイスごとに存在するため、`FACET host, device`が最も正確です。
 
 </details>
@@ -508,14 +516,16 @@ SELECT uniqueCount(host) AS hosts, uniqueCount(traceId) AS traces FROM Transacti
 SELECT count(*) FROM Transaction WHERE (status = 'Error' OR duration > 2000) AND NOT host LIKE '%dispatcher%' AND http.method IN ('GET', 'POST')
 ```
 
-&#x200B;> [!WARNING]
+>[!WARNING]
+>
 > `attr = NULL`はエラーです。 `attr IS NULL` の使用
 
 ### タイプ処理：空白とNULL
 
 すべての属性には、カタログ内の型（`string`、`number`、`boolean`、または`timestamp`）があります。 SQL型チェック関数を指定します（例：`average(service)`は拒否されます）。 タイプ変換関数は必要ないか、使用できます。
 
-&#x200B;> [!IMPORTANT]
+>[!IMPORTANT]
+>
 > **空白vs NULL。** ほとんどの文字列属性はOpenTelemetry属性マップから取得されます。このマップでは、_missing_ キーは`NULL`ではなく`''`空の文字列として読み取られます。 属性を持つスパンのみを保持するには、`IS NOT NULL`ではなく&#x200B;**`attr != ''`**&#x200B;を使用します。 `http.statusCode`などの数値属性は、欠席時に真の`NULL`となるため、`IS NOT NULL`が機能します。
 
 ```sql
@@ -558,9 +568,9 @@ SELECT count(*) AS jcrCalls FROM Span WHERE jcr.operation != '' FACET jcr.operat
 | `rate(count(*), 1 minute)` | `count(*)` with `TIMESERIES 1 minute` | SQL `rate()`はカウンター専用です |
 | `derivative(x, 1 minute)` | `derivative(x)` + `TIMESERIES` | 毎秒 |
 | `uniques(x)` | `count(*) … FACET x LIMIT n` |                                                              |
-| `keyset()` / `SHOW EVENT TYPES` | [検出クエリ &#x200B;](#101-data-discovery)、またはクエリガイドパネル |                                                              |
-| `histogram(duration, …)` | `FILTER` バケット | [&#x200B; チュートリアル 3](#84-build-a-latency-histogram)を参照 |
-| `FACET CASES (…)` | `FILTER`列 | [&#x200B; チュートリアル 3](#83-group-values-into-cases-with-filter)を参照 |
+| `keyset()` / `SHOW EVENT TYPES` | [検出クエリ ](#101-data-discovery)、またはクエリガイドパネル |                                                              |
+| `histogram(duration, …)` | `FILTER` バケット | [ チュートリアル 3](#84-build-a-latency-histogram)を参照 |
+| `FACET CASES (…)` | `FILTER`列 | [ チュートリアル 3](#83-group-values-into-cases-with-filter)を参照 |
 | `COMPARE WITH 1 week ago` | サポート対象外 | 時間ピッカーを変更するか、API経由で`SINCE … UNTIL …`を使用します |
 | `RLIKE` | `LIKE` / `IN` |                                                              |
 | `SELECT`の数式/ネストされた集計 | **式** ウィジェット |                                                              |

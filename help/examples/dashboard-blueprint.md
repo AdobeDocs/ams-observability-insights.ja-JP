@@ -1,9 +1,12 @@
 ---
-source-git-commit: 263ba9e9b3eb1c6e4dd253ca03bd0ce8954c588b
+title: ダッシュボードのブループリント
+description: アプリケーションとインフラストラクチャのモニタリングにブループリントを使用して、オブザーバビリティインサイトダッシュボードを構築します。
+source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
 workflow-type: tm+mt
-source-wordcount: '1311'
+source-wordcount: '1324'
 ht-degree: 1%
 ---
+
 ## ダッシュボードのブループリント {#dashboard-blueprints}
 
 各ブループリントは、包括的で複雑なダッシュボードです。 目標、タブとセクションのレイアウト、およびグラフの種類、単位、しきい値、サイズとクエリを含むすべてのウィジェットが一覧表示されます。 サイズは12列グリッドの`width×height`です。 それぞれを上から下に構築し、ドラッグして調整します。
@@ -11,19 +14,19 @@ ht-degree: 1%
 | ブループリント | オーディエンス | ハイライト |
 | ------------------------------------------------------------------------------------ | --------------------- | ---------------------------------------------------------------------------------- |
 | [11.1 ゴールデンシグナル / SLO](#111-golden-signals--slo-board) | SRE、オンコール | しきい値、Apdex、エラー%、彩度を含むKPI タイル |
-| [11.2 エラーのトリアージ &#x200B;](#112-error-triage-board) | オンコール | エラークラス、5xx ホットスポット、トレース IDで失敗したリクエスト |
-| [11.3 レイテンシの詳細ダイブ &#x200B;](#113-latency-deep-dive-board) | パフォーマンスエンジニア | パーセンタイル、レイテンシーバケット、変動性、トランザクション構成、最も遅いトレース |
+| [11.2 エラーのトリアージ ](#112-error-triage-board) | オンコール | エラークラス、5xx ホットスポット、トレース IDで失敗したリクエスト |
+| [11.3 レイテンシの詳細ダイブ ](#113-latency-deep-dive-board) | パフォーマンスエンジニア | パーセンタイル、レイテンシーバケット、変動性、トランザクション構成、最も遅いトレース |
 | [11.4 ダウンストリームの依存関係](#114-downstream-dependencies-board) | サービス所有者 | アウトバウンド HTTP、DB、メッセージング、RPC |
 | [11.5 AEM オーサー/公開/ Dispatcher](#115-aem-author--publish--dispatcher-board) | AEM teams | 階層ごとのセクション、Sling/JSP/JCR、Dispatcherのロード |
 | [11.6 インフラストラクチャ容量](#116-infrastructure-capacity-board) | プラットフォーム/キャパシティ | CPU モード、メモリ、ディスク、ネットワーク レート、数式 |
 | [11.7 JVM Health](#117-jvm-health-board) | Java チーム | ヒープ %の数式、ホストおよびプールごとのヒープ、スレッド、JVM CPU |
-| [11.8 エグゼクティブ / NOC ウォール &#x200B;](#118-executive--noc-wall-board) | NOC、リーダーシップ | KPI タイル、可用性の式、層別トラフィック、SLO メモ |
+| [11.8 エグゼクティブ / NOC ウォール ](#118-executive--noc-wall-board) | NOC、リーダーシップ | KPI タイル、可用性の式、層別トラフィック、SLO メモ |
 | [11.9 Ratios &amp; Headroom](#119-ratios--headroom-board-formula-showcase) | 全員 | 数式ウィジェットショーケース |
 | [11.10 Service Explorer](#1110-service-explorer-variable-driven) | あらゆるチーム | 変数駆動の再利用可能 |
 
 **グラフ凡例：** **N** =番号、**L** =行、**A** =面積、**B** =棒、**P** =円、**T** =表。
 
-&#x200B;---
+
 
 ### ゴールデンシグナル/SLO ボード
 
@@ -120,7 +123,7 @@ SELECT average(value) AS memory FROM MemoryUtilization FACET host TIMESERIES AUT
 SELECT average(value) AS load5m FROM LoadAverage5m FACET host TIMESERIES AUTO LIMIT 10
 ```
 
-&#x200B;---
+
 
 ### エラーのトリアージ ボード
 
@@ -207,7 +210,7 @@ SELECT count(*) AS failures, percentile(duration, 95) AS p95 FROM Span WHERE kin
 SELECT timestamp, service, host, name, urlPath, http.statusCode, duration, statusMessage, traceId FROM Transaction WHERE status = 'Error' LIMIT 200
 ```
 
-&#x200B;---
+
 
 ### レイテンシの詳細ボード
 
@@ -276,7 +279,7 @@ SELECT sum(callCount) AS calls, average(avgDurationMs) AS avgMs FROM SpanBreakdo
 SELECT count(*) AS calls, max(duration) AS slowestMs, latest(traceId, duration) AS slowestTraceId, latest(host, duration) AS slowestHost FROM Transaction FACET name ORDER BY slowestMs DESC LIMIT 50
 ```
 
-&#x200B;---
+
 
 ### 下流の依存関係ボード
 
@@ -357,11 +360,11 @@ SELECT count(*) FILTER (WHERE kind = 'Producer') AS produced, count(*) FILTER (W
 SELECT count(*) AS calls, percentile(duration, 95) AS p95, percentage(*, WHERE status = 'Error') AS errorPct FROM Span WHERE rpc.system != '' FACET service, rpc.system, rpc.method ORDER BY calls DESC LIMIT 50
 ```
 
-&#x200B;---
+
 
 ### AEM オーサー/パブリッシュ/Dispatcher ボード
 
-**目標：**&#x200B;は、従来のAEM AEM レイアウトを反映して、階層別にグループ化されたNew Relic操作ボードです。
+**目標：**は、従来のAEM AEM レイアウトを反映して、階層別にグループ化されたNew Relic操作ボードです。
 **セクションヘッダー** （`PUBLISH`、`AUTHOR`、`DISPATCHER`）、終了ウィジェットのタイトル（`- PUBLISH`/`- AUTHOR`）を使用して、カラーキューを取得します。
 
 ```text
@@ -514,7 +517,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, count(*) FILTER (WHER
 SELECT percentOfTotal(duration) AS timeShare FROM Span WHERE sling.servlet != '' FACET sling.servlet LIMIT 20
 ```
 
-&#x200B;---
+
 
 ### インフラ能力局
 
@@ -641,7 +644,7 @@ SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIE
 SELECT rate(value) AS txBytesPerSec FROM NetworkTransmitRate FACET host TIMESERIES AUTO
 ```
 
-**W20 ・ 1つのホスト （数式）**&#x200B;のネットワーク I/Oの合計 – フォーミュラ ウィジェット、L、`bytes/s`、12×4。 数式は`FACET`できず、`rate()`は1つのホストにスコープを設定する必要があります（[&#x200B; キュレートされた指標エンティティ &#x200B;](#53-curated-metric-entities)を参照）。そのため、ホストを固定します – `web-publish-01`をW5の実際のホスト名に置き換えます。
+**W20 ・ 1つのホスト （数式）**&#x200B;のネットワーク I/Oの合計 – フォーミュラ ウィジェット、L、`bytes/s`、12×4。 数式は`FACET`できず、`rate()`は1つのホストにスコープを設定する必要があります（[ キュレートされた指標エンティティ ](#53-curated-metric-entities)を参照）。そのため、ホストを固定します – `web-publish-01`をW5の実際のホスト名に置き換えます。
 
 クエリ `netRx`:
 
@@ -661,7 +664,7 @@ SELECT rate(value) AS v FROM NetworkTransmitRate WHERE host = 'web-publish-01' T
 netRx + netTx
 ```
 
-&#x200B;---
+
 
 ### JVM ヘルスボード
 
@@ -733,7 +736,8 @@ SELECT average(value) AS v FROM JvmHeapLimit TIMESERIES AUTO
 (used / limit) * 100
 ```
 
-&#x200B;> [!NOTE]
+>[!NOTE]
+>
 > 1つのホストに数式をスコープするには、`WHERE host = 'my-publish-01'`を&#x200B;**両方**&#x200B;のクエリに追加します。
 
 **W6 ・ ホストで使用されるヒープ** — L、`MB`、6×4
@@ -766,7 +770,7 @@ SELECT average(value) AS jvmCpu FROM JvmCpuRecentUtilization FACET host TIMESERI
 SELECT latest(value) AS bytesUsed, max(value) AS peakBytes FROM MetricSum WHERE metric = 'jvm.memory.used' FACET host, pool ORDER BY peakBytes DESC LIMIT 100
 ```
 
-&#x200B;---
+
 
 ### 11.8 エグゼクティブ / NOC ウォールボード
 
@@ -849,7 +853,7 @@ SELECT count(*) AS requests FROM Transaction WHERE hostTierPrefix != '' FACET ho
 
 **W10 ・ SLO note** — テキストウィジェット、12×1。
 
-&#x200B;---
+
 
 ### Ratios &amp; Headroom board （フォーミュラ・ショーケース）
 
@@ -935,7 +939,7 @@ SELECT average(value) AS v FROM JvmHeapUsed TIMESERIES AUTO
 limit - used
 ```
 
-**W5 ・ 1つのホストに対するネットワークのアウト/イン比率** – 数式、L （ホストを固定します。[&#x200B; キュレートされた指標エンティティ &#x200B;](#53-curated-metric-entities)を参照）
+**W5 ・ 1つのホストに対するネットワークのアウト/イン比率** – 数式、L （ホストを固定します。[ キュレートされた指標エンティティ ](#53-curated-metric-entities)を参照）
 
 クエリ `rx`:
 
@@ -995,14 +999,15 @@ SELECT count(*) AS v FROM Transaction TIMESERIES AUTO
 (errors / total) / 0.001
 ```
 
-&#x200B;---
+
 
 ### Service Explorer （変数駆動型）
 
 **目標：**&#x200B;任意のチームが&#x200B;_自分の_&#x200B;のサービスと環境をポイントできる1つのボード。
 
-&#x200B;> [!WARNING]
-> [&#x200B; チュートリアル 3、ステップ 8.7](#87-make-dashboards-reusable-with-variables)の&#x200B;**現在のビルド制限**&#x200B;を参照してください。ウィジェット SQL内の`{{variables}}`は、まだプレビューまたは保存できません。 これが修正されるまで、各`{{…}}`をリテラル （`'checkout'`など）に置き換え、_重複_&#x200B;を使用してサービスごとにボードを複製します。 以下のデザインは、エンドツーエンドで代用がサポートされている場合に使用できます。
+>[!WARNING]
+>
+> [ チュートリアル 3、ステップ 8.7](#87-make-dashboards-reusable-with-variables)の&#x200B;**現在のビルド制限**&#x200B;を参照してください。ウィジェット SQL内の`{{variables}}`は、まだプレビューまたは保存できません。 これが修正されるまで、各`{{…}}`をリテラル （`'checkout'`など）に置き換え、_重複_&#x200B;を使用してサービスごとにボードを複製します。 以下のデザインは、エンドツーエンドで代用がサポートされている場合に使用できます。
 
 **変数**
 
