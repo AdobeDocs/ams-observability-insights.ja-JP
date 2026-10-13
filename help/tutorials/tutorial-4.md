@@ -64,7 +64,7 @@ SELECT sum(callCount) AS calls, average(avgDurationMs) AS avgMs FROM SpanBreakdo
 SELECT average(avgDurationMs) AS avgMs FROM SpanBreakdown FACET segment TIMESERIES AUTO LIMIT 8
 ```
 
-> [!NOTE]
+&#x200B;> [!NOTE]
 > `avgDurationMs`はユニットで自動タグ付けされていません。 ウィジェット **Unit**&#x200B;を`ms`に設定します。
 
 ### 任意の指標の発見とクエリ
@@ -91,7 +91,7 @@ SELECT latest(value) AS bytesUsed FROM MetricSum WHERE metric = 'jvm.memory.used
 SELECT count(*) FILTER (WHERE http.route != '') AS withRoute, count(*) FILTER (WHERE db.system != '') AS dbCalls, count(*) FILTER (WHERE peer.service != '') AS withPeer, count(*) FILTER (WHERE error.type != '') AS withErrorType FROM Span FACET service LIMIT 50
 ```
 
-> [!TIP]
+&#x200B;> [!TIP]
 > キュレーションされたエンティティが存在する場合（例：`CpuUtilization`）、`MetricGauge`よりも優先します。 適切なフィルターと単位の変換が適用され、ロールアップ高速化される場合があります。
 
 ### 適切なトレースエンティティの選択
@@ -121,7 +121,7 @@ NRQLでは、「ホストごとの最大数の平均」などのサブクエリ�
 | 目標 | SQL アプローチ |
 | --------------------------------------- | ---------------------------------------------------------- |
 | グループごとの値を入力し、グループをランク付けします | `FACET group` + `ORDER BY alias` + `LIMIT` |
-| 2つの集計の比率 | [数式ウィジェット ](#86-combine-queries-with-formula-widgets) |
+| 2つの集計の比率 | [数式ウィジェット &#x200B;](#86-combine-queries-with-formula-widgets) |
 | ホストごとの値、次に「最悪のホスト」 | `FACET host ORDER BY alias DESC LIMIT 1` |
 | ホストあたりの平均時間 | `FACET host TIMESERIES AUTO`、シリーズを読む |
 

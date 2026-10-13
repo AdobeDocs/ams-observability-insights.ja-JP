@@ -12,7 +12,7 @@ ht-degree: 21%
 
 | エンティティ | 次を含む | 固定範囲 | ロールアップ |
 | ------------- | --------------------------------------------------------- | ---------------------------- | ------------------------------------------ |
-| `Transaction` | インバウンドサーバーリクエスト | `kind = Server` | 1m / 5m / 1h （[ パフォーマンス ](#performance)） |
+| `Transaction` | インバウンドサーバーリクエスト | `kind = Server` | 1m / 5m / 1h （[&#x200B; パフォーマンス &#x200B;](#performance)） |
 | `AppRequest` | インバウンドサーバー&#x200B;**および**&#x200B;件のメッセージコンシューマー要求 | `kind IN (Server, Consumer)` | — |
 | `Span` | あらゆるスパン（サーバー、クライアント、プロデューサー、消費者、社内） | — | — |
 
@@ -109,7 +109,7 @@ ht-degree: 21%
 | `JvmCpuRecentUtilization` | JVM プロセス CPU | % |         | 1分ロールアップ |
 | `DispatcherRequestRate` | AEM Dispatcher HTTP リクエスト | req/s | ✔ |                                              |
 
-> [!NOTE]
+&#x200B;> [!NOTE]
 > JVM メモリ指標はメモリプールごとに&#x200B;**報告されるので、`JvmHeapUsed` / `JvmHeapLimit`の`average(value)`はプール間の平均を示します。**&#x200B;プールごとの正確なビューには`FACET host, pool`を使用します。
 
 ### `SpanBreakdown`：事前集計されたトランザクション構成

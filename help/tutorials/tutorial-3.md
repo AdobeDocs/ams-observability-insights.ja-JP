@@ -8,7 +8,7 @@ ht-degree: 3%
 
 このチュートリアルでは、ユーザーエクスペリエンススコア、カウンター率、ケースグループ化、ヒストグラム、しきい値、セクション、数式ウィジェット、変数を含むKPI タイルなど、実稼動用グレードのダッシュボードのコンポーネントを構築します。
 
-**このチュートリアルでは、** [8.1 apdex](#81-score-user-experience-with-apdex) ・ [8.2 rate](#82-turn-counters-into-rates-with-rate) ・ [8.3 Cases](#83-group-values-into-cases-with-filter) ・ [8.4 ヒストグラム ](#84-build-a-latency-histogram) ・ [8.5 KPI タイルとセクション ](#85-build-kpi-tiles-and-sections) ・ [8.6 フォーミュラ ](#86-combine-queries-with-formula-widgets) ・ [8.7変数](#87-make-dashboards-reusable-with-variables) ・ [8.8をまとめる](#88-put-it-together)
+**このチュートリアルでは、** [8.1 apdex](#81-score-user-experience-with-apdex) ・ [8.2 rate](#82-turn-counters-into-rates-with-rate) ・ [8.3 Cases](#83-group-values-into-cases-with-filter) ・ [8.4 ヒストグラム &#x200B;](#84-build-a-latency-histogram) ・ [8.5 KPI タイルとセクション &#x200B;](#85-build-kpi-tiles-and-sections) ・ [8.6 フォーミュラ &#x200B;](#86-combine-queries-with-formula-widgets) ・ [8.7変数](#87-make-dashboards-reusable-with-variables) ・ [8.8をまとめる](#88-put-it-together)
 
 ### `apdex`でユーザーエクスペリエンスをスコア化
 
@@ -28,7 +28,7 @@ SELECT apdex(duration, 500) AS apdex FROM Transaction FACET service TIMESERIES A
 
 ### 8.2 `rate`でカウンターをレートに変換
 
-[ データディクショナリ ](#53-curated-metric-entities)）ストアのカウンターエンティティ（✔）の合計は増加し続けています。 `rate(value)`は、1秒あたりの値に変換します。 `TIMESERIES`が必要です。集計は次のみである必要があります：
+[&#x200B; データディクショナリ &#x200B;](#53-curated-metric-entities)）ストアのカウンターエンティティ（✔）の合計は増加し続けています。 `rate(value)`は、1秒あたりの値に変換します。 `TIMESERIES`が必要です。集計は次のみである必要があります：
 
 ```sql
 SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIES AUTO
@@ -38,7 +38,7 @@ SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIE
 SELECT rate(value) AS writeBytesPerSec FROM DiskWriteRate FACET host, device TIMESERIES AUTO LIMIT 10
 ```
 
-> [!WARNING]
+&#x200B;> [!WARNING]
 > 常に`rate()`を`host` （およびディスクの場合は`device`）によってファセットするか、1つのホストにフィルター処理します。 これがなければ、異なるホストからの読み取りが混在し、結果は意味がありません。
 
 トレースから&#x200B;**リクエスト**&#x200B;のレートを取得するには、代わりに固定バケットでリクエストをカウントします。 これは、1分あたりのリクエストを与えます。
@@ -146,7 +146,7 @@ SELECT sum(duration) AS v FROM Transaction
 | 各1つの指標 | 各クエリは、集計を1つだけ返し、`FACET`は返しません |
 | 環境にないデータ | 値が見つからないか、ゼロで除算すると、空のポイントが生成されますが、`Infinity`や`NaN`は生成されません |
 
-> [!TIP]
+&#x200B;> [!TIP]
 > 時系列数式のすべてのクエリで`TIMESERIES AUTO`を使用します。 クエリは1つのウィンドウを共有するため、常に同じバケットサイズに解決されます。
 
 ### 変数を使用してダッシュボードを再利用可能にする
@@ -187,8 +187,8 @@ SELECT count(*) FROM Transaction FACET service LIMIT 200
 
 テナントまたはタイムピッカーが変更されたときにオプションが更新され、アルファベット順に並べ替えられます。 現在の選択が無効になると、最初の値（単一選択）またはすべての値（複数選択）が自動的に選択されます。 変数のクエリは、他の変数を参照できません。
 
-> [!WARNING]
-> **現在のビルド制限。** ダッシュボードグリッドで置換が行われますが、**ウィジェットを追加** プレビューと&#x200B;**サーバーサイドの保存チェック**&#x200B;は未加工の`{{name}}` トークンを受け取り、_予期しない文字&#39;{&#39;_&#x200B;で却下します。 実際の内容：
+&#x200B;> [!WARNING]
+> **現在のビルド制限。** ダッシュボードグリッドで置換が行われますが、**ウィジェットを追加** プレビューと&#x200B;**サーバーサイドの保存チェック**&#x200B;は未加工の`{{name}}` トークンを受け取り、_予期しない文字&#39;&lbrace;&#39;_&#x200B;で却下します。 実際の内容：
 >
 > - **ウィジェットタイトル**&#x200B;と&#x200B;**テキストウィジェット**&#x200B;の`{{variables}}`がエンドツーエンドで動作します。
 > - **ウィジェット SQL**&#x200B;内の`{{variables}}`は、**インポート**&#x200B;の後に正しくレンダリングされますが、そのようなウィジェットが存在する間、ダッシュボードを&#x200B;**保存**&#x200B;することはできません。
@@ -197,4 +197,4 @@ SELECT count(*) FROM Transaction FACET service LIMIT 200
 
 ### まとめる
 
-[ ダッシュボードのブループリント ](#dashboard-blueprints)で使用されているすべての構築ブロックが見つかります。しきい値、セクション、パーセンタイル、Apdex、レート、ケース列、ヒストグラム、数式、変数を含むKPI タイルです。 ブループリントでは、それらを組み合わせて、包括的なゴールデンシグナル、エラートリアージ、AEM、インフラストラクチャ、JVM ダッシュボードを作成する方法を示しています。
+[&#x200B; ダッシュボードのブループリント &#x200B;](#dashboard-blueprints)で使用されているすべての構築ブロックが見つかります。しきい値、セクション、パーセンタイル、Apdex、レート、ケース列、ヒストグラム、数式、変数を含むKPI タイルです。 ブループリントでは、それらを組み合わせて、包括的なゴールデンシグナル、エラートリアージ、AEM、インフラストラクチャ、JVM ダッシュボードを作成する方法を示しています。

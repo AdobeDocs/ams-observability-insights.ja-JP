@@ -66,7 +66,7 @@ SELECT percentage(*, WHERE duration > 2000) AS slowPct FROM Transaction FACET se
 SELECT percentile(duration, 50) AS p50, percentile(duration, 95) AS p95, percentile(duration, 99) AS p99 FROM Transaction TIMESERIES AUTO
 ```
 
-> [!TIP]
+&#x200B;> [!TIP]
 > `Transaction.duration`のp50、p95、およびp99は、長いウィンドウにわたってロールアップから提供されるので、毎週の表示のために高速に保たれます。
 
 ### ラベルを使って結果を読みやすくする
@@ -77,7 +77,7 @@ SELECT percentile(duration, 50) AS p50, percentile(duration, 95) AS p95, percent
 SELECT count(*) AS 'Requests', percentile(duration, 95) AS 'p95 (ms)' FROM Transaction FACET service
 ```
 
-> [!NOTE]
+&#x200B;> [!NOTE]
 > エイリアスは`SELECT`個の項目にのみ適用されます。 ファセット列には、常に属性名のラベルが付けられます。
 
 ### パターンとリストの一致
@@ -100,7 +100,7 @@ SELECT count(*) AS requests FROM Transaction WHERE urlPath NOT LIKE '%.js' AND u
 SELECT count(*) AS requests FROM Transaction WHERE http.method IN ('POST', 'PUT', 'DELETE') FACET service
 ```
 
-> [!NOTE]
+&#x200B;> [!NOTE]
 > SQLに正規表現（`RLIKE`）がありません。 `LIKE`個のパターンを`OR`と組み合わせるか、`IN`を使用してください。
 
 ### `ORDER BY`で並べ替えおよびランク付け
@@ -117,7 +117,7 @@ SELECT count(*) AS requests, percentile(duration, 95) AS p95 FROM Transaction FA
 SELECT count(*) AS requests FROM Transaction FACET service ORDER BY requests ASC LIMIT 10
 ```
 
-> [!TIP]
+&#x200B;> [!TIP]
 > `HAVING`はありません。 「ビジー」操作のみを検索するには、`requests`でランク付けして上位Nを維持するか、ノイズを除去する`WHERE`を追加します（例：`WHERE http.method != 'OPTIONS'`）。
 
 ### 複数の属性でグループ化
