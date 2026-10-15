@@ -27,20 +27,20 @@ ht-degree: 4%
 | --------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | **基本を学ぶ** | [1. SQL](#1-get-started-with-SQL-the-language-of-your-telemetry)の基本を学ぶ | SQLとは何か、クエリできること、どこで使用するか、基本的なルールは |
 |                 | [2. SQL](#2-how-to-query-with-SQL-the-mechanics-of-querying)でクエリする方法 | データの探索方法、クエリの実行方法、動作した例 |
-|                 | [3. グラフとダッシュボード ](#3-charts-and-dashboards-visualizing-your-data) | クエリをグラフに変換し、ダッシュボードをステップバイステップで構築する方法 |
+|                 | [3. グラフとダッシュボード &#x200B;](#3-charts-and-dashboards-visualizing-your-data) | クエリをグラフに変換し、ダッシュボードをステップバイステップで構築する方法 |
 | **参照** | [4. SQL参照](#4-SQL-reference) | あらゆる句、関数および演算子（例を含む） |
-|                 | [5. データディクショナリ ](#5-data-dictionary) | クエリできるあらゆるエンティティと属性 |
-| **チュートリアル** | [6. チュートリアル 1：最初のクエリ ](#6-tutorial-1-your-first-queries) | `SELECT`, `FROM`, `LIMIT`，集計，時間，`TIMESERIES`, `WHERE`, `FACET` |
+|                 | [5. データディクショナリ &#x200B;](#5-data-dictionary) | クエリできるあらゆるエンティティと属性 |
+| **チュートリアル** | [6. チュートリアル 1：最初のクエリ &#x200B;](#6-tutorial-1-your-first-queries) | `SELECT`, `FROM`, `LIMIT`，集計，時間，`TIMESERIES`, `WHERE`, `FACET` |
 |                 | [7. チュートリアル 2: データの制御](#7-tutorial-2-control-your-data) | 一意の値、最新/初期、パーセンタイル、ラベル、ワイルドカード、順序 |
 |                 | [8. チュートリアル 3: ダッシュボードを進める](#8-tutorial-3-advance-your-dashboarding) | 条件付き集計、Apdex、レート、ヒストグラム、数式、変数、セクション |
 |                 | [9. チュートリアル 4：高度な関数](#9-tutorial-4-advanced-functions) | `stddev`、`derivative`、ランク `latest`、合計シェア、スパン構成、指標の検出 |
-| **例** | [10. クッキーブックのクエリ ](#10-query-cookbook) | トピック別にすぐに使用できる100以上のクエリ（AEMを含む） |
-|                 | [11. ダッシュボードのブループリント ](#11-dashboard-blueprints) | 各ウィジェットのクエリが表示される、10種類の包括的で複雑なダッシュボード |
-| **操作** | [12. パフォーマンス ](#12-performance) | ロールアップ、クエリ予算、ダッシュボードを高速に保つ方法 |
-|                 | [13. トラブルシューティング ](#13-troubleshooting) | あらゆるエラーメッセージ、その意味、修正方法 |
+| **例** | [10. クッキーブックのクエリ &#x200B;](#10-query-cookbook) | トピック別にすぐに使用できる100以上のクエリ（AEMを含む） |
+|                 | [11. ダッシュボードのブループリント &#x200B;](#11-dashboard-blueprints) | 各ウィジェットのクエリが表示される、10種類の包括的で複雑なダッシュボード |
+| **操作** | [12. パフォーマンス &#x200B;](#12-performance) | ロールアップ、クエリ予算、ダッシュボードを高速に保つ方法 |
+|                 | [13. トラブルシューティング &#x200B;](#13-troubleshooting) | あらゆるエラーメッセージ、その意味、修正方法 |
 |                 | [14. 付録](#14-appendix) | 制限、書き出しファイル形式、ワンページチートシート |
 
-# 今すぐ始める
+&#x200B;# 今すぐ始める
 
 ## &#x200B;1. SQLの基本を学ぶ：テレメトリの言語
 
@@ -69,7 +69,7 @@ SQLは、個々のリクエスト行を返す&#x200B;**イベントクエリ**&#
 
 ### クエリできること
 
-SQLは、4つのデータファミリーをクエリできます。 完全なリストは[ データディクショナリ ](#5-data-dictionary)にあります。
+SQLは、4つのデータファミリーをクエリできます。 完全なリストは[&#x200B; データディクショナリ &#x200B;](#5-data-dictionary)にあります。
 
 | 家族 | エンティティ | よくある質問 |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
@@ -126,14 +126,14 @@ SQLのルールは次のとおりです。
 | **リテラル** | 文字列、数値（負と小数を含む）、`TRUE`、`FALSE`、`NULL`です。 |
 | **属性名** | 名前には、文字、数字、`_`および`.`を含めることができます（例：`http.statusCode`）。 バックティックは必要ありません。 |
 | **集計と属性** | クエリは、生の属性（イベントリスト）または集計を選択します。両方を選択することはできません。 グループ化するには、`FACET`を使用します。 |
-| **時間ウィンドウ** | デフォルトは過去1時間です。 最大は31日です。 ダッシュボードとエクスプローラーで、**時間ピッカー**&#x200B;がウィンドウを設定します（[時間ウィンドウ ](#time-window-precedence)を参照）。 |
+| **時間ウィンドウ** | デフォルトは過去1時間です。 最大は31日です。 ダッシュボードとエクスプローラーで、**時間ピッカー**&#x200B;がウィンドウを設定します（[時間ウィンドウ &#x200B;](#time-window-precedence)を参照）。 |
 | **サポートされていません** | セミコロン、コメント、サブクエリ、結合、`SELECT *`、属性間の計算（`SELECT`、`HAVING`、`COMPARE WITH`）。 代替案については、[SQLが実行しない処理](#what-SQL-doesnt-do)を参照してください。 |
 
 ### 次の手順
 
 - [SQLを使用してクエリを実行する方法](#2-how-to-query-with-SQL-the-mechanics-of-querying): データを検索し、クエリの実行方法を理解します。
-- [ グラフとダッシュボード ](#3-charts-and-dashboards-visualizing-your-data)：結果を視覚化します。
-- [ チュートリアル 1：最初のクエリ ](#6-tutorial-1-your-first-queries)：実践的なチュートリアル。
+- [&#x200B; グラフとダッシュボード &#x200B;](#3-charts-and-dashboards-visualizing-your-data)：結果を視覚化します。
+- [&#x200B; チュートリアル 1：最初のクエリ &#x200B;](#6-tutorial-1-your-first-queries)：実践的なチュートリアル。
 - [SQL参照](#4-SQL-reference)：完全な構文、句、関数。
 
 [↑ トップへ戻る](#top)
@@ -172,7 +172,7 @@ FROM Transaction SELECT count(*) FACET service
 これは、サービスごとにリクエストをカウントし、レポートするサービスを示します。
 
 >[!IMPORTANT]
-> **ビルドする前に見つける。** 属性の可用性は、各サービスのインストルメント方法によって異なります。 最初に新しいテナントで[検出クエリ ](#101-data-discovery)を実行し、実際にデータを含むサービス、ホスト、属性、指標を確認します。
+> **ビルドする前に見つける。** 属性の可用性は、各サービスのインストルメント方法によって異なります。 最初に新しいテナントで[検出クエリ &#x200B;](#101-data-discovery)を実行し、実際にデータを含むサービス、ホスト、属性、指標を確認します。
 
 ### クエリの実行方法
 
@@ -321,8 +321,8 @@ SQLは意図的に小さい。 これにより、クエリを安全に、迅速�
 | 結合とサブクエリ | サポート対象外 | **式** ウィジェット、または2つのウィジェットを並べて表示します。 |
 | `HAVING` | サポート対象外 | `ORDER BY alias` + `LIMIT`. |
 | `COMPARE WITH` | サポート対象外 | 時間ピッカーを変更するか、2つのウィジェットを別のタブに配置します。 |
-| `FACET CASES` | サポート対象外 | 1つのケースにつき1つの`count(*) FILTER (WHERE …)`列（チュートリアル 3](#83-group-values-into-cases-with-filter)を参照）。[ |
-| `histogram()` | サポート対象外 | バケット化された`FILTER`列（[ チュートリアル 3](#84-build-a-latency-histogram)を参照）。 |
+| `FACET CASES` | サポート対象外 | 1つのケースにつき1つの`count(*) FILTER (WHERE …)`列（チュートリアル 3[&#128279;](#83-group-values-into-cases-with-filter)を参照）。 |
+| `histogram()` | サポート対象外 | バケット化された`FILTER`列（[&#x200B; チュートリアル 3](#84-build-a-latency-histogram)を参照）。 |
 | `uniques()` / `keyset()` | サポート対象外 | `FACET attr LIMIT n`には個別の値が一覧表示されます。 検出クエリには、指標と入力された属性が一覧表示されます。 |
 | `RLIKE` （正規表現） | サポート対象外 | `LIKE` / `NOT LIKE` （ワイルドカード `%`および`_`）、または`IN (…)`。 |
 | コメント （`--`、`//`、`/* */`） | サポート対象外 | ウィジェットのタイトルまたは&#x200B;**テキスト** ウィジェットにメモを配置します。 |
@@ -400,7 +400,7 @@ SQLは意図的に小さい。 これにより、クエリを安全に、迅速�
 | **ウィジェットヘッダー** （ホバー時） | CSVのダウンロード、PNGのダウンロード、編集、複製、削除、ドラッグハンドル |
 
 >[!IMPORTANT]
-> **保存は明示的です。** レイアウトの変更、新しいウィジェット、タブ、変数は、**保存**&#x200B;をクリックするまでブラウザーに残ります。 ボタンに「_保存中… →保存済み_」または「_保存失敗_」が表示されます（[ トラブルシューティング ](#13-troubleshooting)を参照）。
+> **保存は明示的です。** レイアウトの変更、新しいウィジェット、タブ、変数は、**保存**&#x200B;をクリックするまでブラウザーに残ります。 ボタンに「_保存中… →保存済み_」または「_保存失敗_」が表示されます（[&#x200B; トラブルシューティング &#x200B;](#13-troubleshooting)を参照）。
 
 #### 手順4：ウィジェットの追加
 
@@ -408,7 +408,7 @@ SQLは意図的に小さい。 これにより、クエリを安全に、迅速�
 
 **オプション A: ビルダー（コードなし）**
 
-1. _（オプション）_**ヘルパーから開始**：ゴールデンシグナル、APM、AEM、トランザクション、トレースとスパン、インフラストラクチャ、パブリッシャー、JVMとランタイム、データ検出としてグループ化された57のプリセットのいずれかを選択します。 プリセットは、タイトル、クエリ、チャートの種類、および単位を入力します。
+1. _（オプション）_&#x200B;**ヘルパーから開始**：ゴールデンシグナル、APM、AEM、トランザクション、トレースとスパン、インフラストラクチャ、パブリッシャー、JVMとランタイム、データ検出としてグループ化された57のプリセットのいずれかを選択します。 プリセットは、タイトル、クエリ、チャートの種類、および単位を入力します。
 2. **表示**: `Count`、`Average`、`Percentile` （およびそのレベル）、`Sum`、`Min`、`Max`または`Unique count`を選択してから、属性を選択します。
 3. **から**: エンティティを選択します。
 4. **フィルター**: `attribute operator value`の行を追加（`=`、`!=`、`>`、`<`、`>=`、`<=`、`LIKE`）。 すべての行が`AND`と組み合わされます。
@@ -473,14 +473,14 @@ SQLは意図的に小さい。 これにより、クエリを安全に、迅速�
 
 ### 変数
 
-変数を使用すると、一度に1つのサービス、環境、しきい値など、1つのダッシュボードで多くのコンテキストに対応できます。 これらは、[ チュートリアル 3](#87-make-dashboards-reusable-with-variables)で詳細に説明されています。
+変数を使用すると、一度に1つのサービス、環境、しきい値など、1つのダッシュボードで多くのコンテキストに対応できます。 これらは、[&#x200B; チュートリアル 3](#87-make-dashboards-reusable-with-variables)で詳細に説明されています。
 
 >[!WARNING]
 > **現在のビルドの既知の制限：** `{{variables}}`は、ウィジェット **タイトル**&#x200B;と&#x200B;**テキストウィジェット**&#x200B;で動作します。 ウィジェット **SQL**&#x200B;内では、ダッシュボード上でレンダリングされますが、**ウィジェットを追加**&#x200B;のプレビューとサーバーサイドの&#x200B;**保存** チェックでは、`Unexpected character '{'`を含む生の`{{name}}` トークンが拒否されます。 これが修正されるまで、ウィジェットクエリでリテラル値を使用し、**重複**&#x200B;を使用してバリエーションを作成します。
 
 ### 数式ウィジェット
 
-数式は、2 ～ 6個の名前付きSQL クエリを数学的に組み合わせます（例：`(errors / total) * 100`）。 KPIが複数のクエリ（比率、ヘッドルーム、レートの合計、消化率など）が必要な場合に1つ使用します。 [ チュートリアル 3](#86-combine-queries-with-formula-widgets)を参照してください。
+数式は、2 ～ 6個の名前付きSQL クエリを数学的に組み合わせます（例：`(errors / total) * 100`）。 KPIが複数のクエリ（比率、ヘッドルーム、レートの合計、消化率など）が必要な場合に1つ使用します。 [&#x200B; チュートリアル 3](#86-combine-queries-with-formula-widgets)を参照してください。
 
 ### 共有、書き出し、読み込み
 
@@ -501,17 +501,17 @@ SQLは意図的に小さい。 これにより、クエリを安全に、迅速�
 - **常に`LIMIT`個のファセット付きクエリ**、特に`urlPath`、`traceId`、`jcr.path`などの基数の高い属性に対して実行されます。
 - **低基数の属性（`service`、`kind`、`status`）に対して早期**&#x200B;にフィルターを実行します。
 - **固定の小さなバケットには`TIMESERIES AUTO`**&#x200B;を優先し、数分以上を除いて`TIMESERIES MAX`を避けます。
-- **ロールアップの長距離傾向をデザインします。** [ パフォーマンス ](#12-performance)を参照してください。
+- **ロールアップの長距離傾向をデザインします。** [&#x200B; パフォーマンス &#x200B;](#12-performance)を参照してください。
 
 [↑ トップへ戻る](#top)
 
-# 参照
+&#x200B;# 参照
 
 ## &#x200B;4. SQL参照
 
 このリファレンスでは、SQLの構文、句、関数および演算子について説明します。 各エントリを展開して、詳細と例を確認します。
 
-**このドキュメントでは、** [ クエリコンポーネント ](#41-query-components) ・ [必要な句](#42-required-clauses) ・ [ オプション句](#43-optional-clauses) ・ [ アグリゲータ関数](#44-aggregator-functions) ・ [演算子と条件](#45-operators-and-conditions) ・ [ タイプ処理](#46-type-handling-blank-vs-null) ・ [SQLからSQL](#47-translate-sql-to-SQL) ・ [NRQLからSQL](#48-translate-nrql-to-SQL)
+**このドキュメントでは、** [&#x200B; クエリコンポーネント &#x200B;](#41-query-components) ・ [必要な句](#42-required-clauses) ・ [&#x200B; オプション句](#43-optional-clauses) ・ [&#x200B; アグリゲータ関数](#44-aggregator-functions) ・ [演算子と条件](#45-operators-and-conditions) ・ [&#x200B; タイプ処理](#46-type-handling-blank-vs-null) ・ [SQLからSQL](#47-translate-sql-to-SQL) ・ [NRQLからSQL](#48-translate-nrql-to-SQL)
 
 ### 4.1 クエリコンポーネント
 
@@ -563,7 +563,7 @@ SELECT count(*) AS requests, average(duration) AS avgMs, max(duration) AS maxMs 
 ルール：
 
 - `SELECT *`はサポートされていません。 必要な属性をリストアップします。
-- 属性または集計（`sum(a) / count(*)`）間の計算はサポートされていません。 [数式ウィジェット ](#86-combine-queries-with-formula-widgets)を使用します。
+- 属性または集計（`sum(a) / count(*)`）間の計算はサポートされていません。 [数式ウィジェット &#x200B;](#86-combine-queries-with-formula-widgets)を使用します。
 - 属性と集計の混在が&#x200B;_Raw属性と集計を混在させることはできません。結果をグループ化するにはFACETを使用してください_。
 
 </details>
@@ -571,7 +571,7 @@ SELECT count(*) AS requests, average(duration) AS avgMs, max(duration) AS maxMs 
 <details>
 <summary><code>FROM</code> — クエリするエンティティ</summary>
 
-`FROM`さんが、[ データディクショナリ ](#5-data-dictionary)から&#x200B;**one** エンティティを正確に名前を付けます。 エンティティ名では大文字と小文字が区別されません。
+`FROM`さんが、[&#x200B; データディクショナリ &#x200B;](#5-data-dictionary)から&#x200B;**one** エンティティを正確に名前を付けます。 エンティティ名では大文字と小文字が区別されません。
 
 ```sql
 SELECT count(*) FROM Transaction
@@ -581,7 +581,7 @@ SELECT count(*) FROM Transaction
 FROM Span SELECT count(*) FACET kind
 ```
 
-各エンティティは、固定された範囲を持ちます。 例えば、`Transaction`は常にサーバーのスパンであり、`CpuUtilization`は常に`value`がパーセントに変換されたCPU ビジー指標です。 1つのクエリで複数のエンティティをクエリすることはできません。 エンティティを結合するには、[数式ウィジェット ](#86-combine-queries-with-formula-widgets)を使用します。
+各エンティティは、固定された範囲を持ちます。 例えば、`Transaction`は常にサーバーのスパンであり、`CpuUtilization`は常に`value`がパーセントに変換されたCPU ビジー指標です。 1つのクエリで複数のエンティティをクエリすることはできません。 エンティティを結合するには、[数式ウィジェット &#x200B;](#86-combine-queries-with-formula-widgets)を使用します。
 
 </details>
 
@@ -934,7 +934,7 @@ SELECT sum(duration) AS totalMs, percentOfTotal(duration) AS shareOfTime FROM Tr
 SELECT rate(value) AS bytesPerSec FROM NetworkReceiveRate FACET host TIMESERIES AUTO
 ```
 
-- カウンターのエンティティ（[ データディクショナリ ](#53-curated-metric-entities)の✔とマークされている）でのみ機能します。
+- カウンターのエンティティ（[&#x200B; データディクショナリ &#x200B;](#53-curated-metric-entities)の✔とマークされている）でのみ機能します。
 - `TIMESERIES`が必要です。**のみ**&#x200B;集計である必要があります。 `FILTER`は許可されていません。
 
 >[!WARNING]
@@ -1061,9 +1061,9 @@ SELECT count(*) AS jcrCalls FROM Span WHERE jcr.operation != '' FACET jcr.operat
 | `rate(count(*), 1 minute)` | `count(*)` with `TIMESERIES 1 minute` | SQL `rate()`はカウンター専用です |
 | `derivative(x, 1 minute)` | `derivative(x)` + `TIMESERIES` | 毎秒 |
 | `uniques(x)` | `count(*) … FACET x LIMIT n` |                                                              |
-| `keyset()` / `SHOW EVENT TYPES` | [検出クエリ ](#101-data-discovery)、またはクエリガイドパネル |                                                              |
-| `histogram(duration, …)` | `FILTER` バケット | [ チュートリアル 3](#84-build-a-latency-histogram)を参照 |
-| `FACET CASES (…)` | `FILTER`列 | [ チュートリアル 3](#83-group-values-into-cases-with-filter)を参照 |
+| `keyset()` / `SHOW EVENT TYPES` | [検出クエリ &#x200B;](#101-data-discovery)、またはクエリガイドパネル |                                                              |
+| `histogram(duration, …)` | `FILTER` バケット | [&#x200B; チュートリアル 3](#84-build-a-latency-histogram)を参照 |
+| `FACET CASES (…)` | `FILTER`列 | [&#x200B; チュートリアル 3](#83-group-values-into-cases-with-filter)を参照 |
 | `COMPARE WITH 1 week ago` | サポート対象外 | 時間ピッカーを変更するか、API経由で`SINCE … UNTIL …`を使用します |
 | `RLIKE` | `LIKE` / `IN` |                                                              |
 | `SELECT`の数式/ネストされた集計 | **式** ウィジェット |                                                              |
@@ -1079,7 +1079,7 @@ SELECT count(*) AS jcrCalls FROM Span WHERE jcr.operation != '' FACET jcr.operat
 
 | エンティティ | 次を含む | 固定範囲 | ロールアップ |
 | ------------- | --------------------------------------------------------- | ---------------------------- | --------------------------------------------- |
-| `Transaction` | インバウンドサーバーリクエスト | `kind = Server` | 1m / 5m / 1h （[ パフォーマンス ](#12-performance)） |
+| `Transaction` | インバウンドサーバーリクエスト | `kind = Server` | 1m / 5m / 1h （[&#x200B; パフォーマンス &#x200B;](#12-performance)） |
 | `AppRequest` | インバウンドサーバー&#x200B;**および**&#x200B;件のメッセージコンシューマー要求 | `kind IN (Server, Consumer)` | — |
 | `Span` | あらゆるスパン（サーバー、クライアント、プロデューサー、消費者、社内） | — | — |
 
@@ -1194,13 +1194,13 @@ SELECT count(*) AS jcrCalls FROM Span WHERE jcr.operation != '' FACET jcr.operat
 
 [↑ トップへ戻る](#top)
 
-# チュートリアル
+&#x200B;# チュートリアル
 
 ## &#x200B;6. チュートリアル 1：最初のクエリ
 
 SQLへようこそ。 このチュートリアルでは、最初のクエリの作成、時間ウィンドウの制御、トレンドのプロット、フィルターとグループ化の結果、最初のグラフをダッシュボードに配置します。 各ステップは前のステップの上に構築されます。
 
-**このチュートリアルでは、** [開始する前](#before-you-begin) ・ [6.1 クエリイベント ](#61-query-events-with-select-from-and-limit) ・ [6.2 Aggregate](#62-aggregate-your-data) ・ [6.3いくつかの集計](#63-return-several-aggregates-at-once) ・ [6.4時間ウィンドウ ](#64-set-the-time-window) ・ [6.5時間](#65-plot-trends-with-timeseries) ・ [6.6 WHERE](#66-filter-with-where) ・ [6.7 FACET](#67-group-with-facet) ・ [6.8 ダッシュボードに保存](#68-save-your-query-to-a-dashboard)
+**このチュートリアルでは、** [開始する前](#before-you-begin) ・ [6.1 クエリイベント &#x200B;](#61-query-events-with-select-from-and-limit) ・ [6.2 Aggregate](#62-aggregate-your-data) ・ [6.3いくつかの集計](#63-return-several-aggregates-at-once) ・ [6.4時間ウィンドウ &#x200B;](#64-set-the-time-window) ・ [6.5時間](#65-plot-trends-with-timeseries) ・ [6.6 WHERE](#66-filter-with-where) ・ [6.7 FACET](#67-group-with-facet) ・ [6.8 ダッシュボードに保存](#68-save-your-query-to-a-dashboard)
 
 ### 始める前に
 
@@ -1225,7 +1225,7 @@ SELECT timestamp, service, name, duration FROM Transaction LIMIT 10
 行は最初の列で降順に並べ替えられるので、`timestamp`を最初に配置すると、最新のリクエストが上部に表示されます。
 
 >[!NOTE]
-> SQLに`SELECT *`がありません。 属性のリストは、結果を小さく読みやすいものにします。 [ データディクショナリ ](#5-data-dictionary)とエディターのオートコンプリートに、使用可能な内容が表示されます。
+> SQLに`SELECT *`がありません。 属性のリストは、結果を小さく読みやすいものにします。 [&#x200B; データディクショナリ &#x200B;](#5-data-dictionary)とエディターのオートコンプリートに、使用可能な内容が表示されます。
 
 ### 6.2 データの集計
 
@@ -1350,7 +1350,7 @@ SELECT count(*) AS requests FROM Transaction FACET service TIMESERIES AUTO LIMIT
 
 ### 次の手順
 
-- [ チュートリアル 2: データの制御](#7-tutorial-2-control-your-data)では、一意の値、パーセント、パーセンタイル、ワイルドカード、並べ替えを扱います。
+- [&#x200B; チュートリアル 2: データの制御](#7-tutorial-2-control-your-data)では、一意の値、パーセント、パーセンタイル、ワイルドカード、並べ替えを扱います。
 - [SQL参照](#4-SQL-reference)には、すべての句と関数があります。
 
 [↑ トップへ戻る](#top)
@@ -1489,7 +1489,7 @@ SELECT count(*) AS lastWeekSameHour FROM Transaction SINCE 169 hours ago UNTIL 1
 
 ### 次の手順
 
-- [ チュートリアル 3：ダッシュボードを進める](#8-tutorial-3-advance-your-dashboarding)では、条件付き集計、Apdex、レート、ヒストグラム、数式、変数をカバーしています。
+- [&#x200B; チュートリアル 3：ダッシュボードを進める](#8-tutorial-3-advance-your-dashboarding)では、条件付き集計、Apdex、レート、ヒストグラム、数式、変数をカバーしています。
 
 [↑ トップへ戻る](#top)
 
@@ -1497,7 +1497,7 @@ SELECT count(*) AS lastWeekSameHour FROM Transaction SINCE 169 hours ago UNTIL 1
 
 このチュートリアルでは、ユーザーエクスペリエンススコア、カウンター率、ケースグループ化、ヒストグラム、しきい値、セクション、数式ウィジェット、変数を含むKPI タイルなど、実稼動用グレードのダッシュボードのコンポーネントを構築します。
 
-**このチュートリアルでは、** [8.1 apdex](#81-score-user-experience-with-apdex) ・ [8.2 rate](#82-turn-counters-into-rates-with-rate) ・ [8.3 Cases](#83-group-values-into-cases-with-filter) ・ [8.4 ヒストグラム ](#84-build-a-latency-histogram) ・ [8.5 KPI タイルとセクション ](#85-build-kpi-tiles-and-sections) ・ [8.6 フォーミュラ ](#86-combine-queries-with-formula-widgets) ・ [8.7変数](#87-make-dashboards-reusable-with-variables) ・ [8.8をまとめる](#88-put-it-together)
+**このチュートリアルでは、** [8.1 apdex](#81-score-user-experience-with-apdex) ・ [8.2 rate](#82-turn-counters-into-rates-with-rate) ・ [8.3 Cases](#83-group-values-into-cases-with-filter) ・ [8.4 ヒストグラム &#x200B;](#84-build-a-latency-histogram) ・ [8.5 KPI タイルとセクション &#x200B;](#85-build-kpi-tiles-and-sections) ・ [8.6 フォーミュラ &#x200B;](#86-combine-queries-with-formula-widgets) ・ [8.7変数](#87-make-dashboards-reusable-with-variables) ・ [8.8をまとめる](#88-put-it-together)
 
 ### 8.1 `apdex`でユーザーエクスペリエンスをスコア化
 
@@ -1517,7 +1517,7 @@ SELECT apdex(duration, 500) AS apdex FROM Transaction FACET service TIMESERIES A
 
 ### 8.2 `rate`でカウンターをレートに変換
 
-[ データディクショナリ ](#53-curated-metric-entities)）ストアのカウンターエンティティ（✔）の合計は増加し続けています。 `rate(value)`は、1秒あたりの値に変換します。 `TIMESERIES`が必要です。集計は次のみである必要があります：
+[&#x200B; データディクショナリ &#x200B;](#53-curated-metric-entities)）ストアのカウンターエンティティ（✔）の合計は増加し続けています。 `rate(value)`は、1秒あたりの値に変換します。 `TIMESERIES`が必要です。集計は次のみである必要があります：
 
 ```sql
 SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIES AUTO
@@ -1686,11 +1686,11 @@ SELECT count(*) FROM Transaction FACET service LIMIT 200
 
 ### 8.8まとめる
 
-[ ダッシュボードのブループリント ](#11-dashboard-blueprints)で使用されているすべての構築ブロックが見つかります。しきい値、セクション、パーセンタイル、Apdex、レート、ケース列、ヒストグラム、数式、変数を含むKPI タイルです。 ブループリントでは、それらを組み合わせて、包括的なゴールデンシグナル、エラートリアージ、AEM、インフラストラクチャ、JVM ダッシュボードを作成する方法を示しています。
+[&#x200B; ダッシュボードのブループリント &#x200B;](#11-dashboard-blueprints)で使用されているすべての構築ブロックが見つかります。しきい値、セクション、パーセンタイル、Apdex、レート、ケース列、ヒストグラム、数式、変数を含むKPI タイルです。 ブループリントでは、それらを組み合わせて、包括的なゴールデンシグナル、エラートリアージ、AEM、インフラストラクチャ、JVM ダッシュボードを作成する方法を示しています。
 
 ### 次の手順
 
-- [ チュートリアル 4：高度な関数](#9-tutorial-4-advanced-functions)は、`stddev`、`derivative`、ランク `latest`、`percentOfTotal`、スパン構成および指標の検出をカバーしています。
+- [&#x200B; チュートリアル 4：高度な関数](#9-tutorial-4-advanced-functions)は、`stddev`、`derivative`、ランク `latest`、`percentOfTotal`、スパン構成および指標の検出をカバーしています。
 
 [↑ トップへ戻る](#top)
 
@@ -1811,7 +1811,7 @@ NRQLでは、「ホストごとの最大数の平均」などのサブクエリ�
 | 目標 | SQL アプローチ |
 | --------------------------------------- | ---------------------------------------------------------- |
 | グループごとの値を入力し、グループをランク付けします | `FACET group` + `ORDER BY alias` + `LIMIT` |
-| 2つの集計の比率 | [数式ウィジェット ](#86-combine-queries-with-formula-widgets) |
+| 2つの集計の比率 | [数式ウィジェット &#x200B;](#86-combine-queries-with-formula-widgets) |
 | ホストごとの値、次に「最悪のホスト」 | `FACET host ORDER BY alias DESC LIMIT 1` |
 | ホストあたりの平均時間 | `FACET host TIMESERIES AUTO`、シリーズを読む |
 
@@ -1823,18 +1823,18 @@ SELECT percentile(duration, 95) AS p95 FROM Transaction FACET host ORDER BY p95 
 
 ### 次の手順
 
-- 既製のクエリについては、[ クエリクッキーブック ](#10-query-cookbook)を参照してください。
-- [ ダッシュボードのブループリント ](#11-dashboard-blueprints)から完全なボードを作成します。
+- 既製のクエリについては、[&#x200B; クエリクッキーブック &#x200B;](#10-query-cookbook)を参照してください。
+- [&#x200B; ダッシュボードのブループリント &#x200B;](#11-dashboard-blueprints)から完全なボードを作成します。
 
 [↑ トップへ戻る](#top)
 
-# 例
+&#x200B;# 例
 
 ## 10. Query cookbook
 
 クックブックは、すぐに使用できるクエリのライブラリで、トピック別にグループ化されています。 各クエリの前には、**太字**&#x200B;で、最適なグラフの種類が表示されます。 タイムピッカーがウィンドウを制御するため、時間句は除外されます。
 
-**このドキュメントでは、** [10.1 Data discovery](#101-data-discovery) ・ [10.2 Throughput](#102-throughput) ・ [10.3 Latency](#103-latency) ・ [10.4 Errors](#104-errors) ・ [10.5 Apdex](#105-apdex--user-experience) ・ [10.6 サービスおよびホスト ](#106-services-hosts--instances) ・ [10.7 Dependencies](#107-downstream-dependencies) ・ [10.8](#108-aem-adobe-experience-manager) ・ ・ {AEM [10.9 インフラストラクチャ ](#109-infrastructure) ・ [10.10 JVM](#1010-jvm--runtime)
+**このドキュメントでは、** [10.1 Data discovery](#101-data-discovery) ・ [10.2 Throughput](#102-throughput) ・ [10.3 Latency](#103-latency) ・ [10.4 Errors](#104-errors) ・ [10.5 Apdex](#105-apdex--user-experience) ・ [10.6 サービスおよびホスト &#x200B;](#106-services-hosts--instances) ・ [10.7 Dependencies](#107-downstream-dependencies) ・ [10.8](#108-aem-adobe-experience-manager) ・ ・ &lbrace;AEM [10.9 インフラストラクチャ &#x200B;](#109-infrastructure) ・ [10.10 JVM](#1010-jvm--runtime)
 
 >[!TIP]
 > `'checkout'`や`'web-publish-01'`などのサンプル値を、テナントの実際の値に置き換えます。 以下のデータ検出クエリは、それらをリストしています。
@@ -2306,7 +2306,7 @@ SELECT average(value) AS avgValue, max(value) AS maxValue FROM MetricGauge WHERE
 SELECT average(value) AS heapMb FROM JvmHeapUsed FACET host TIMESERIES AUTO
 ```
 
-**表** – 使用されるヒープと制限（2つのウィジェットまたは数式 – [ ブループリント 11.7](#117-jvm-health-board)を参照）:
+**表** – 使用されるヒープと制限（2つのウィジェットまたは数式 – [&#x200B; ブループリント 11.7](#117-jvm-health-board)を参照）:
 
 ```sql
 SELECT latest(value) AS heapLimitMb FROM JvmHeapLimit FACET host LIMIT 50
@@ -2339,13 +2339,13 @@ SELECT latest(value) AS bytesUsed FROM MetricSum WHERE metric = 'jvm.memory.used
 | ブループリント | オーディエンス | ハイライト |
 | ------------------------------------------------------------------------------------ | --------------------- | ---------------------------------------------------------------------------------- |
 | [11.1 ゴールデンシグナル / SLO](#111-golden-signals--slo-board) | SRE、オンコール | しきい値、Apdex、エラー%、彩度を含むKPI タイル |
-| [11.2 エラーのトリアージ ](#112-error-triage-board) | オンコール | エラークラス、5xx ホットスポット、トレース IDで失敗したリクエスト |
-| [11.3 レイテンシの詳細ダイブ ](#113-latency-deep-dive-board) | パフォーマンスエンジニア | パーセンタイル、レイテンシーバケット、変動性、トランザクション構成、最も遅いトレース |
+| [11.2 エラーのトリアージ &#x200B;](#112-error-triage-board) | オンコール | エラークラス、5xx ホットスポット、トレース IDで失敗したリクエスト |
+| [11.3 レイテンシの詳細ダイブ &#x200B;](#113-latency-deep-dive-board) | パフォーマンスエンジニア | パーセンタイル、レイテンシーバケット、変動性、トランザクション構成、最も遅いトレース |
 | [11.4 ダウンストリームの依存関係](#114-downstream-dependencies-board) | サービス所有者 | アウトバウンド HTTP、DB、メッセージング、RPC |
 | [11.5 AEM オーサー/公開/ Dispatcher](#115-aem-author--publish--dispatcher-board) | AEM teams | 階層ごとのセクション、Sling/JSP/JCR、Dispatcherのロード |
 | [11.6 インフラストラクチャ容量](#116-infrastructure-capacity-board) | プラットフォーム/キャパシティ | CPU モード、メモリ、ディスク、ネットワーク レート、数式 |
 | [11.7 JVM Health](#117-jvm-health-board) | Java チーム | ヒープ %の数式、ホストおよびプールごとのヒープ、スレッド、JVM CPU |
-| [11.8 エグゼクティブ / NOC ウォール ](#118-executive--noc-wall-board) | NOC、リーダーシップ | KPI タイル、可用性の式、層別トラフィック、SLO メモ |
+| [11.8 エグゼクティブ / NOC ウォール &#x200B;](#118-executive--noc-wall-board) | NOC、リーダーシップ | KPI タイル、可用性の式、層別トラフィック、SLO メモ |
 | [11.9 Ratios &amp; Headroom](#119-ratios--headroom-board-formula-showcase) | 全員 | 数式ウィジェットショーケース |
 | [11.10 Service Explorer](#1110-service-explorer-variable-driven) | あらゆるチーム | 変数駆動の再利用可能 |
 
@@ -2679,7 +2679,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, percentage(*, WHERE s
 
 ### 11.5 AEM オーサー/パブリッシュ/Dispatcher ボード
 
-**目標：**は、従来のAEM AEM レイアウトを反映して、階層別にグループ化されたNew Relic操作ボードです。
+**目標：**&#x200B;は、従来のAEM AEM レイアウトを反映して、階層別にグループ化されたNew Relic操作ボードです。
 **セクションヘッダー** （`PUBLISH`、`AUTHOR`、`DISPATCHER`）、終了ウィジェットのタイトル（`- PUBLISH`/`- AUTHOR`）を使用して、カラーキューを取得します。
 
 ```text
@@ -2957,7 +2957,7 @@ SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIE
 SELECT rate(value) AS txBytesPerSec FROM NetworkTransmitRate FACET host TIMESERIES AUTO
 ```
 
-**W20 ・ 1つのホスト （数式）**&#x200B;のネットワーク I/Oの合計 – フォーミュラ ウィジェット、L、`bytes/s`、12×4。 数式は`FACET`できず、`rate()`は1つのホストにスコープを設定する必要があります（[ キュレートされた指標エンティティ ](#53-curated-metric-entities)を参照）。そのため、ホストを固定します – `web-publish-01`をW5の実際のホスト名に置き換えます。
+**W20 ・ 1つのホスト （数式）**&#x200B;のネットワーク I/Oの合計 – フォーミュラ ウィジェット、L、`bytes/s`、12×4。 数式は`FACET`できず、`rate()`は1つのホストにスコープを設定する必要があります（[&#x200B; キュレートされた指標エンティティ &#x200B;](#53-curated-metric-entities)を参照）。そのため、ホストを固定します – `web-publish-01`をW5の実際のホスト名に置き換えます。
 
 クエリ `netRx`:
 
@@ -3245,7 +3245,7 @@ SELECT average(value) AS v FROM JvmHeapUsed TIMESERIES AUTO
 limit - used
 ```
 
-**W5 ・ 1つのホストに対するネットワークのアウト/イン比率** – 数式、L （ホストを固定します。[ キュレートされた指標エンティティ ](#53-curated-metric-entities)を参照）
+**W5 ・ 1つのホストに対するネットワークのアウト/イン比率** – 数式、L （ホストを固定します。[&#x200B; キュレートされた指標エンティティ &#x200B;](#53-curated-metric-entities)を参照）
 
 クエリ `rx`:
 
@@ -3310,7 +3310,7 @@ SELECT count(*) AS v FROM Transaction TIMESERIES AUTO
 **目標：**&#x200B;任意のチームが&#x200B;_自分の_&#x200B;のサービスと環境をポイントできる1つのボード。
 
 >[!WARNING]
-> [ チュートリアル 3、ステップ 8.7](#87-make-dashboards-reusable-with-variables)の&#x200B;**現在のビルド制限**&#x200B;を参照してください。ウィジェット SQL内の`{{variables}}`は、まだプレビューまたは保存できません。 これが修正されるまで、各`{{…}}`をリテラル （`'checkout'`など）に置き換え、_重複_&#x200B;を使用してサービスごとにボードを複製します。 以下のデザインは、エンドツーエンドで代用がサポートされている場合に使用できます。
+> [&#x200B; チュートリアル 3、ステップ 8.7](#87-make-dashboards-reusable-with-variables)の&#x200B;**現在のビルド制限**&#x200B;を参照してください。ウィジェット SQL内の`{{variables}}`は、まだプレビューまたは保存できません。 これが修正されるまで、各`{{…}}`をリテラル （`'checkout'`など）に置き換え、_重複_&#x200B;を使用してサービスごとにボードを複製します。 以下のデザインは、エンドツーエンドで代用がサポートされている場合に使用できます。
 
 **変数**
 
@@ -3385,7 +3385,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, count(*) FILTER (WHER
 
 [↑ トップへ戻る](#top)
 
-# 操作
+&#x200B;# 操作
 
 ## &#x200B;12. パフォーマンス
 
@@ -3424,20 +3424,20 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, count(*) FILTER (WHER
 
 | メッセージ/症状 | 原因 | 修正 |
 | ---------------------------------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `Unknown entity 'X'` | タイプミスまたはカタログ以外の名前 | [ データディクショナリ ](#5-data-dictionary) / クエリガイドパネルを確認します。 |
-| `Attribute 'x' is not available on Entity` | そのエンティティに属していない属性（例：`CpuUtilization`の`duration`） | 属性と指標の属性をトレースします。[ データディクショナリ ](#5-data-dictionary)を参照してください。 |
+| `Unknown entity 'X'` | タイプミスまたはカタログ以外の名前 | [&#x200B; データディクショナリ &#x200B;](#5-data-dictionary) / クエリガイドパネルを確認します。 |
+| `Attribute 'x' is not available on Entity` | そのエンティティに属していない属性（例：`CpuUtilization`の`duration`） | 属性と指標の属性をトレースします。[&#x200B; データディクショナリ &#x200B;](#5-data-dictionary)を参照してください。 |
 | `Raw attributes cannot be mixed with aggregates; use FACET to group results` | `SELECT service, count(*)` | `SELECT count(*) … FACET service`. |
 | `FACET and TIMESERIES require an aggregate query` | FACET/TIMESERIESによるイベントクエリ | 集計を使用します。 |
 | `FACET supports at most five attributes` | > 5 ファセット | 削減。 |
 | `average requires a numeric attribute` | e.g. `average(service)` | `uniqueCount`/`latest`または数値属性を使用してください。 |
-| `rate requires TIMESERIES` / `rate is only available for counter measures` | `rate()`は時系列なし、またはゲージに含まれていません | `TIMESERIES AUTO`を追加します。✔ カウンターエンティティ （[ キュレートされた指標エンティティ ](#53-curated-metric-entities)）を使用します。ゲージには`derivative()`を使用します。 |
+| `rate requires TIMESERIES` / `rate is only available for counter measures` | `rate()`は時系列なし、またはゲージに含まれていません | `TIMESERIES AUTO`を追加します。✔ カウンターエンティティ （[&#x200B; キュレートされた指標エンティティ &#x200B;](#53-curated-metric-entities)）を使用します。ゲージには`derivative()`を使用します。 |
 | `rate cannot be combined with other aggregates` | `rate()`を持つ複数の項目 | ウィジェットごとに1つの`rate()`。数式と組み合わせる。 |
 | `percentOfTotal cannot be combined with TIMESERIES` | — | 時系列を削除します。 |
 | `apdex requires an entity with a status attribute` | 指標エンティティの`apdex` | `Transaction`/`Span`/`AppRequest`を使用します。 |
 | `ORDER BY 'x' must reference a selected value or alias` | 選択されていない項目による注文 | エイリアスで集計と順序を指定します。 |
 | `IN requires between 1 and 100 values` | — | `LIKE`を分割または使用します。 |
 | `Use IS NULL or IS NOT NULL for null comparisons` | `attr = NULL` | `IS NULL` の使用 |
-| `Unexpected character '{'` | 追加ウィジェットのプレビューまたは保存時の`{{variable}}` | [ チュートリアル 3、ステップ 8.7](#87-make-dashboards-reusable-with-variables)の制限を参照してください。 |
+| `Unexpected character '{'` | 追加ウィジェットのプレビューまたは保存時の`{{variable}}` | [&#x200B; チュートリアル 3、ステップ 8.7](#87-make-dashboards-reusable-with-variables)の制限を参照してください。 |
 | `Unexpected character ';'` / `'"'` | セミコロンまたは二重引用符 | `;`を削除します。一重引用符を使用します。 |
 | `Expected a positive duration such as 30 minutes` | `TIMESERIES 5m` | `TIMESERIES 5 minutes`を書き込みます。 |
 | `Time range cannot exceed 31 days` | ピッカー> 31 d | ウィンドウを絞り込みます。 |
@@ -3447,7 +3447,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, count(*) FILTER (WHER
 | `Unknown query name 'x' - must be one of: …` | 数式は見つからない名前を参照します | 名前を正確に一致させます（大文字と小文字を区別します）。 |
 | **保存に失敗しました** | ウィジェットクエリがサーバーサイドで無効です（多くの場合`{{var}}`） | 最近編集した各ウィジェットを開き、**実行**&#x200B;します。無効なウィジェットを修正または削除します。 |
 | _{{x}}_&#x200B;の値を選択 | 変数に選択範囲がありません | 変数バーで値を選択します。 |
-| _前回のアクティビティはありません…_ | ウィンドウに行がありません | ウィンドウを広げます。検出クエリ （[ データ検出](#101-data-discovery)）を使用してフィルターを確認します。 |
+| _前回のアクティビティはありません…_ | ウィンドウに行がありません | ウィンドウを広げます。検出クエリ （[&#x200B; データ検出](#101-data-discovery)）を使用してフィルターを確認します。 |
 | 線がドットに砕ける | データケイデンスよりも小さいバケット | `TIMESERIES AUTO` （≥ 2分）または棒グラフを使用します。 |
 | ファセットに空の文字列グループが表示される | 一部の行に属性がありません | 次の `WHERE attr != ''`.を追加します。 |
 | _この従来のSQL パネルは実行されていません_ | 古いraw-SQL ビルダーのパネル | SQLで編集→再構築。 |
@@ -3456,7 +3456,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, count(*) FILTER (WHER
 
 ## &#x200B;14. 付録
 
-**このドキュメントでは、** [14.1の制限](#141-limits) ・ [14.2書き出しファイル形式](#142-export-file-format) ・ [14.3 ワンページチートシート ](#143-one-page-cheat-sheet)
+**このドキュメントでは、** [14.1の制限](#141-limits) ・ [14.2書き出しファイル形式](#142-export-file-format) ・ [14.3 ワンページチートシート &#x200B;](#143-one-page-cheat-sheet)
 
 ### 14.1制限
 

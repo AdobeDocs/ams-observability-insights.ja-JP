@@ -35,7 +35,7 @@ SELECT timestamp, service, name, duration FROM Transaction LIMIT 10
 
 > **メモ**
 >
-> SQLに`SELECT *`がありません。 属性のリストは、結果を小さく読みやすいものにします。 [ データディクショナリ ](#data-dictionary)とエディターのオートコンプリートに、使用可能な内容が表示されます。
+> SQLに`SELECT *`がありません。 属性のリストは、結果を小さく読みやすいものにします。 [&#x200B; データディクショナリ &#x200B;](#data-dictionary)とエディターのオートコンプリートに、使用可能な内容が表示されます。
 
 ### データの集約
 
