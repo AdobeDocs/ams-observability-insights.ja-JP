@@ -1,9 +1,9 @@
 ---
 title: SQLを使用してクエリする方法
 description: Observability InsightsでSQL クエリを記述して実行する方法を説明します。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 148bf6480461a0109b221b8e7c2f9ab2035a7d68
 workflow-type: tm+mt
-source-wordcount: '554'
+source-wordcount: '557'
 ht-degree: 1%
 ---
 
@@ -15,7 +15,7 @@ ht-degree: 1%
 
 SQLを使用する最適な方法は、**Explore**&#x200B;を開いて、自分のデータで試すことです。
 
->[!TIP]
+> **ヒント**
 >
 > SQLは読み取り専用です。 データを変更または削除することはできず、すべてのクエリはテナントにスコープされます。
 
@@ -41,7 +41,7 @@ FROM Transaction SELECT count(*) FACET service
 
 これは、サービスごとにリクエストをカウントし、レポートするサービスを示します。
 
->[!IMPORTANT]
+> **重要**
 >
 > **ビルドする前に見つける。** 属性の可用性は、各サービスのインストルメント方法によって異なります。 最初に新しいテナントで[検出クエリ &#x200B;](#101-data-discovery)を実行し、実際にデータを含むサービス、ホスト、属性、指標を確認します。
 
@@ -92,6 +92,6 @@ flowchart LR
 | **探索** | グローバル時間ピッカー。 ピッカー範囲がアクティブな場合、`SINCE`/`UNTIL`は無視されます。 |
 | 明示的な範囲を持たない&#x200B;**API** | クエリ内の`SINCE`/`UNTIL`は、既定値は過去1時間です。 |
 
->[!NOTE]
+> **メモ**
 >
 > ピッカーはダッシュボードとエクスプローラーで勝利するため、このガイドでは通常`SINCE`がダッシュボードクエリから除外されます。 クエリの時間ピッカーを常に定義する必要があります。

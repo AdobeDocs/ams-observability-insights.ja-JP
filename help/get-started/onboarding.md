@@ -12,9 +12,9 @@ feature_v2:
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
     internal-label: Admin
-source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
+source-git-commit: d8c86bf4873a9eef6ce9bbcca5a545aa4e862e5f
 workflow-type: tm+mt
-source-wordcount: '533'
+source-wordcount: '518'
 ht-degree: 0%
 ---
 
@@ -65,6 +65,6 @@ Adobeは、Observability Insights APM Java プラグインを使用してAEM オ
 
 **基本を学ぶ** – このセクション。 アクセス、アカウントのプロビジョニング、監視範囲、データ保持について説明します。
 
-**[オブザーバビリティ インサイトを使用](../use-observability-insights.md)** – 日常調査のためのタスク指向ガイダンス。 症状がアプリケーションに対応している場合は、[&#x200B; アプリケーション &#x200B;](../applications.md)を使用します。遅いページ、エラースパイク、または不安定なトランザクションです。 ホスト レベルのリソースのプレッシャー（CPU、メモリ、ディスク、またはネットワーク）がアプリケーションで表示される内容を説明しているかどうかを判断する必要がある場合は、[&#x200B; ホスト &#x200B;](../hosts.md)を使用します。 ステップバイステップの調査フローは、[&#x200B; アプリケーションの問題の調査](../use-cases/investigate-application-issues.md)および[&#x200B; インフラストラクチャの問題の調査](../use-cases/investigate-infrastructure-issues.md)で利用できます。
+**[オブザーバビリティ インサイトを使用](../use-observability-insights.md)** – 日常調査のためのタスク指向ガイダンス。 症状がアプリケーションに対応している場合は、[&#x200B; アプリケーション &#x200B;](../applications.md)を使用します。遅いページ、エラースパイク、または不安定なトランザクションです。 ホスト レベルのリソースのプレッシャー（CPU、メモリ、ディスク、またはネットワーク）がアプリケーションで表示される内容を説明しているかどうかを判断する必要がある場合は、[&#x200B; ホスト &#x200B;](../hosts.md)を使用します。
 
 **[よくある質問](../troubleshooting/common-questions.md)** — アクティブなインシデントの際に、どこから始めればよいかわからなかったり、迅速な回答が必要な場合の、よくある質問とサポート指向のエントリポイント。

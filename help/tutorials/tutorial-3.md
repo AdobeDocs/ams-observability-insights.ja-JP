@@ -1,17 +1,15 @@
 ---
 title: 'チュートリアル 3: ダッシュボードを進める'
 description: Observability Insightsで変数、式、複数のウィジェットを使用してダッシュボードを構築します。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
 workflow-type: tm+mt
-source-wordcount: '902'
-ht-degree: 3%
+source-wordcount: '879'
+ht-degree: 4%
 ---
 
 ## チュートリアル 3: ダッシュボードを進める {#tutorial-3-advance-your-dashboarding}
 
 このチュートリアルでは、ユーザーエクスペリエンススコア、カウンター率、ケースグループ化、ヒストグラム、しきい値、セクション、数式ウィジェット、変数を含むKPI タイルなど、実稼動用グレードのダッシュボードのコンポーネントを構築します。
-
-**このチュートリアルでは、** [8.1 apdex](#81-score-user-experience-with-apdex) ・ [8.2 rate](#82-turn-counters-into-rates-with-rate) ・ [8.3 Cases](#83-group-values-into-cases-with-filter) ・ [8.4 ヒストグラム &#x200B;](#84-build-a-latency-histogram) ・ [8.5 KPI タイルとセクション &#x200B;](#85-build-kpi-tiles-and-sections) ・ [8.6 フォーミュラ &#x200B;](#86-combine-queries-with-formula-widgets) ・ [8.7変数](#87-make-dashboards-reusable-with-variables) ・ [8.8をまとめる](#88-put-it-together)
 
 ### `apdex`でユーザーエクスペリエンスをスコア化
 
@@ -29,7 +27,7 @@ SELECT apdex(duration, 500) AS apdex FROM Transaction FACET service TIMESERIES A
 
 しきい値`0 → Red`、`0.7 → Amber`、`0.85 → Green`を持つ&#x200B;**Number** ウィジェットに入れます。 最も高いマッチングバンドが勝つので、低いスコアは赤のままです。
 
-### 8.2 `rate`でカウンターをレートに変換
+### `rate`でカウンターをレートに変換
 
 [&#x200B; データディクショナリ &#x200B;](#53-curated-metric-entities)）ストアのカウンターエンティティ（✔）の合計は増加し続けています。 `rate(value)`は、1秒あたりの値に変換します。 `TIMESERIES`が必要です。集計は次のみである必要があります：
 
@@ -41,7 +39,7 @@ SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIE
 SELECT rate(value) AS writeBytesPerSec FROM DiskWriteRate FACET host, device TIMESERIES AUTO LIMIT 10
 ```
 
->[!WARNING]
+> **警告**
 >
 > 常に`rate()`を`host` （およびディスクの場合は`device`）によってファセットするか、1つのホストにフィルター処理します。 これがなければ、異なるホストからの読み取りが混在し、結果は意味がありません。
 
@@ -192,7 +190,7 @@ SELECT count(*) FROM Transaction FACET service LIMIT 200
 
 テナントまたはタイムピッカーが変更されたときにオプションが更新され、アルファベット順に並べ替えられます。 現在の選択が無効になると、最初の値（単一選択）またはすべての値（複数選択）が自動的に選択されます。 変数のクエリは、他の変数を参照できません。
 
->[!WARNING]
+> **警告**
 >
 > **現在のビルド制限。** ダッシュボードグリッドで代用が行われますが、**ウィジェットを追加** プレビューと&#x200B;**サーバーサイドの保存チェック**&#x200B;は未加工の`{{name}}` トークンを受け取り、`Unexpected character '{'`で却下します。 実際の内容：
 >
@@ -203,4 +201,4 @@ SELECT count(*) FROM Transaction FACET service LIMIT 200
 
 ### まとめる
 
-[&#x200B; ダッシュボードのブループリント &#x200B;](#dashboard-blueprints)で使用されているすべての構築ブロックが見つかります。しきい値、セクション、パーセンタイル、Apdex、レート、ケース列、ヒストグラム、数式、変数を含むKPI タイルです。 ブループリントでは、それらを組み合わせて、包括的なゴールデンシグナル、エラートリアージ、AEM、インフラストラクチャ、JVM ダッシュボードを作成する方法を示しています。
+[&#x200B; ダッシュボードのブループリント &#x200B;](../examples/dashboard-blueprint.md)で使用されているすべての構築ブロックが見つかります。しきい値、セクション、パーセンタイル、Apdex、レート、ケース列、ヒストグラム、数式、変数を含むKPI タイルです。 ブループリントでは、それらを組み合わせて、包括的なゴールデンシグナル、エラートリアージ、AEM、インフラストラクチャ、JVM ダッシュボードを作成する方法を示しています。

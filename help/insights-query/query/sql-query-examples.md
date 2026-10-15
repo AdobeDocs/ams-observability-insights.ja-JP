@@ -1,9 +1,9 @@
 ---
 title: SQL クエリの例
 description: Observability Insights テレメトリのSQL クエリの例を確認します。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 4ad45ae5cbb2a7b348fdad1cd2681a72be12f5eb
 workflow-type: tm+mt
-source-wordcount: '306'
+source-wordcount: '311'
 ht-degree: 10%
 ---
 
@@ -22,10 +22,9 @@ FROM Transaction SELECT percentile(duration, 95) AS p95 FACET service TIMESERIES
 
 これにより、折れ線グラフでサービスごとに1行が生成され、デフォルトでは最もビジーな10のサービスが表示されます。
 
-以下の各例をクリックして展開します。
+### インバウンドリクエストの基本的なクエリ
 
-<details>
-<summary><strong> インバウンドリクエストの基本クエリ </strong></summary>
++++クエリを表示
 
 すべてのインバウンドリクエストの平均応答時間（ミリ秒単位）:
 
@@ -33,10 +32,11 @@ FROM Transaction SELECT percentile(duration, 95) AS p95 FACET service TIMESERIES
 SELECT average(duration) FROM Transaction
 ```
 
-</details>
++++
 
-<details>
-<summary><strong> ドットを含む属性名</strong></summary>
+### ドットを含む属性名
+
++++クエリを表示
 
 ドット付きの名前は引用符で囲む必要はありません。
 
@@ -44,10 +44,11 @@ SELECT average(duration) FROM Transaction
 SELECT count(*) FROM Transaction WHERE http.statusCode >= 500 FACET http.route
 ```
 
-</details>
++++
 
-<details>
-<summary><strong>複数の列を返すクエリ </strong></summary>
+### 複数の列を返すクエリ
+
++++クエリを表示
 
 1つのクエリ内の複数の集計がテーブルの列になります。
 
@@ -55,10 +56,11 @@ SELECT count(*) FROM Transaction WHERE http.statusCode >= 500 FACET http.route
 SELECT count(*) AS requests, average(duration) AS avgMs, percentile(duration, 95) AS p95, max(duration) AS maxMs FROM Transaction FACET service
 ```
 
-</details>
++++
 
-<details>
-<summary>1回のパスで<strong>条件付き集計</strong></summary>
+### 1回のパスでの条件付き集計
+
++++クエリを表示
 
 合計、エラー、5xxを並べて表示：
 
@@ -66,10 +68,11 @@ SELECT count(*) AS requests, average(duration) AS avgMs, percentile(duration, 95
 SELECT count(*) AS total, count(*) FILTER (WHERE status = 'Error') AS errors, count(*) FILTER (WHERE http.statusCode >= 500) AS http5xx FROM Transaction FACET service
 ```
 
-</details>
++++
 
-<details>
-<summary><strong> キュレートされた指標のクエリ </strong></summary>
+### キュレートされた指標のクエリ
+
++++クエリを表示
 
 ホストあたりの時間の平均CPU:
 
@@ -77,10 +80,11 @@ SELECT count(*) AS total, count(*) FILTER (WHERE status = 'Error') AS errors, co
 SELECT average(value) AS cpu FROM CpuUtilization FACET host TIMESERIES AUTO
 ```
 
-</details>
++++
 
-<details>
-<summary><strong>任意のOpenTelemetry メトリックを名前</strong>でクエリしています</summary>
+### 任意のOpenTelemetry指標を名前でクエリする
+
++++クエリを表示
 
 キュレーションされたエンティティを持たない指標には`MetricGauge` / `MetricSum`を使用します：
 
@@ -88,7 +92,7 @@ SELECT average(value) AS cpu FROM CpuUtilization FACET host TIMESERIES AUTO
 SELECT latest(value) AS bytesUsed FROM MetricSum WHERE metric = 'jvm.memory.used' FACET host, pool
 ```
 
-</details>
++++
 
 <a id="what-sql-doesnt-do"></a>
 
@@ -97,15 +101,15 @@ SELECT latest(value) AS bytesUsed FROM MetricSum WHERE metric = 'jvm.memory.used
 SQLは意図的に小さい。 これにより、クエリを安全に、迅速に、テナント分離できます。 これらの機能のいずれかが必要な場合は、代替を使用します。
 
 | 機能 | ステータス | 代替 |
-| ------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------ |
+| ------------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `SELECT *` | サポート対象外 | 必要な属性をリストします：`SELECT timestamp, name, duration, traceId …`。 |
 | 生の属性と集計の混在 | サポート対象外 | `FACET attr`または`latest(attr)` / `earliest(attr)`を使用してください。 |
 | `SELECT`の計算（`a - b`、`count(*) / 60`） | サポート対象外 | **式** ウィジェット （ダッシュボード）。 |
 | 結合とサブクエリ | サポート対象外 | **式** ウィジェット、または2つのウィジェットを並べて表示します。 |
 | `HAVING` | サポート対象外 | `ORDER BY alias` + `LIMIT`. |
 | `COMPARE WITH` | サポート対象外 | 時間ピッカーを変更するか、2つのウィジェットを別のタブに配置します。 |
-| `FACET CASES` | サポート対象外 | 1つのケースにつき1つの`count(*) FILTER (WHERE …)`列（チュートリアル 3[&#128279;](#83-group-values-into-cases-with-filter)を参照）。 |
-| `histogram()` | サポート対象外 | バケット化された`FILTER`列（[&#x200B; チュートリアル 3](#84-build-a-latency-histogram)を参照）。 |
+| `FACET CASES` | サポート対象外 | 1つのケースにつき1つの`count(*) FILTER (WHERE …)`列（チュートリアル 3[&#128279;](../../tutorials/tutorial-3.md#group-values-into-cases-with-filter)を参照）。 |
+| `histogram()` | サポート対象外 | バケット化された`FILTER`列（[&#x200B; チュートリアル 3](../../tutorials/tutorial-3.md#build-a-latency-histogram)を参照）。 |
 | `uniques()` / `keyset()` | サポート対象外 | `FACET attr LIMIT n`には個別の値が一覧表示されます。 検出クエリには、指標と入力された属性が一覧表示されます。 |
 | `RLIKE` （正規表現） | サポート対象外 | `LIKE` / `NOT LIKE` （ワイルドカード `%`および`_`）、または`IN (…)`。 |
 | コメント （`--`、`//`、`/* */`） | サポート対象外 | ウィジェットのタイトルまたは&#x200B;**テキスト** ウィジェットにメモを配置します。 |
