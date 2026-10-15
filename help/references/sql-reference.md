@@ -1,17 +1,15 @@
 ---
 title: SQL参照
 description: Observability InsightsでサポートされているSQLの構文、句および関数を参照します。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
 workflow-type: tm+mt
-source-wordcount: '1492'
-ht-degree: 9%
+source-wordcount: '1505'
+ht-degree: 12%
 ---
 
 ## SQL参照 {#sql-reference}
 
 このリファレンスでは、SQLの構文、句、関数および演算子について説明します。 各エントリを展開して、詳細と例を確認します。
-
-**このドキュメントでは、** [&#x200B; クエリコンポーネント &#x200B;](#41-query-components) ・ [必要な句](#42-required-clauses) ・ [&#x200B; オプション句](#43-optional-clauses) ・ [&#x200B; アグリゲータ関数](#44-aggregator-functions) ・ [演算子と条件](#45-operators-and-conditions) ・ [&#x200B; タイプ処理](#46-type-handling-blank-vs-null) ・ [SQLからSQL](#47-translate-sql-to-sql) ・ [既存のダッシュボードの読み込み](#48-importing-existing-dashboards-to-insights)
 
 ### クエリコンポーネント
 
@@ -31,14 +29,15 @@ FROM   <Entity>
 <unit>        := second | seconds | minute | minutes | hour | hours | day | days | week | weeks
 ```
 
->[!NOTE]
+> **メモ**
 >
 > 上記の`--`注釈はドキュメントのみです。 SQL自体はコメントを受け付けません。
 
 ### 必要な句
 
-<details>
-<summary><code>SELECT</code> – 返される値</summary>
+#### `SELECT` – 返される値
+
++++詳細を表示
 
 `SELECT`には、**生の属性** （イベントクエリ）または&#x200B;**アグリゲーター関数** （集計クエリ）が一覧表示されます。 この2つを混ぜることはできません。
 
@@ -64,15 +63,16 @@ SELECT count(*) AS requests, average(duration) AS avgMs, max(duration) AS maxMs 
 ルール：
 
 - `SELECT *`はサポートされていません。 必要な属性をリストアップします。
-- 属性または集計（`sum(a) / count(*)`）間の計算はサポートされていません。 [数式ウィジェット &#x200B;](#86-combine-queries-with-formula-widgets)を使用します。
+- 属性または集計（`sum(a) / count(*)`）間の計算はサポートされていません。 [数式ウィジェット ](#86-combine-queries-with-formula-widgets)を使用します。
 - 属性と集計の混在が&#x200B;_Raw属性と集計を混在させることはできません。結果をグループ化するにはFACETを使用してください_。
 
-</details>
++++
 
-<details>
-<summary><code>FROM</code> — クエリするエンティティ</summary>
+#### `FROM` — クエリするエンティティ
 
-`FROM`さんが、[&#x200B; データディクショナリ &#x200B;](#data-dictionary)から&#x200B;**one** エンティティを正確に名前を付けます。 エンティティ名では大文字と小文字が区別されません。
++++詳細を表示
+
+`FROM`さんが、[ データディクショナリ ](#data-dictionary)から&#x200B;**one** エンティティを正確に名前を付けます。 エンティティ名では大文字と小文字が区別されません。
 
 ```sql
 SELECT count(*) FROM Transaction
@@ -82,14 +82,15 @@ SELECT count(*) FROM Transaction
 FROM Span SELECT count(*) FACET kind
 ```
 
-各エンティティは、固定された範囲を持ちます。 例えば、`Transaction`は常にサーバーのスパンであり、`CpuUtilization`は常に`value`がパーセントに変換されたCPU ビジー指標です。 1つのクエリで複数のエンティティをクエリすることはできません。 エンティティを結合するには、[数式ウィジェット &#x200B;](#86-combine-queries-with-formula-widgets)を使用します。
+各エンティティは、固定された範囲を持ちます。 例えば、`Transaction`は常にサーバーのスパンであり、`CpuUtilization`は常に`value`がパーセントに変換されたCPU ビジー指標です。 1つのクエリで複数のエンティティをクエリすることはできません。 エンティティを結合するには、[数式ウィジェット ](#86-combine-queries-with-formula-widgets)を使用します。
 
-</details>
++++
 
 ### オプションの句
 
-<details>
-<summary><code>AS</code> – 列にラベルを付けます</summary>
+#### `AS` – 列にラベルを付けます
+
++++詳細を表示
 
 `AS`を使用して、集計または属性に読みやすい名前を付けます。 エイリアスは、列ヘッダー、凡例ラベルおよび`ORDER BY`で参照する名前になります。
 
@@ -103,10 +104,11 @@ SELECT count(*) AS requests, percentile(duration, 95) AS p95 FROM Transaction FA
 SELECT percentile(duration, 95) AS 'p95 latency (ms)' FROM Transaction TIMESERIES AUTO
 ```
 
-</details>
++++
 
-<details>
-<summary><code>FACET</code> — グループ結果</summary>
+#### `FACET` — グループ結果
+
++++詳細を表示
 
 `FACET`は、SQL `GROUP BY`のように、最大&#x200B;**5**&#x200B;属性で結果をグループ化します。
 
@@ -127,10 +129,11 @@ SELECT count(*) AS requests FROM Transaction FACET service TIMESERIES AUTO LIMIT
 
 ファセットの値には、文字列または数値を使用できます。 空白の文字列は、独自のグループを形成します。 `WHERE attr != ''`でそれらを除外します。
 
-</details>
++++
 
-<details>
-<summary><code>FILTER</code> – 条件付き集計</summary>
+#### `FILTER` – 条件付き集計
+
++++詳細を表示
 
 任意の集計に`FILTER (WHERE condition)`を追加して、行のサブセットで計算します。 これにより、1回のパスで複数の条件を比較できます。
 
@@ -140,10 +143,11 @@ SELECT count(*) AS total, count(*) FILTER (WHERE status = 'Error') AS errors, pe
 
 `FILTER`は、`apdex`、`rate`または`derivative`では使用できません。 `percentage`は既に独自の条件を使用しています。
 
-</details>
++++
 
-<details>
-<summary><code>LIMIT</code> – 行数または系列の数</summary>
+#### `LIMIT` – 行数または系列の数
+
++++詳細を表示
 
 `LIMIT`は正の整数を取ります。 5,000を超える値は5,000に固定されます。
 
@@ -162,10 +166,11 @@ SELECT count(*) FROM Transaction FACET urlPath LIMIT 50
 >
 > クエリ駆動変数と高基数ファセット （`urlPath`、`traceId`、`jcr.path`、`url`）には常に`LIMIT`を設定します。
 
-</details>
++++
 
-<details>
-<summary><code>ORDER BY</code> – 結果の並べ替え</summary>
+#### `ORDER BY` – 結果の並べ替え
+
++++詳細を表示
 
 `ORDER BY`は、**選択したエイリアスまたは選択した属性**&#x200B;で並べ替えます。 既定の方向は`DESC`です。
 
@@ -184,10 +189,11 @@ SELECT count(*) AS requests, percentile(duration, 95) AS p95 FROM Transaction FA
 - 選択されていない項目を参照すると、_ORDER BY &#39;x&#39;で失敗します。選択した値またはエイリアス_&#x200B;を参照する必要があります。
 - `TIMESERIES` クエリに`ORDER BY`を追加しないでください。 チャートで必要な時間の順序が上書きされます。
 
-</details>
++++
 
-<details>
-<summary><code>SINCE</code> — ウィンドウの開始</summary>
+#### `SINCE` — ウィンドウの開始
+
++++詳細を表示
 
 `SINCE n unit [AGO]`は、ウィンドウの開始位置を設定します。 単位：`second`、`minute`、`hour`、`day`、`week` （単数または複数形）。 `AGO`はオプションです。
 
@@ -203,10 +209,11 @@ SELECT count(*) FROM Transaction SINCE 6 hours ago
 >
 > ダッシュボードとエクスプローラーで、**時間ピッカーが** `SINCE`と`UNTIL`を上書きします。 [時間ウィンドウの優先順位](#time-window-precedence)を参照してください。
 
-</details>
++++
 
-<details>
-<summary><code>TIMESERIES</code> – 時間の経過に伴うプロット</summary>
+#### `TIMESERIES` – 時間の経過に伴うプロット
+
++++詳細を表示
 
 `TIMESERIES`は、折れ線グラフ、エリア グラフまたは棒グラフの準備ができている時間バケットごとに1行（ファセット値ごとに）を返します。
 
@@ -234,10 +241,11 @@ SELECT count(*) FROM Transaction TIMESERIES 1 hour SINCE 1 day ago
 >
 > ダッシュボードでは`AUTO`を優先します。 タイムピッカーが何と言っても約120 ポイントを保持します。 また、ホスト指標は約90秒ごとにスクレイピングされるので、ホストごとに「粉々になる」ことも回避できます。
 
-</details>
++++
 
-<details>
-<summary><code>UNTIL</code> — ウィンドウの終わり</summary>
+#### `UNTIL` — ウィンドウの終わり
+
++++詳細を表示
 
 `UNTIL NOW` （デフォルト）または`UNTIL n unit [AGO]`。 `SINCE`と組み合わせて、過去のウィンドウを表示します。
 
@@ -247,10 +255,11 @@ SELECT count(*) AS yesterday FROM Transaction SINCE 2 days ago UNTIL 1 day ago
 
 `SINCE`は`UNTIL`より前である必要があります。 それ以外の場合、クエリは&#x200B;_SINCEで失敗します。これは、_&#x200B;以前である必要があります。
 
-</details>
++++
 
-<details>
-<summary><code>WHERE</code> – 行のフィルタリング</summary>
+#### `WHERE` – 行のフィルタリング
+
++++詳細を表示
 
 `WHERE`は、条件に一致する行のみを保持します。 条件を`AND`、`OR`、`NOT`および括弧と組み合わせます。 [演算子と条件](#45-operators-and-conditions)を参照してください。
 
@@ -260,7 +269,7 @@ SELECT count(*) FROM Transaction WHERE service = 'checkout' AND (status = 'Error
 
 `WHERE`は1回のみ表示できます。 「すべての条件を入れる」。
 
-</details>
++++
 
 ### 集計関数
 
@@ -283,8 +292,9 @@ SELECT count(*) FROM Transaction WHERE service = 'checkout' AND (status = 'Error
 
 <a id="fn-apdex"></a>
 
-<details>
-<summary><code>apdex(attribute, T)</code></summary>
+#### `apdex(attribute, T)`
+
++++詳細を表示
 
 属性の単位のしきい値`T`を使用して、[Apdex](https://www.apdex.org/)のスコアを0 （不満）から1 （満足）に計算します（`duration`のミリ秒）。
 
@@ -302,12 +312,13 @@ SELECT apdex(duration, 500) AS apdex FROM Transaction FACET service
 - `T`は0より大きくなければなりません。 `FILTER`は許可されていません。
 - `Transaction`の`apdex(duration, 500)`は、長いウィンドウでロールアップ高速化されます。
 
-</details>
++++
 
 <a id="fn-average"></a>
 
-<details>
-<summary><code>average(attribute)</code> / <code>avg(attribute)</code></summary>
+#### `average(attribute)` / `avg(attribute)`
+
++++詳細を表示
 
 数値属性の算術平均。
 
@@ -315,12 +326,13 @@ SELECT apdex(duration, 500) AS apdex FROM Transaction FACET service
 SELECT average(duration) AS avgMs FROM Transaction FACET service TIMESERIES AUTO
 ```
 
-</details>
++++
 
 <a id="fn-count"></a>
 
-<details>
-<summary><code>count(*)</code> / <code>count(attribute)</code></summary>
+#### `count(*)` / `count(attribute)`
+
++++詳細を表示
 
 - `count(*)`は行をカウントします。
 - `count(attribute)`は、属性が&#x200B;**NULL**&#x200B;でない行をカウントします。 文字列属性の場合、欠落している値はNULLではなく空白（`''`）であるため、まだカウントされます（[型処理](#46-type-handling-blank-vs-null)を参照）。
@@ -329,12 +341,13 @@ SELECT average(duration) AS avgMs FROM Transaction FACET service TIMESERIES AUTO
 SELECT count(*) AS requests, count(http.statusCode) AS withStatusCode FROM Transaction
 ```
 
-</details>
++++
 
 <a id="fn-derivative"></a>
 
-<details>
-<summary><code>derivative(attribute)</code></summary>
+#### `derivative(attribute)`
+
++++詳細を表示
 
 連続するバケット間の1秒あたりの`average(attribute)`の変更：（このバケット−前のバケット）÷ バケットの秒数。 結果は否定的になる可能性があります。 ゲージで使用して、値が増加しているか減少しているかを確認します。
 
@@ -345,12 +358,13 @@ SELECT derivative(value) AS heapGrowthPerSec FROM JvmHeapUsed WHERE host = 'publ
 - `TIMESERIES`が必要です。**のみ**&#x200B;集計である必要があります。 `FILTER`は許可されていません。
 - 最初のバケットには先行タスクがありません。
 
-</details>
++++
 
 <a id="fn-latest"></a>
 
-<details>
-<summary><code>latest(attribute [, rankAttribute])</code> / <code>earliest(…)</code></summary>
+#### `latest(attribute [, rankAttribute])` / `earliest(…)`
+
++++詳細を表示
 
 - `latest(attr)`は、最新の行の値を返します。 `earliest(attr)`は、最も古い行の値を返します。
 - 2番目の引数を指定すると、行は時間ではなく、その属性によって選択されます。 `latest(traceId, duration)`は、**最も遅い**&#x200B;要求のトレース IDを返します。 `earliest(traceId, duration)`は最速を返します。
@@ -363,12 +377,13 @@ SELECT latest(value) AS current FROM MemoryUtilization FACET host
 SELECT max(duration) AS slowestMs, latest(traceId, duration) AS slowestTrace FROM Transaction FACET name ORDER BY slowestMs DESC LIMIT 10
 ```
 
-</details>
++++
 
 <a id="fn-minmax"></a>
 
-<details>
-<summary><code>max(attribute)</code> / <code>min(attribute)</code></summary>
+#### `max(attribute)` / `min(attribute)`
+
++++詳細を表示
 
 最大値または最小値。 数字、文字列、タイムスタンプで動作します。
 
@@ -376,12 +391,13 @@ SELECT max(duration) AS slowestMs, latest(traceId, duration) AS slowestTrace FRO
 SELECT min(duration) AS fastestMs, max(duration) AS slowestMs, max(timestamp) AS lastSeen FROM Transaction FACET service
 ```
 
-</details>
++++
 
 <a id="fn-percentage"></a>
 
-<details>
-<summary><code>percentage(*, WHERE condition)</code></summary>
+#### `percentage(*, WHERE condition)`
+
++++詳細を表示
 
 `condition`に一致する行のシェア （0 ～ 100）。
 
@@ -395,12 +411,13 @@ SELECT percentage(*, WHERE duration > 2000) AS slowPct FROM Transaction
 
 `percentage`には独自の条件があるため、`FILTER`は使用されません。
 
-</details>
++++
 
 <a id="fn-percentile"></a>
 
-<details>
-<summary><code>percentile(attribute, p)</code></summary>
+#### `percentile(attribute, p)`
+
++++詳細を表示
 
 おおよそのp番目のパーセンタイル（`0 < p ≤ 100`）。 レベルごとに1つの`percentile`を使用してください。
 
@@ -410,12 +427,13 @@ SELECT percentile(duration, 50) AS p50, percentile(duration, 95) AS p95, percent
 
 `Transaction`のp50、p95、p99は、長いウィンドウでロールアップ高速化されます。
 
-</details>
++++
 
 <a id="fn-percentoftotal"></a>
 
-<details>
-<summary><code>percentOfTotal(attribute)</code></summary>
+#### `percentOfTotal(attribute)`
+
++++詳細を表示
 
 数値属性の&#x200B;**合計合計**&#x200B;の各ファセット行のシェア。 行は合計で100%になります。
 
@@ -425,12 +443,13 @@ SELECT sum(duration) AS totalMs, percentOfTotal(duration) AS shareOfTime FROM Tr
 
 `TIMESERIES`では許可されていません。
 
-</details>
++++
 
 <a id="fn-rate"></a>
 
-<details>
-<summary><code>rate(attribute)</code></summary>
+#### `rate(attribute)`
+
++++詳細を表示
 
 **累積カウンター**&#x200B;の1秒あたりの率。 各バケットで、`rate`はシリーズごとに最も高いカウンター読み取りを取り、前のバケットと比較します。 カウンターリセットは0で実行され、最初のバケットは0です。
 
@@ -438,19 +457,20 @@ SELECT sum(duration) AS totalMs, percentOfTotal(duration) AS shareOfTime FROM Tr
 SELECT rate(value) AS bytesPerSec FROM NetworkReceiveRate FACET host TIMESERIES AUTO
 ```
 
-- カウンターのエンティティ（[&#x200B; データディクショナリ &#x200B;](#53-curated-metric-entities)の✔とマークされている）でのみ機能します。
+- カウンターのエンティティ（[ データディクショナリ ](#53-curated-metric-entities)の✔とマークされている）でのみ機能します。
 - `TIMESERIES`が必要です。**のみ**&#x200B;集計である必要があります。 `FILTER`は許可されていません。
 
 >[!WARNING]
 >
 > 常に`FACET host`、または単一のホストにフィルターを適用します。 多くのホストでファセットされていない`rate()`は、異なるホストのカウンターを比較し、意味のない数値を生成します。 ディスク カウンターはデバイスごとに存在するため、`FACET host, device`が最も正確です。
 
-</details>
++++
 
 <a id="fn-stddev"></a>
 
-<details>
-<summary><code>stddev(attribute)</code></summary>
+#### `stddev(attribute)`
+
++++詳細を表示
 
 サンプル標準偏差。 `average`と併用して、待ち時間の一貫性を判断します。
 
@@ -458,12 +478,13 @@ SELECT rate(value) AS bytesPerSec FROM NetworkReceiveRate FACET host TIMESERIES 
 SELECT average(duration) AS avgMs, stddev(duration) AS stddevMs FROM Transaction FACET name LIMIT 20
 ```
 
-</details>
++++
 
 <a id="fn-sum"></a>
 
-<details>
-<summary><code>sum(attribute)</code></summary>
+#### `sum(attribute)`
+
++++詳細を表示
 
 数値属性の合計。
 
@@ -471,12 +492,13 @@ SELECT average(duration) AS avgMs, stddev(duration) AS stddevMs FROM Transaction
 SELECT sum(callCount) AS calls FROM SpanBreakdown FACET segment LIMIT 20
 ```
 
-</details>
++++
 
 <a id="fn-uniquecount"></a>
 
-<details>
-<summary><code>uniqueCount(attribute)</code></summary>
+#### `uniqueCount(attribute)`
+
++++詳細を表示
 
 個別の値の&#x200B;**exact**&#x200B;個。
 
@@ -484,7 +506,7 @@ SELECT sum(callCount) AS calls FROM SpanBreakdown FACET segment LIMIT 20
 SELECT uniqueCount(host) AS hosts, uniqueCount(traceId) AS traces FROM Transaction FACET service
 ```
 
-</details>
++++
 
 機能制約の概要：
 
@@ -516,7 +538,7 @@ SELECT uniqueCount(host) AS hosts, uniqueCount(traceId) AS traces FROM Transacti
 SELECT count(*) FROM Transaction WHERE (status = 'Error' OR duration > 2000) AND NOT host LIKE '%dispatcher%' AND http.method IN ('GET', 'POST')
 ```
 
->[!WARNING]
+> **警告**
 >
 > `attr = NULL`はエラーです。 `attr IS NULL` の使用
 
@@ -524,7 +546,7 @@ SELECT count(*) FROM Transaction WHERE (status = 'Error' OR duration > 2000) AND
 
 すべての属性には、カタログ内の型（`string`、`number`、`boolean`、または`timestamp`）があります。 SQL型チェック関数を指定します（例：`average(service)`は拒否されます）。 タイプ変換関数は必要ないか、使用できます。
 
->[!IMPORTANT]
+> **重要**
 >
 > **空白vs NULL。** ほとんどの文字列属性はOpenTelemetry属性マップから取得されます。このマップでは、_missing_ キーは`NULL`ではなく`''`空の文字列として読み取られます。 属性を持つスパンのみを保持するには、`IS NOT NULL`ではなく&#x200B;**`attr != ''`**&#x200B;を使用します。 `http.statusCode`などの数値属性は、欠席時に真の`NULL`となるため、`IS NOT NULL`が機能します。
 
@@ -555,23 +577,23 @@ SELECT count(*) AS jcrCalls FROM Span WHERE jcr.operation != '' FACET jcr.operat
 既存のクエリを知っている場合は、次に移行の詳細を示します
 
 | 既存のクエリ | SQL | メモ |
-| ------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------ |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | `FROM Transaction SELECT count(*)` | 同上 | `FROM` ファースト注文がサポートされています |
 | `SINCE 1 day ago` | 同上 | ダッシュボードでは無視され、ピッカーが勝ちます |
 | `TIMESERIES AUTO` / `MAX` / `5 minutes` | 同上 | `AUTO`階は2分です |
-| `FACET appName` | `FACET appName` / `FACET service` |                                                              |
-| `percentage(count(*), WHERE error IS true)` | `percentage(*, WHERE status = 'Error')` |                                                              |
+| `FACET appName` | `FACET appName` / `FACET service` |                                                                                  |
+| `percentage(count(*), WHERE error IS true)` | `percentage(*, WHERE status = 'Error')` |                                                                                  |
 | `filter(count(*), WHERE …)` | `count(*) FILTER (WHERE …)` | SQL標準フォーム |
 | `apdex(duration, t: 0.5)` | `apdex(duration, 500)` | `duration`さんは&#x200B;**ms**&#x200B;にいます |
 | `latest(x)` / `earliest(x)` | 同上 | ランク付きフォームを含む：`latest(x, rankAttr)` |
 | `uniqueCount(x)` | 同上 | 完全一致 |
 | `rate(count(*), 1 minute)` | `count(*)` with `TIMESERIES 1 minute` | SQL `rate()`はカウンター専用です |
 | `derivative(x, 1 minute)` | `derivative(x)` + `TIMESERIES` | 毎秒 |
-| `uniques(x)` | `count(*) … FACET x LIMIT n` |                                                              |
-| `keyset()` / `SHOW EVENT TYPES` | [検出クエリ &#x200B;](#101-data-discovery)、またはクエリガイドパネル |                                                              |
-| `histogram(duration, …)` | `FILTER` バケット | [&#x200B; チュートリアル 3](#84-build-a-latency-histogram)を参照 |
-| `FACET CASES (…)` | `FILTER`列 | [&#x200B; チュートリアル 3](#83-group-values-into-cases-with-filter)を参照 |
+| `uniques(x)` | `count(*) … FACET x LIMIT n` |                                                                                  |
+| `keyset()` / `SHOW EVENT TYPES` | [検出クエリ ](../examples/query-cookbook.md#data-discovery)、またはクエリガイドパネル |                                                                                  |
+| `histogram(duration, …)` | `FILTER` バケット | [ チュートリアル 3](../tutorials/tutorial-3.md#build-a-latency-histogram)を参照 |
+| `FACET CASES (…)` | `FILTER`列 | [ チュートリアル 3](../tutorials/tutorial-3.md#group-values-into-cases-with-filter)を参照 |
 | `COMPARE WITH 1 week ago` | サポート対象外 | 時間ピッカーを変更するか、API経由で`SINCE … UNTIL …`を使用します |
-| `RLIKE` | `LIKE` / `IN` |                                                              |
-| `SELECT`の数式/ネストされた集計 | **式** ウィジェット |                                                              |
-| `WITH TIMEZONE`, `EXTRAPOLATE`, `SLIDE BY` | サポート対象外 |                                                              |
+| `RLIKE` | `LIKE` / `IN` |                                                                                  |
+| `SELECT`の数式/ネストされた集計 | **式** ウィジェット |                                                                                  |
+| `WITH TIMEZONE`, `EXTRAPOLATE`, `SLIDE BY` | サポート対象外 |                                                                                  |

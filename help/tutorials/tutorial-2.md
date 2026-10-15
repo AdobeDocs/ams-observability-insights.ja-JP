@@ -1,17 +1,15 @@
 ---
 title: チュートリアル 2：データの制御
 description: Observability Insightsでクエリ結果をフィルタリング、グループ化、制御する方法について説明します。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
 workflow-type: tm+mt
-source-wordcount: '361'
+source-wordcount: '325'
 ht-degree: 0%
 ---
 
 ## チュートリアル 2：データの制御 {#tutorial-2-control-your-data}
 
 このチュートリアルでは、未加工カウントを答えに変換する関数と句について説明します。具体的なカウント、最新の値、パーセンタイル、ワイルドカード、並べ替え、多次元グループ化です。
-
-**このチュートリアルでは、** [7.1 uniqueCount](#71-count-distinct-values-with-uniquecount) ・ [7.2 latest/earliest](#72-find-the-latest-and-earliest-values) ・ [7.3 percentage](#73-calculate-percentages) ・ [7.4 percentile](#74-understand-latency-with-percentile) ・ [7.5 Labels](#75-make-results-readable-with-labels) ・ [7.6 Wildcards and lists](#76-match-patterns-and-lists) ・ [7.7 Sorting](#77-sort-and-rank-with-order-by) ・ [7.8 Multiple facets](#78-group-by-several-attributes) ・ [7.9 Past](#79-look-at-a-past-window)
 
 ### `uniqueCount`で異なる値をカウント
 
@@ -69,7 +67,7 @@ SELECT percentage(*, WHERE duration > 2000) AS slowPct FROM Transaction FACET se
 SELECT percentile(duration, 50) AS p50, percentile(duration, 95) AS p95, percentile(duration, 99) AS p99 FROM Transaction TIMESERIES AUTO
 ```
 
->[!TIP]
+> **ヒント**
 >
 > `Transaction.duration`のp50、p95、およびp99は、長いウィンドウにわたってロールアップから提供されるので、毎週の表示のために高速に保たれます。
 
@@ -123,7 +121,7 @@ SELECT count(*) AS requests, percentile(duration, 95) AS p95 FROM Transaction FA
 SELECT count(*) AS requests FROM Transaction FACET service ORDER BY requests ASC LIMIT 10
 ```
 
->[!TIP]
+> **ヒント**
 >
 > `HAVING`はありません。 「ビジー」操作のみを検索するには、`requests`でランク付けして上位Nを維持するか、ノイズを除去する`WHERE`を追加します（例：`WHERE http.method != 'OPTIONS'`）。
 

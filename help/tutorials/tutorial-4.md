@@ -1,17 +1,15 @@
 ---
 title: チュートリアル 4：高度な関数
 description: 高度なSQL関数を使用して、Observability Insights テレメトリを分析する方法を説明します。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
 workflow-type: tm+mt
-source-wordcount: '507'
+source-wordcount: '480'
 ht-degree: 1%
 ---
 
 ## チュートリアル 4：高度な関数 {#tutorial-4-advanced-functions}
 
 このチュートリアルでは、より詳細な調査を実現する機能とエンティティについて説明します。変数、成長、「最悪の例」検索、合計のシェア、トランザクション構成、任意のOpenTelemetry指標です。
-
-**このチュートリアルでは、** [9.1 stddev](#91-measure-consistency-with-stddev) ・ [9.2 derivative](#92-spot-growth-with-derivative) ・ [9.3が最新](#93-find-the-worst-example-with-ranked-latest) ・ [9.4 percentOfTotal](#94-find-where-time-goes-with-percentoftotal) ・ [9.5 SpanBreakdown](#95-break-down-transactions-with-spanbreakdown) ・ [9.6任意の指標](#96-discover-and-query-any-metric) ・ [9.7 エンティティを選択](#97-choose-the-right-trace-entity) ・ [9.8 Nested aggregation](#98-work-around-nested-aggregation)
 
 ### `stddev`との整合性を測定
 
@@ -124,9 +122,9 @@ SELECT count(*) AS calls, percentage(*, WHERE status = 'Error') AS errorPct, per
 NRQLでは、「ホストごとの最大数の平均」などのサブクエリを使用して集計を集計できます。 SQLはそうではありません。 ここでは、その選択肢を紹介します。
 
 | 目標 | SQL アプローチ |
-| --------------------------------------- | ---------------------------------------------------------- |
+| --------------------------------------- | -------------------------------------------------------------------- |
 | グループごとの値を入力し、グループをランク付けします | `FACET group` + `ORDER BY alias` + `LIMIT` |
-| 2つの集計の比率 | [数式ウィジェット &#x200B;](#86-combine-queries-with-formula-widgets) |
+| 2つの集計の比率 | [数式ウィジェット ](tutorial-3.md#combine-queries-with-formula-widgets) |
 | ホストごとの値、次に「最悪のホスト」 | `FACET host ORDER BY alias DESC LIMIT 1` |
 | ホストあたりの平均時間 | `FACET host TIMESERIES AUTO`、シリーズを読む |
 
