@@ -1,17 +1,15 @@
 ---
 title: Query cookbook
 description: SQL クエリレシピを使用して、Observability Insightsのアプリケーションとインフラストラクチャのテレメトリを調査します。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: ae94813d8db77f7d5795add161a7fbfd7427c050
 workflow-type: tm+mt
-source-wordcount: '580'
+source-wordcount: '554'
 ht-degree: 0%
 ---
 
 ## Query cookbook {#query-cookbook}
 
 クックブックは、すぐに使用できるクエリのライブラリで、トピック別にグループ化されています。 各クエリの前には、**太字**&#x200B;で、最適なグラフの種類が表示されます。 タイムピッカーがウィンドウを制御するため、時間句は除外されます。
-
-**このドキュメントでは、** [10.1 Data discovery](#101-data-discovery) ・ [10.2 Throughput](#102-throughput) ・ [10.3 Latency](#103-latency) ・ [10.4 Errors](#104-errors) ・ [10.5 Apdex](#105-apdex--user-experience) ・ [10.6 サービスおよびホスト &#x200B;](#106-services-hosts--instances) ・ [10.7 Dependencies](#107-downstream-dependencies) ・ [10.8](#108-aem-adobe-experience-manager) ・ ・ &lbrace;AEM [10.9 インフラストラクチャ &#x200B;](#109-infrastructure) ・ [10.10 JVM](#1010-jvm--runtime)
 
 >[!TIP]
 >
@@ -485,7 +483,7 @@ SELECT average(value) AS avgValue, max(value) AS maxValue FROM MetricGauge WHERE
 SELECT average(value) AS heapMb FROM JvmHeapUsed FACET host TIMESERIES AUTO
 ```
 
-**表** – 使用されるヒープと制限（2つのウィジェットまたは数式 – [&#x200B; ブループリント 11.7](#117-jvm-health-board)を参照）:
+**表** – 使用されるヒープと制限（2つのウィジェットまたは数式 – [ ブループリント 11.7](#117-jvm-health-board)を参照）:
 
 ```sql
 SELECT latest(value) AS heapLimitMb FROM JvmHeapLimit FACET host LIMIT 50
