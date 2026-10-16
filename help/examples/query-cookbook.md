@@ -483,7 +483,7 @@ SELECT average(value) AS avgValue, max(value) AS maxValue FROM MetricGauge WHERE
 SELECT average(value) AS heapMb FROM JvmHeapUsed FACET host TIMESERIES AUTO
 ```
 
-**表** – 使用されるヒープと制限（2つのウィジェットまたは数式 – [ ブループリント 11.7](#117-jvm-health-board)を参照）:
+**表** – 使用されるヒープと制限（2つのウィジェットまたは数式 – [&#x200B; ブループリント 11.7](#117-jvm-health-board)を参照）:
 
 ```sql
 SELECT latest(value) AS heapLimitMb FROM JvmHeapLimit FACET host LIMIT 50
