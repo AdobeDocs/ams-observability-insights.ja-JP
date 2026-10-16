@@ -1,7 +1,7 @@
 ---
 title: SQLを使用してクエリする方法
 description: Observability InsightsでSQL クエリを記述して実行する方法を説明します。
-source-git-commit: 148bf6480461a0109b221b8e7c2f9ab2035a7d68
+source-git-commit: 873e7b9f279c3276fc0197969d667d40d022968a
 workflow-type: tm+mt
 source-wordcount: '557'
 ht-degree: 1%
@@ -43,7 +43,7 @@ FROM Transaction SELECT count(*) FACET service
 
 > **重要**
 >
-> **ビルドする前に見つける。** 属性の可用性は、各サービスのインストルメント方法によって異なります。 最初に新しいテナントで[検出クエリ &#x200B;](#101-data-discovery)を実行し、実際にデータを含むサービス、ホスト、属性、指標を確認します。
+> **ビルドする前に見つける。** 属性の可用性は、各サービスのインストルメント方法によって異なります。 最初に新しいテナントで[検出クエリ ](../../examples/query-cookbook.md#data-discovery)を実行し、実際にデータを含むサービス、ホスト、属性、指標を確認します。
 
 ### クエリの実行方法
 
