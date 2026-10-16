@@ -1,10 +1,10 @@
 ---
 title: 'チュートリアル 3: ダッシュボードを進める'
 description: Observability Insightsで変数、式、複数のウィジェットを使用してダッシュボードを構築します。
-source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
+source-git-commit: 09c8edf64e744ff0c16acd0d5905fc6796490f82
 workflow-type: tm+mt
-source-wordcount: '879'
-ht-degree: 4%
+source-wordcount: '878'
+ht-degree: 3%
 ---
 
 ## チュートリアル 3: ダッシュボードを進める {#tutorial-3-advance-your-dashboarding}
@@ -39,7 +39,7 @@ SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIE
 SELECT rate(value) AS writeBytesPerSec FROM DiskWriteRate FACET host, device TIMESERIES AUTO LIMIT 10
 ```
 
-> **警告**
+>[!WARNING]
 >
 > 常に`rate()`を`host` （およびディスクの場合は`device`）によってファセットするか、1つのホストにフィルター処理します。 これがなければ、異なるホストからの読み取りが混在し、結果は意味がありません。
 

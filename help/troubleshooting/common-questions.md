@@ -12,9 +12,9 @@ feature_v2:
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
     internal-label: Admin
-source-git-commit: e0cc17c9d725cad021ba99da4332bca176eae6db
+source-git-commit: ba4f816187e77f3f7b708942b3f14535417c2fdc
 workflow-type: tm+mt
-source-wordcount: '186'
+source-wordcount: '253'
 ht-degree: 0%
 ---
 
@@ -37,3 +37,11 @@ ht-degree: 0%
 ## Observability Insightsは実際にどのようなデータを収集しますか？ {#what-data-is-collected}
 
 範囲、アプリケーション表現、保持期間、および運用上の影響の監視については、[&#x200B; カバレッジ、環境、およびデータ保持](../get-started/coverage-and-data.md)を参照してください。
+
+## Google Chromeではなく、他のブラウザーでログインできるのはなぜですか？
+
+Observability Insightsにサードパーティ Cookieを許可し、再度ログインを試みます。
+
+1. Cookie設定にアクセスするには、Google Chromeで`chrome://settings/cookies`を開きます。
+2. Observability InsightsのCookieを許可するには、**サードパーティ Cookieの使用が許可されているサイト**&#x200B;で、**追加**&#x200B;を選択して`https://insights.adobecqms.net`と入力します。
+3. 問題が解決されたかどうかを確認するには、シークレットウィンドウでObservability Insightsにログインします。

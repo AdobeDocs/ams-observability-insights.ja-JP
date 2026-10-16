@@ -1,9 +1,9 @@
 ---
 title: チュートリアル 1：最初のクエリ
 description: Observability Insights テレメトリに対して最初のSQL クエリを作成します。
-source-git-commit: 52cc24792c47727700428be58b5bbb2a5c7223d2
+source-git-commit: 09c8edf64e744ff0c16acd0d5905fc6796490f82
 workflow-type: tm+mt
-source-wordcount: '552'
+source-wordcount: '549'
 ht-degree: 0%
 ---
 
@@ -33,7 +33,7 @@ SELECT timestamp, service, name, duration FROM Transaction LIMIT 10
 
 行は最初の列で降順に並べ替えられるので、`timestamp`を最初に配置すると、最新のリクエストが上部に表示されます。
 
-> **メモ**
+>[!NOTE]
 >
 > SQLに`SELECT *`がありません。 属性のリストは、結果を小さく読みやすいものにします。 [&#x200B; データディクショナリ &#x200B;](#data-dictionary)とエディターのオートコンプリートに、使用可能な内容が表示されます。
 
@@ -67,7 +67,7 @@ SELECT uniqueCount(host) FROM Transaction
 SELECT count(*) AS requests, average(duration) AS avgMs, max(duration) AS maxMs FROM Transaction
 ```
 
-> **ヒント**
+>[!TIP]
 >
 > エイリアスは列ヘッダーおよび凡例ラベルとなり、これらは`ORDER BY`で参照されるものです。 すべての集計に名前を付ける習慣に入ります。
 
@@ -125,7 +125,7 @@ SELECT count(*) AS slowOrFailed FROM Transaction WHERE service = 'checkout' AND 
 SELECT count(*) AS contentRequests FROM Transaction WHERE urlPath LIKE '/content/%'
 ```
 
-> **メモ**
+>[!NOTE]
 >
 > 文字列値では大文字と小文字が区別され、一重引用符を使用します：`"Error"`または`'error'`ではなく`'Error'`。 `checkout`をテナントのサービスに置き換えます。 次の手順では、それらを一覧表示する方法を示します。
 

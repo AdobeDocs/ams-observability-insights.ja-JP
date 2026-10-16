@@ -1,28 +1,15 @@
 ---
 title: ダッシュボードのブループリント
 description: アプリケーションとインフラストラクチャのモニタリングにブループリントを使用して、オブザーバビリティインサイトダッシュボードを構築します。
-source-git-commit: 143a9567da06f0137ef690795cfbc41bda1780ca
+source-git-commit: 94e108d029b04bf4f04aec3fb8b949705c4005e1
 workflow-type: tm+mt
-source-wordcount: '1324'
+source-wordcount: '1196'
 ht-degree: 1%
 ---
 
 ## ダッシュボードのブループリント {#dashboard-blueprints}
 
 各ブループリントは、包括的で複雑なダッシュボードです。 目標、タブとセクションのレイアウト、およびグラフの種類、単位、しきい値、サイズとクエリを含むすべてのウィジェットが一覧表示されます。 サイズは12列グリッドの`width×height`です。 それぞれを上から下に構築し、ドラッグして調整します。
-
-| ブループリント | オーディエンス | ハイライト |
-| ------------------------------------------------------------------------------------ | --------------------- | ---------------------------------------------------------------------------------- |
-| [11.1 ゴールデンシグナル / SLO](#111-golden-signals--slo-board) | SRE、オンコール | しきい値、Apdex、エラー%、彩度を含むKPI タイル |
-| [11.2 エラーのトリアージ &#x200B;](#112-error-triage-board) | オンコール | エラークラス、5xx ホットスポット、トレース IDで失敗したリクエスト |
-| [11.3 レイテンシの詳細ダイブ &#x200B;](#113-latency-deep-dive-board) | パフォーマンスエンジニア | パーセンタイル、レイテンシーバケット、変動性、トランザクション構成、最も遅いトレース |
-| [11.4 ダウンストリームの依存関係](#114-downstream-dependencies-board) | サービス所有者 | アウトバウンド HTTP、DB、メッセージング、RPC |
-| [11.5 AEM オーサー/公開/ Dispatcher](#115-aem-author--publish--dispatcher-board) | AEM teams | 階層ごとのセクション、Sling/JSP/JCR、Dispatcherのロード |
-| [11.6 インフラストラクチャ容量](#116-infrastructure-capacity-board) | プラットフォーム/キャパシティ | CPU モード、メモリ、ディスク、ネットワーク レート、数式 |
-| [11.7 JVM Health](#117-jvm-health-board) | Java チーム | ヒープ %の数式、ホストおよびプールごとのヒープ、スレッド、JVM CPU |
-| [11.8 エグゼクティブ / NOC ウォール &#x200B;](#118-executive--noc-wall-board) | NOC、リーダーシップ | KPI タイル、可用性の式、層別トラフィック、SLO メモ |
-| [11.9 Ratios &amp; Headroom](#119-ratios--headroom-board-formula-showcase) | 全員 | 数式ウィジェットショーケース |
-| [11.10 Service Explorer](#1110-service-explorer-variable-driven) | あらゆるチーム | 変数駆動の再利用可能 |
 
 **グラフ凡例：** **N** =番号、**L** =行、**A** =面積、**B** =棒、**P** =円、**T** =表。
 
@@ -644,7 +631,7 @@ SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIE
 SELECT rate(value) AS txBytesPerSec FROM NetworkTransmitRate FACET host TIMESERIES AUTO
 ```
 
-**W20 ・ 1つのホスト （数式）**&#x200B;のネットワーク I/Oの合計 – フォーミュラ ウィジェット、L、`bytes/s`、12×4。 数式は`FACET`できず、`rate()`は1つのホストにスコープを設定する必要があります（[&#x200B; キュレートされた指標エンティティ &#x200B;](#53-curated-metric-entities)を参照）。そのため、ホストを固定します – `web-publish-01`をW5の実際のホスト名に置き換えます。
+**W20 ・ 1つのホスト （数式）**&#x200B;のネットワーク I/Oの合計 – フォーミュラ ウィジェット、L、`bytes/s`、12×4。 数式は`FACET`できず、`rate()`は1つのホストにスコープを設定する必要があります（[&#x200B; キュレートされた指標エンティティ &#x200B;](../references/data-dictionary.md#curated-metric-entities)を参照）。そのため、ホストを固定します – `web-publish-01`をW5の実際のホスト名に置き換えます。
 
 クエリ `netRx`:
 
@@ -939,7 +926,7 @@ SELECT average(value) AS v FROM JvmHeapUsed TIMESERIES AUTO
 limit - used
 ```
 
-**W5 ・ 1つのホストに対するネットワークのアウト/イン比率** – 数式、L （ホストを固定します。[&#x200B; キュレートされた指標エンティティ &#x200B;](#53-curated-metric-entities)を参照）
+**W5 ・ 1つのホストに対するネットワークのアウト/イン比率** – 数式、L （ホストを固定します。[&#x200B; キュレートされた指標エンティティ &#x200B;](../references/data-dictionary.md#curated-metric-entities)を参照）
 
 クエリ `rx`:
 

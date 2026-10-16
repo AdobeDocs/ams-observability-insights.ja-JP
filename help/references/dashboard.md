@@ -1,7 +1,7 @@
 ---
 title: ダッシュボードとクエリのドキュメント
 description: Observability Insights SQL クエリおよびダッシュボードに関するリファレンスドキュメント。
-source-git-commit: 91a61d33010192cedce7d40a45ffe86f32e4824b
+source-git-commit: 873e7b9f279c3276fc0197969d667d40d022968a
 workflow-type: tm+mt
 source-wordcount: '10254'
 ht-degree: 4%
@@ -2957,7 +2957,7 @@ SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIE
 SELECT rate(value) AS txBytesPerSec FROM NetworkTransmitRate FACET host TIMESERIES AUTO
 ```
 
-**W20 ・ 1つのホスト （数式）**&#x200B;のネットワーク I/Oの合計 – フォーミュラ ウィジェット、L、`bytes/s`、12×4。 数式は`FACET`できず、`rate()`は1つのホストにスコープを設定する必要があります（[&#x200B; キュレートされた指標エンティティ &#x200B;](#53-curated-metric-entities)を参照）。そのため、ホストを固定します – `web-publish-01`をW5の実際のホスト名に置き換えます。
+**W20 ・ 1つのホスト （数式）**&#x200B;のネットワーク I/Oの合計 – フォーミュラ ウィジェット、L、`bytes/s`、12×4。 数式は`FACET`できず、`rate()`は1つのホストにスコープを設定する必要があります（[&#x200B; キュレートされた指標エンティティ &#x200B;](data-dictionary.md#curated-metric-entities)を参照）。そのため、ホストを固定します – `web-publish-01`をW5の実際のホスト名に置き換えます。
 
 クエリ `netRx`:
 
@@ -3245,7 +3245,7 @@ SELECT average(value) AS v FROM JvmHeapUsed TIMESERIES AUTO
 limit - used
 ```
 
-**W5 ・ 1つのホストに対するネットワークのアウト/イン比率** – 数式、L （ホストを固定します。[&#x200B; キュレートされた指標エンティティ &#x200B;](#53-curated-metric-entities)を参照）
+**W5 ・ 1つのホストに対するネットワークのアウト/イン比率** – 数式、L （ホストを固定します。[&#x200B; キュレートされた指標エンティティ &#x200B;](data-dictionary.md#curated-metric-entities)を参照）
 
 クエリ `rx`:
 
@@ -3430,7 +3430,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, count(*) FILTER (WHER
 | `FACET and TIMESERIES require an aggregate query` | FACET/TIMESERIESによるイベントクエリ | 集計を使用します。 |
 | `FACET supports at most five attributes` | > 5 ファセット | 削減。 |
 | `average requires a numeric attribute` | e.g. `average(service)` | `uniqueCount`/`latest`または数値属性を使用してください。 |
-| `rate requires TIMESERIES` / `rate is only available for counter measures` | `rate()`は時系列なし、またはゲージに含まれていません | `TIMESERIES AUTO`を追加します。✔ カウンターエンティティ （[&#x200B; キュレートされた指標エンティティ &#x200B;](#53-curated-metric-entities)）を使用します。ゲージには`derivative()`を使用します。 |
+| `rate requires TIMESERIES` / `rate is only available for counter measures` | `rate()`は時系列なし、またはゲージに含まれていません | `TIMESERIES AUTO`を追加します。✔ カウンターエンティティ （[&#x200B; キュレートされた指標エンティティ &#x200B;](data-dictionary.md#curated-metric-entities)）を使用します。ゲージには`derivative()`を使用します。 |
 | `rate cannot be combined with other aggregates` | `rate()`を持つ複数の項目 | ウィジェットごとに1つの`rate()`。数式と組み合わせる。 |
 | `percentOfTotal cannot be combined with TIMESERIES` | — | 時系列を削除します。 |
 | `apdex requires an entity with a status attribute` | 指標エンティティの`apdex` | `Transaction`/`Span`/`AppRequest`を使用します。 |
