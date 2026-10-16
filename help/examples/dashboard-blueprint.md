@@ -351,7 +351,7 @@ SELECT count(*) AS calls, percentile(duration, 95) AS p95, percentage(*, WHERE s
 
 ### AEM オーサー/パブリッシュ/Dispatcher ボード
 
-**目標：**は、従来のAEM AEM レイアウトを反映して、階層別にグループ化されたNew Relic操作ボードです。
+**目標：**&#x200B;は、従来のAEM AEM レイアウトを反映して、階層別にグループ化されたNew Relic操作ボードです。
 **セクションヘッダー** （`PUBLISH`、`AUTHOR`、`DISPATCHER`）、終了ウィジェットのタイトル（`- PUBLISH`/`- AUTHOR`）を使用して、カラーキューを取得します。
 
 ```text
@@ -631,7 +631,7 @@ SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIE
 SELECT rate(value) AS txBytesPerSec FROM NetworkTransmitRate FACET host TIMESERIES AUTO
 ```
 
-**W20 ・ 1つのホスト （数式）**&#x200B;のネットワーク I/Oの合計 – フォーミュラ ウィジェット、L、`bytes/s`、12×4。 数式は`FACET`できず、`rate()`は1つのホストにスコープを設定する必要があります（[ キュレートされた指標エンティティ ](../references/data-dictionary.md#curated-metric-entities)を参照）。そのため、ホストを固定します – `web-publish-01`をW5の実際のホスト名に置き換えます。
+**W20 ・ 1つのホスト （数式）**&#x200B;のネットワーク I/Oの合計 – フォーミュラ ウィジェット、L、`bytes/s`、12×4。 数式は`FACET`できず、`rate()`は1つのホストにスコープを設定する必要があります（[&#x200B; キュレートされた指標エンティティ &#x200B;](../references/data-dictionary.md#curated-metric-entities)を参照）。そのため、ホストを固定します – `web-publish-01`をW5の実際のホスト名に置き換えます。
 
 クエリ `netRx`:
 
@@ -926,7 +926,7 @@ SELECT average(value) AS v FROM JvmHeapUsed TIMESERIES AUTO
 limit - used
 ```
 
-**W5 ・ 1つのホストに対するネットワークのアウト/イン比率** – 数式、L （ホストを固定します。[ キュレートされた指標エンティティ ](../references/data-dictionary.md#curated-metric-entities)を参照）
+**W5 ・ 1つのホストに対するネットワークのアウト/イン比率** – 数式、L （ホストを固定します。[&#x200B; キュレートされた指標エンティティ &#x200B;](../references/data-dictionary.md#curated-metric-entities)を参照）
 
 クエリ `rx`:
 
@@ -994,7 +994,7 @@ SELECT count(*) AS v FROM Transaction TIMESERIES AUTO
 
 >[!WARNING]
 >
-> [ チュートリアル 3、ステップ 8.7](#87-make-dashboards-reusable-with-variables)の&#x200B;**現在のビルド制限**&#x200B;を参照してください。ウィジェット SQL内の`{{variables}}`は、まだプレビューまたは保存できません。 これが修正されるまで、各`{{…}}`をリテラル （`'checkout'`など）に置き換え、_重複_&#x200B;を使用してサービスごとにボードを複製します。 以下のデザインは、エンドツーエンドで代用がサポートされている場合に使用できます。
+> [&#x200B; チュートリアル 3、ステップ 8.7](#87-make-dashboards-reusable-with-variables)の&#x200B;**現在のビルド制限**&#x200B;を参照してください。ウィジェット SQL内の`{{variables}}`は、まだプレビューまたは保存できません。 これが修正されるまで、各`{{…}}`をリテラル （`'checkout'`など）に置き換え、_重複_&#x200B;を使用してサービスごとにボードを複製します。 以下のデザインは、エンドツーエンドで代用がサポートされている場合に使用できます。
 
 **変数**
 
