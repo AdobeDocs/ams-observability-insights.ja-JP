@@ -29,7 +29,7 @@ SELECT apdex(duration, 500) AS apdex FROM Transaction FACET service TIMESERIES A
 
 ### `rate`でカウンターをレートに変換
 
-[ データディクショナリ ](#53-curated-metric-entities)）ストアのカウンターエンティティ（✔）の合計は増加し続けています。 `rate(value)`は、1秒あたりの値に変換します。 `TIMESERIES`が必要です。集計は次のみである必要があります：
+[&#x200B; データディクショナリ &#x200B;](#53-curated-metric-entities)）ストアのカウンターエンティティ（✔）の合計は増加し続けています。 `rate(value)`は、1秒あたりの値に変換します。 `TIMESERIES`が必要です。集計は次のみである必要があります：
 
 ```sql
 SELECT rate(value) AS rxBytesPerSec FROM NetworkReceiveRate FACET host TIMESERIES AUTO
@@ -201,4 +201,4 @@ SELECT count(*) FROM Transaction FACET service LIMIT 200
 
 ### まとめる
 
-[ ダッシュボードのブループリント ](../examples/dashboard-blueprint.md)で使用されているすべての構築ブロックが見つかります。しきい値、セクション、パーセンタイル、Apdex、レート、ケース列、ヒストグラム、数式、変数を含むKPI タイルです。 ブループリントでは、それらを組み合わせて、包括的なゴールデンシグナル、エラートリアージ、AEM、インフラストラクチャ、JVM ダッシュボードを作成する方法を示しています。
+[&#x200B; ダッシュボードのブループリント &#x200B;](../examples/dashboard-blueprint.md)で使用されているすべての構築ブロックが見つかります。しきい値、セクション、パーセンタイル、Apdex、レート、ケース列、ヒストグラム、数式、変数を含むKPI タイルです。 ブループリントでは、それらを組み合わせて、包括的なゴールデンシグナル、エラートリアージ、AEM、インフラストラクチャ、JVM ダッシュボードを作成する方法を示しています。
