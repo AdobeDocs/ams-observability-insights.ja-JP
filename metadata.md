@@ -7,10 +7,10 @@ product_v2:
 usetq: true
 type: Documentation
 mini-toc-levels: 2
-git-repo: https://github.com/Adobe-Enterprise-Docs/ams-observability-insights.ja-JP
+git-repo: https://github.com/AdobeDocs/ams-observability-insights.en
 recommendations: noDisplay
 index: true
-source-git-commit: 16e6e5702089d6ebd67d923686255a1b9d25afe8
+source-git-commit: e7dc196024d57224b4b177a1f6b48932af59732e
 workflow-type: tm+mt
 source-wordcount: '8'
 ht-degree: 0%
